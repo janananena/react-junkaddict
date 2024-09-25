@@ -1,0 +1,13 @@
+{
+  "programs": [
+    {
+      "id": 1,
+      "title": "Sommerhaus der Stars",
+      "nick": "Sommerhaus",
+      "station": "RTL",
+      "link": "https://plus.rtl.de/video-tv/shows/das-sommerhaus-der-stars-kampf-der-promipaare-761973",
+      "day": "di",
+      "time": "20:15"
+    }
+  ]
+}
