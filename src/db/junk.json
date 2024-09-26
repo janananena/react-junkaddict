@@ -1,7 +1,7 @@
 {
   "programs": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Sommerhaus der Stars",
       "nick": "Sommerhaus",
       "station": "RTL",
@@ -11,7 +11,7 @@
       "category": "tv"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Radio Island",
       "nick": null,
       "station": "Spotify",
@@ -19,6 +19,26 @@
       "day": "mo",
       "time": "00:00",
       "category": "podcast"
+    },
+    {
+      "id": "3",
+      "title": "Are you the One",
+      "nick": "AYTO",
+      "station": "RTL",
+      "link": "https://plus.rtl.de/video-tv/shows/are-you-the-one-859291",
+      "day": "mo",
+      "time": "00:00",
+      "category": "tv"
+    },
+    {
+      "id": "6729",
+      "title": "Are you the One - Realitystars in love",
+      "nick": "AYTO VIP",
+      "station": "RTL",
+      "link": "https://plus.rtl.de/video-tv/shows/are-you-the-one-reality-stars-in-love-895525",
+      "day": "fr",
+      "time": "20:15",
+      "category": "tv"
     }
   ]
 }
