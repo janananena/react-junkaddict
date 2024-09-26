@@ -3,6 +3,7 @@ import {useEffect, useState} from "react";
 import {getPrograms} from "./apihandler/DbApiHandlers";
 
 function JunkCard({program}) {
+
     const name = program.nick ?
         <div>
             <h1>
@@ -14,7 +15,7 @@ function JunkCard({program}) {
         : <h1>
             {program.title}
         </h1>;
-    const station = <div>{program.station}</div>;
+    const station = <a href={program.link}><img src={require(`./logos/${program.station.toLowerCase()}.jpg`)} alt={program.station} width="50"/></a>;
     const time = <div>{program.day.capitalize} {program.time}</div>;
     const category = <div>{program.category.capitalize}</div>;
 
