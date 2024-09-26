@@ -39,7 +39,7 @@ function sortTimes(time1, time2) {
 }
 
 function JunkDay({programs}) {
-    const cards = programs.sort(sortTimes).map((p) => <li><JunkCard program={p}/></li>);
+    const cards = programs.sort(sortTimes).map((p) => <li key={p.title}><JunkCard program={p}/></li>);
     return (<ul>
         {cards}
     </ul>);
@@ -49,8 +49,8 @@ function JunkTable({programs}) {
     const daygroups = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
     programs.map((p) => daygroups[p.day].push(p));
 
-    const headers = (Object.keys(daygroups)).map((k) => <td>{k}</td>);
-    const body = (Object.entries(daygroups)).map(([k, v]) => <td><JunkDay programs={v}/></td>)
+    const headers = (Object.keys(daygroups)).map((k) => <td key={k}>{k}</td>);
+    const body = (Object.entries(daygroups)).map(([k, v]) => <td key={k + v.title}><JunkDay programs={v}/></td>)
     return (
         <table>
             <thead>
