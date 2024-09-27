@@ -18,7 +18,14 @@ function AddJunkCardForm({addNewProgram, toggleAddProgram}) {
                 <input id="nick" type="text" name="nick"/>
             </label>
             <label htmlFor="station"> Sender
-                <input id="station" type="text" name="station" required/>
+                <select id="station" name="station" required>
+                    <option key="rtl" value="rtl">RTL</option>
+                    <option key="joyn" value="joyn">Joyn</option>
+                    <option key="zdf" value="zdf">ZDF</option>
+                    <option key="amazon" value="amazon">Prime</option>
+                    <option key="ard" value="ard">ARD</option>
+                    <option key="spotify" value="spotify">Spotify</option>
+                </select>
             </label>
             <label htmlFor="link"> Link
                 <input id="link" type="url" name="link" required/>

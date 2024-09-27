@@ -35,7 +35,16 @@ function EditJunkCardForm({toggleEditProgram}) {
                         <input id="title" type="text" name="title" defaultValue={program.title} required/>
                     </fieldset>
                 </td>
-                <td><input id="station" type="text" name="station" defaultValue={program.station} required/></td>
+                <td>
+                    <select id="station" name="station" defaultValue={program.station} required>
+                        <option key="rtl" value="rtl">RTL</option>
+                        <option key="joyn" value="joyn">Joyn</option>
+                        <option key="zdf" value="zdf">ZDF</option>
+                        <option key="amazon" value="amazon">Prime</option>
+                        <option key="ard" value="ard">ARD</option>
+                        <option key="spotify" value="spotify">Spotify</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td>
