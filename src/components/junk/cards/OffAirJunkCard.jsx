@@ -1,8 +1,7 @@
 import {useState} from "react";
 import EditJunkDayTimeForm from "./forms/EditJunkDayTimeForm";
 
-function OffAirJunkCard({displayName, displayStation, program, setProgram}) {
-
+function OffAirJunkCard({displayName, displayStation}) {
     const [editJunkDayTime, setEditJunkDayTime] = useState(false);
 
     function toggleEditJunkDayTime() {
@@ -23,7 +22,7 @@ function OffAirJunkCard({displayName, displayStation, program, setProgram}) {
             <tr>
                 {!editJunkDayTime && <td colSpan="2">{editJunkDayTimeButton}</td>}
                 {editJunkDayTime && <td colSpan="2">
-                    {<EditJunkDayTimeForm program={program} setProgram={setProgram} setOnAir={true} handleCancel={toggleEditJunkDayTime}/>}
+                    {<EditJunkDayTimeForm setOnAir={true} handleCancel={toggleEditJunkDayTime}/>}
                 </td>}
             </tr>
             </tfoot>

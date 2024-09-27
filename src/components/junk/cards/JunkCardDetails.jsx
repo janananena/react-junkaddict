@@ -1,7 +1,11 @@
 import OnAirJunkCard from "./OnAirJunkCard";
 import OffAirJunkCard from "./OffAirJunkCard";
+import {useContext} from "react";
+import {ProgramContext} from "../../../contexts/ProgramContext";
 
-function JunkCardDetails({program, setProgram, toggleEditProgram}) {
+function JunkCardDetails({toggleEditProgram}) {
+    const [program] = useContext(ProgramContext);
+
     const isOnAir = program.currentSeason;
 
     const displayName =
@@ -23,8 +27,8 @@ function JunkCardDetails({program, setProgram, toggleEditProgram}) {
 
     return (
         <>
-            {isOnAir && <OnAirJunkCard displayName={displayName} displayStation={displayStationLink} toggleEditProgram={toggleEditProgram} program={program} setProgram={setProgram}/>}
-            {!isOnAir && <OffAirJunkCard displayName={displayName} displayStation={displayStationLink} program={program} setProgram={setProgram}/>}
+            {isOnAir && <OnAirJunkCard displayName={displayName} displayStation={displayStationLink} toggleEditProgram={toggleEditProgram}/>}
+            {!isOnAir && <OffAirJunkCard displayName={displayName} displayStation={displayStationLink}/>}
         </>);
 }
 

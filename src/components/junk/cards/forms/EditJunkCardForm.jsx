@@ -1,7 +1,10 @@
 import _ from "lodash";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
+import {useContext} from "react";
+import {ProgramContext} from "../../../../contexts/ProgramContext";
 
-function EditJunkCardForm({program, setProgram, toggleEditProgram}) {
+function EditJunkCardForm({toggleEditProgram}) {
+    const [program, setProgram] = useContext(ProgramContext);
 
     async function handleEditProgram(event) {
         event.preventDefault();

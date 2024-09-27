@@ -11,7 +11,7 @@ function JunkTablePage() {
     }
 
     useEffect(() => {
-        getProgramList();
+        getProgramList().then();
     }, [])
 
     return (

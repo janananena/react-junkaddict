@@ -1,7 +1,10 @@
 import {changeProgram} from "../../../services/DevDataApiHandlers";
 import {capitalizeFirstLetter} from "../../../utils/StringUtils";
+import {useContext} from "react";
+import {ProgramContext} from "../../../contexts/ProgramContext";
 
-function OnAirJunkCard({displayName, displayStation, toggleEditProgram, program, setProgram}) {
+function OnAirJunkCard({displayName, displayStation, toggleEditProgram}) {
+    const [program, setProgram] = useContext(ProgramContext);
 
     async function handleSetOffAir(event) {
         event.preventDefault();

@@ -1,6 +1,9 @@
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
+import {useContext} from "react";
+import {ProgramContext} from "../../../../contexts/ProgramContext";
 
-function EditJunkDayTimeForm({program, setProgram, setOnAir, handleCancel}) {
+function EditJunkDayTimeForm({setOnAir, handleCancel}) {
+    const [program, setProgram] = useContext(ProgramContext);
 
     async function handleSubmit(event) {
         event.preventDefault();

@@ -2,7 +2,7 @@ import {useState} from "react";
 import JunkCardDetails from "./JunkCardDetails";
 import EditJunkCardForm from "./forms/EditJunkCardForm";
 
-function JunkCard({program, setProgram}) {
+function JunkCard() {
     const [editProgram, setEditProgram] = useState(false);
 
     function toggleEditProgram() {
@@ -10,8 +10,8 @@ function JunkCard({program, setProgram}) {
     }
 
     return (<>
-        {!editProgram && <JunkCardDetails program={program} toggleEditProgram={toggleEditProgram} setProgram={setProgram}/>}
-        {editProgram && <EditJunkCardForm program={program} toggleEditProgram={toggleEditProgram} setProgram={setProgram}/>}
+        {!editProgram && <JunkCardDetails toggleEditProgram={toggleEditProgram} />}
+        {editProgram && <EditJunkCardForm toggleEditProgram={toggleEditProgram} />}
     </>);
 }
 
