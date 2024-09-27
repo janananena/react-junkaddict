@@ -1,8 +1,13 @@
 import './App.css';
 import {useEffect, useState} from "react";
-import {addProgramm, getPrograms} from "./apihandler/DbApiHandlers";
+import {addProgram, changeProgram, getPrograms} from "./apihandler/DbApiHandlers";
 
-function JunkCard({program}) {
+function JunkCard({program, onAir, setProgram}) {
+    const [editOnAir, setEditOnAir] = useState(false);
+
+    function capitalizeFirstLetter(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
 
     const name = program.nick ?
         <div>
@@ -17,8 +22,55 @@ function JunkCard({program}) {
         </h1>;
     const station = <a href={program.link}><img src={require(`./logos/${program.station.toLowerCase()}.jpg`)}
                                                 alt={program.station} width="50"/></a>;
-    const time = <div>{program.day.capitalize} {program.time}</div>;
-    const category = <div>{program.category.capitalize}</div>;
+    const time = <div>{capitalizeFirstLetter(program.day)} {program.time}</div>;
+    const category = <div>{capitalizeFirstLetter(program.category)}</div>;
+
+    async function handleOffAir(event) {
+        event.preventDefault();
+        const prog = await changeProgram({...program, currentSeason: false});
+        setProgram(prog);
+    }
+
+    async function handleOnAir(event) {
+        event.preventDefault();
+        const prog = await changeProgram({
+            ...program,
+            day: event.currentTarget.day.value,
+            time: event.currentTarget.time.value,
+            currentSeason: true
+        });
+        setProgram(prog);
+        setEditOnAir(!editOnAir);
+    }
+
+    const offAirButton = <button onClick={handleOffAir}>Staffel Ende</button>;
+
+    function toggleEditOnAir() {
+        setEditOnAir(!editOnAir);
+    }
+
+    const onAirButton = <button onClick={toggleEditOnAir}>Neue Staffel</button>;
+
+    const changeDayTimeForm = <form onSubmit={handleOnAir}>
+        <fieldset>
+            <label form="day"> Tag
+                <select id="day" name="day" defaultValue={program.day} required>
+                    <option key="mo" value="mo">Mo</option>
+                    <option key="di" value="di">Di</option>
+                    <option key="mi" value="mi">Mi</option>
+                    <option key="do" value="do">Do</option>
+                    <option key="fr" value="fr">Fr</option>
+                    <option key="sa" value="sa">Sa</option>
+                    <option key="so" value="so">So</option>
+                </select>
+            </label>
+            <label form="time"> Uhrzeit (hh:mm)
+                <input id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
+            </label>
+            <button id="cancelChange" onClick={toggleEditOnAir}>cancel</button>
+            <button id="submitChange" type="submit">save</button>
+        </fieldset>
+    </form>;
 
     return (<table>
         <tbody>
@@ -26,11 +78,18 @@ function JunkCard({program}) {
             <td>{name}</td>
             <td>{station}</td>
         </tr>
-        <tr>
+        {onAir && <tr>
             <td>{time}</td>
             <td>{category}</td>
-        </tr>
+        </tr>}
         </tbody>
+        <tfoot>
+        <tr>
+            {onAir && <td colSpan="2">{offAirButton}</td>}
+            {!onAir && !editOnAir && <td colSpan="2">{onAirButton}</td>}
+            {!onAir && editOnAir && <td colSpan="2">{changeDayTimeForm}</td>}
+        </tr>
+        </tfoot>
     </table>);
 }
 
@@ -40,8 +99,9 @@ function sortTimes(program1, program2) {
     return t1[0] === t2[0] ? t1[1] - t2[1] : t1[0] - t2[0];
 }
 
-function JunkDay({programs}) {
-    const cards = programs.sort(sortTimes).map((p) => <li key={p.title}><JunkCard program={p}/></li>);
+function JunkDay({programs, onAir, setProgram}) {
+    const cards = programs.sort(sortTimes).map((p) => <li key={p.title}><JunkCard program={p} onAir={onAir}
+                                                                                  setProgram={setProgram}/></li>);
     return (<ul>
         {cards}
     </ul>);
@@ -50,18 +110,30 @@ function JunkDay({programs}) {
 function JunkTable({programs, setPrograms}) {
     const [add, setAdd] = useState(false);
     const daygroups = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
-    programs.map((p) => daygroups[p.day].push(p));
+    const onAirPrograms = programs.filter((p) => p.currentSeason);
+    const offAirPrograms = programs.filter((p) => !p.currentSeason);
+    onAirPrograms.map((p) => daygroups[p.day].push(p));
+
+    function changeProgram(program) {
+        setPrograms(programs.map((p) => p.id == program.id ? program : p));
+    }
 
     const headers = (Object.keys(daygroups)).map((k) => <td key={k}>{k}</td>);
-    const body = (Object.entries(daygroups)).map(([k, v]) => <td key={k + v.title}><JunkDay programs={v}/></td>)
+    headers.push(<td key="currentlyOff">Off Air</td>);
+    const body = (Object.entries(daygroups)).map(([k, v]) => <td key={k + 'Col'}><JunkDay programs={v} onAir={true}
+                                                                                          setProgram={changeProgram}/>
+    </td>);
+    body.push(<td key="offAirCol"><JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram}/></td>);
 
     const toggleAddForm = () => setAdd(!add);
-    async function handleAdd(event){
+
+    async function handleAdd(event) {
         event.preventDefault();
-        const program = await addProgramm(event.currentTarget);
+        const program = await addProgram(event.currentTarget);
         setPrograms([...programs, program]);
         toggleAddForm();
     }
+
     const addForm = <form onSubmit={handleAdd}>
         <fieldset>
             <label htmlFor="title"> Offizieller Name
@@ -96,6 +168,7 @@ function JunkTable({programs, setPrograms}) {
                     <option value="podcast">Podcast</option>
                 </select>
             </label>
+            <input id="currentSeason" type="hidden" name="currentSeason" value="true"/>
             <label form="addbutton">
                 <button id="addbutton" type="submit">add</button>
             </label>
@@ -103,7 +176,8 @@ function JunkTable({programs, setPrograms}) {
     </form>;
     return (
         <table>
-        <thead>
+            <caption>Reality Stundenplan</caption>
+            <thead>
             <tr>{headers}</tr>
             </thead>
             <tbody>
@@ -113,12 +187,12 @@ function JunkTable({programs, setPrograms}) {
             </tbody>
             <tfoot>
             <tr>
-                <td>
+                <td colSpan="7">
                     <button onClick={toggleAddForm}>ADD</button>
                 </td>
             </tr>
             {add && <tr>
-                <td>
+                <td colSpan="7">
                     {addForm}
                 </td>
             </tr>}
