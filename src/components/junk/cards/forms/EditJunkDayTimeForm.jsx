@@ -28,8 +28,7 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
             <Form onSubmit={handleSubmit}>
                 <Modal.Body>
                     <Row>
-                        <Form.Group as={Col}>
-                            <Form.Label>Tag</Form.Label>
+                        <Col>
                             <Form.Select id="day" name="day" defaultValue={program.day} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
@@ -39,11 +38,10 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
                                 <option key="sa" value="sa">Sa</option>
                                 <option key="so" value="so">So</option>
                             </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Label>Uhrzeit</Form.Label>
+                        </Col>
+                        <Col>
                             <Form.Control id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
-                        </Form.Group>
+                        </Col>
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>

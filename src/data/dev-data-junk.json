@@ -9,7 +9,8 @@
       "day": "di",
       "time": "20:15",
       "category": "tv",
-      "currentSeason": true
+      "currentSeason": true,
+      "season": 9
     },
     {
       "id": "2",
@@ -20,7 +21,8 @@
       "day": "mo",
       "time": "01:00",
       "category": "podcast",
-      "currentSeason": true
+      "currentSeason": true,
+      "season": null
     },
     {
       "id": "3",
@@ -31,7 +33,8 @@
       "day": "di",
       "time": "00:00",
       "category": "tv",
-      "currentSeason": true
+      "currentSeason": true,
+      "season": 5
     },
     {
       "id": "6729",
@@ -42,7 +45,8 @@
       "day": "fr",
       "time": "20:15",
       "category": "tv",
-      "currentSeason": false
+      "currentSeason": false,
+      "season": 4
     },
     {
       "id": "7be6",
@@ -53,7 +57,8 @@
       "time": "20:15",
       "link": "https://www.joyn.de/serien/good-luck-guys",
       "category": "tv",
-      "currentSeason": "true"
+      "currentSeason": "true",
+      "season": 2
     },
     {
       "id": "219a",
@@ -64,7 +69,8 @@
       "time": "20:00",
       "link": "https://www.zdf.de/comedy/zdf-magazin-royale",
       "category": "tv",
-      "currentSeason": "true"
+      "currentSeason": "true",
+      "season": null
     }
   ]
 }

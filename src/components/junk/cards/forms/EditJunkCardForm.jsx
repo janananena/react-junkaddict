@@ -39,7 +39,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                         <Col>
                             <Form.Control id="nick" type="text" name="nick" placeholder="Nick" defaultValue={program.nick}/>
                         </Col>
-                        <Col>
+                        <Col xs={8}>
                             <Form.Control id="title" type="text" name="title" defaultValue={program.title} required/>
                         </Col>
                     </Row>
@@ -68,6 +68,18 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                         </Col>
                         <Col>
                             <Form.Control id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
+                        </Col>
+                    </Row>
+                    <br/>
+                    <Row>
+                        <Col>
+                            <Form.Control id="link" type="url" name="link" required defaultValue={program.link}/>
+                        </Col>
+                    </Row>
+                    <br/>
+                    <Row>
+                        <Col>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" defaultValue={program.season}/>
                         </Col>
                         <Col>
                             <Form.Select id="category" name="category" defaultValue={program.category} required>

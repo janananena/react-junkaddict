@@ -22,18 +22,16 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                 </Modal.Header>
                 <Modal.Body>
                     <Row>
-                        <Form.Group as={Col}>
-                            <Form.Label>Nick</Form.Label>
-                            <Form.Control id="nick" type="text" name="nick"/>
-                        </Form.Group>
-                        <Form.Group as={Col} xs={8}>
-                            <Form.Label>Offizieller Name</Form.Label>
-                            <Form.Control id="title" type="text" name="title" required/>
-                        </Form.Group>
+                        <Col>
+                            <Form.Control id="nick" type="text" name="nick" placeholder="Kurzname"/>
+                        </Col>
+                        <Col xs={8}>
+                            <Form.Control id="title" type="text" name="title" required placeholder="Name*"/>
+                        </Col>
                     </Row>
+                    <br/>
                     <Row>
-                        <Form.Group as={Col}>
-                            <Form.Label>Sender</Form.Label>
+                        <Col>
                             <Form.Select id="station" name="station" required>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
@@ -42,9 +40,8 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                                 <option key="ard" value="ard">ARD</option>
                                 <option key="spotify" value="spotify">Spotify</option>
                             </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Label>Tag</Form.Label>
+                        </Col>
+                        <Col>
                             <Form.Select id="day" name="day" required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
@@ -54,24 +51,28 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                                 <option key="sa" value="sa">Sa</option>
                                 <option key="so" value="so">So</option>
                             </Form.Select>
-                        </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Label>Uhrzeit</Form.Label>
-                            <Form.Control id="time" type="time" name="time" step="any" required/>
-                        </Form.Group>
+                        </Col>
+                        <Col>
+                            <Form.Control id="time" type="time" name="time" step="any" defaultValue="20:15" required/>
+                        </Col>
                     </Row>
+                    <br/>
                     <Row>
-                        <Form.Group as={Col} xs={8}>
-                            <Form.Label>Link</Form.Label>
-                            <Form.Control id="link" type="url" name="link" required/>
-                        </Form.Group>
-                        <Form.Group as={Col}>
-                            <Form.Label>Kategorie</Form.Label>
+                        <Col>
+                            <Form.Control id="link" type="url" name="link" required placeholder="Link*"/>
+                        </Col>
+                    </Row>
+                    <br/>
+                    <Row>
+                        <Col>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"/>
+                        </Col>
+                        <Col>
                             <Form.Select id="category" name="category" required>
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
-                        </Form.Group>
+                        </Col>
                     </Row>
                     <Form.Control id="currentSeason" type="hidden" name="currentSeason" value="true"/>
                 </Modal.Body>

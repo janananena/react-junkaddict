@@ -19,6 +19,7 @@ function OnAirJunkCardBody({toggleEditProgram}) {
             <Card.Text>
                 {capitalizeFirstLetter(program.day)} {program.time} {capitalizeFirstLetter(program.category)}
             </Card.Text>
+            {program.season && <Card.Text>Season {program.season}</Card.Text>}
             <Card.Link onClick={toggleEditProgram}>Edit</Card.Link>
             <Card.Link onClick={handleSetOffAir}>Staffel Ende</Card.Link>
         </>
