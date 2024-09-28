@@ -37,9 +37,6 @@ function JunkTableCard({programs, setPrograms}) {
     return (
         <Card>
             <Card.Body>
-                <Card.Title>Reality Stundenplan</Card.Title>
-            </Card.Body>
-            <Card.Body>
                 <Table striped="columns" borderless>
                     <thead>
                     <tr>
