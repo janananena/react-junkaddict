@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import {getPrograms} from "../services/DevDataApiHandlers";
 import JunkTableCard from "../components/junk/JunkTableCard";
+import JunkNavbar from "../components/junk/JunkNavbar";
 
 function JunkTablePage() {
     const [programs, setPrograms] = useState([]);
@@ -15,7 +16,10 @@ function JunkTablePage() {
     }, [])
 
     return (
-        <JunkTableCard programs={programs} setPrograms={setPrograms}/>
+        <>
+            <JunkNavbar/>
+            <JunkTableCard programs={programs} setPrograms={setPrograms}/>
+        </>
     );
 }
 
