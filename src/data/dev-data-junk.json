@@ -80,9 +80,21 @@
       "day": "mo",
       "time": "14:15",
       "link": "https://www.irgendeine.url/zumtesten",
-      "season": 2,
+      "season": 3,
       "category": "tv",
       "currentSeason": true
+    },
+    {
+      "id": "8270",
+      "nick": "Roseng",
+      "title": "Dario Frank Rosin",
+      "station": "twitch",
+      "day": "fr",
+      "time": "22:00",
+      "link": "https://www.twitch.tv/numadario",
+      "season": "",
+      "category": "tv",
+      "currentSeason": "true"
     }
   ]
 }

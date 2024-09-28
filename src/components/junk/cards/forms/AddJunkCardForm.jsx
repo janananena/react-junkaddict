@@ -39,6 +39,7 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                                 <option key="amazon" value="amazon">Prime</option>
                                 <option key="ard" value="ard">ARD</option>
                                 <option key="spotify" value="spotify">Spotify</option>
+                                <option key="twitch" value="twitch">Twitch</option>
                             </Form.Select>
                         </Col>
                         <Col>
