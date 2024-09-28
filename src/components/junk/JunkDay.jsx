@@ -8,15 +8,14 @@ function sortTimes(program1, program2) {
 }
 
 function JunkDay({programs, setProgram}) {
-    const cards = programs.sort(sortTimes)
-        .map((p) => <li key={p.title}>
-            <ProgramContext.Provider value={[p, setProgram]}>
-                <JunkCard/>
-            </ProgramContext.Provider>
-        </li>);
-    return (<ul>
-        {cards}
-    </ul>);
+    return (
+        programs.sort(sortTimes)
+            .map((p) =>
+                <ProgramContext.Provider key={p.id} value={[p, setProgram]}>
+                    <JunkCard key={p.id}/>
+                </ProgramContext.Provider>
+            )
+    );
 }
 
 export default JunkDay;

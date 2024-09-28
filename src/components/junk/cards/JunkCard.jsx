@@ -9,10 +9,11 @@ function JunkCard() {
         setEditProgram(!editProgram);
     }
 
-    return (<>
-        {!editProgram && <JunkCardDetails toggleEditProgram={toggleEditProgram} />}
-        {editProgram && <EditJunkCardForm toggleEditProgram={toggleEditProgram} />}
-    </>);
+    return (
+        <>
+            <JunkCardDetails toggleEditProgram={toggleEditProgram}/>
+            <EditJunkCardForm showEditProgram={editProgram} toggleEditProgram={toggleEditProgram}/>
+        </>);
 }
 
 export default JunkCard;

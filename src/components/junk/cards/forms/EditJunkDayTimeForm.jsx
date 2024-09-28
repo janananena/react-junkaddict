@@ -1,8 +1,13 @@
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 import {useContext} from "react";
 import {ProgramContext} from "../../../../contexts/ProgramContext";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-function EditJunkDayTimeForm({setOnAir, handleCancel}) {
+function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
     const [program, setProgram] = useContext(ProgramContext);
 
     async function handleSubmit(event) {
@@ -19,26 +24,35 @@ function EditJunkDayTimeForm({setOnAir, handleCancel}) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <fieldset>
-                <label htmlFor="day"> Tag
-                    <select id="day" name="day" defaultValue={program.day} required>
-                        <option key="mo" value="mo">Mo</option>
-                        <option key="di" value="di">Di</option>
-                        <option key="mi" value="mi">Mi</option>
-                        <option key="do" value="do">Do</option>
-                        <option key="fr" value="fr">Fr</option>
-                        <option key="sa" value="sa">Sa</option>
-                        <option key="so" value="so">So</option>
-                    </select>
-                </label>
-                <label htmlFor="time"> Uhrzeit (hh:mm)
-                    <input id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
-                </label>
-                <button id="cancelChange" onClick={handleCancel}>cancel</button>
-                <button id="submitChange" type="submit">save</button>
-            </fieldset>
-        </form>);
+        <Modal show={showNewSeason} onHide={handleCancel}>
+            <Form onSubmit={handleSubmit}>
+                <Modal.Body>
+                    <Row>
+                        <Form.Group as={Col}>
+                            <Form.Label>Tag</Form.Label>
+                            <Form.Select id="day" name="day" defaultValue={program.day} required>
+                                <option key="mo" value="mo">Mo</option>
+                                <option key="di" value="di">Di</option>
+                                <option key="mi" value="mi">Mi</option>
+                                <option key="do" value="do">Do</option>
+                                <option key="fr" value="fr">Fr</option>
+                                <option key="sa" value="sa">Sa</option>
+                                <option key="so" value="so">So</option>
+                            </Form.Select>
+                        </Form.Group>
+                        <Form.Group as={Col}>
+                            <Form.Label>Uhrzeit</Form.Label>
+                            <Form.Control id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
+                        </Form.Group>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="outline-secondary" id="cancelChange" type="button" onClick={handleCancel}>cancel</Button>
+                    <Button variant="outline-primary" id="submitChange" type="submit">save</Button>
+                </Modal.Footer>
+            </Form>
+        </Modal>
+    );
 }
 
 export default EditJunkDayTimeForm;

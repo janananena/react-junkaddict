@@ -2,8 +2,13 @@ import _ from "lodash";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 import {useContext} from "react";
 import {ProgramContext} from "../../../../contexts/ProgramContext";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Modal from "react-bootstrap/Modal";
+import Col from "react-bootstrap/Col";
 
-function EditJunkCardForm({toggleEditProgram}) {
+function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
     const [program, setProgram] = useContext(ProgramContext);
 
     async function handleEditProgram(event) {
@@ -25,60 +30,60 @@ function EditJunkCardForm({toggleEditProgram}) {
         toggleEditProgram();
     }
 
-    return (<form onSubmit={handleEditProgram}>
-        <table>
-            <tbody>
-            <tr>
-                <td>
-                    <fieldset>
-                        <input id="nick" type="text" name="nick" placeholder="Nick" defaultValue={program.nick}/>
-                        <input id="title" type="text" name="title" defaultValue={program.title} required/>
-                    </fieldset>
-                </td>
-                <td>
-                    <select id="station" name="station" defaultValue={program.station} required>
-                        <option key="rtl" value="rtl">RTL</option>
-                        <option key="joyn" value="joyn">Joyn</option>
-                        <option key="zdf" value="zdf">ZDF</option>
-                        <option key="amazon" value="amazon">Prime</option>
-                        <option key="ard" value="ard">ARD</option>
-                        <option key="spotify" value="spotify">Spotify</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <select id="day" name="day" defaultValue={program.day} required>
-                        <option key="mo" value="mo">Mo</option>
-                        <option key="di" value="di">Di</option>
-                        <option key="mi" value="mi">Mi</option>
-                        <option key="do" value="do">Do</option>
-                        <option key="fr" value="fr">Fr</option>
-                        <option key="sa" value="sa">Sa</option>
-                        <option key="so" value="so">So</option>
-                    </select>
-                    <input id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
-                </td>
-                <td>
-                    <select id="category" name="category" defaultValue={program.category} required>
-                        <option value="tv">Video</option>
-                        <option value="podcast">Podcast</option>
-                    </select>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td>
-                    <button id="cancelChange" onClick={toggleEditProgram}>cancel</button>
-                </td>
-                <td>
-                    <button id="submitChange" type="submit">save</button>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
-    </form>);
+    return (
+        <Modal show={showEditProgram} onHide={toggleEditProgram}>
+            <Form onSubmit={handleEditProgram}>
+                <Modal.Title>Edit Junk</Modal.Title>
+                <Modal.Body>
+                    <Row>
+                        <Col>
+                            <Form.Control id="nick" type="text" name="nick" placeholder="Nick" defaultValue={program.nick}/>
+                        </Col>
+                        <Col>
+                            <Form.Control id="title" type="text" name="title" defaultValue={program.title} required/>
+                        </Col>
+                    </Row>
+                    <br/>
+                    <Row>
+                        <Col>
+                            <Form.Select id="station" name="station" defaultValue={program.station} required>
+                                <option key="rtl" value="rtl">RTL</option>
+                                <option key="joyn" value="joyn">Joyn</option>
+                                <option key="zdf" value="zdf">ZDF</option>
+                                <option key="amazon" value="amazon">Prime</option>
+                                <option key="ard" value="ard">ARD</option>
+                                <option key="spotify" value="spotify">Spotify</option>
+                            </Form.Select>
+                        </Col>
+                        <Col>
+                            <Form.Select id="day" name="day" defaultValue={program.day} required>
+                                <option key="mo" value="mo">Mo</option>
+                                <option key="di" value="di">Di</option>
+                                <option key="mi" value="mi">Mi</option>
+                                <option key="do" value="do">Do</option>
+                                <option key="fr" value="fr">Fr</option>
+                                <option key="sa" value="sa">Sa</option>
+                                <option key="so" value="so">So</option>
+                            </Form.Select>
+                        </Col>
+                        <Col>
+                            <Form.Control id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
+                        </Col>
+                        <Col>
+                            <Form.Select id="category" name="category" defaultValue={program.category} required>
+                                <option value="tv">Video</option>
+                                <option value="podcast">Podcast</option>
+                            </Form.Select>
+                        </Col>
+                    </Row>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="outline-secondary" id="cancelChange" type="button" onClick={toggleEditProgram}>cancel</Button>
+                    <Button variant="outline-primary" id="submitChange" type="submit">save</Button>
+                </Modal.Footer>
+            </Form>
+        </Modal>
+    );
 }
 
 export default EditJunkCardForm;

@@ -15,10 +15,10 @@
       "id": "2",
       "title": "Radio Island",
       "nick": null,
-      "station": "rtl",
+      "station": "spotify",
       "link": "https://open.spotify.com/show/1x7rYDZdA8U37afLWU78Hp",
       "day": "mo",
-      "time": "00:00",
+      "time": "01:00",
       "category": "podcast",
       "currentSeason": true
     },
@@ -31,7 +31,7 @@
       "day": "di",
       "time": "00:00",
       "category": "tv",
-      "currentSeason": false
+      "currentSeason": true
     },
     {
       "id": "6729",
@@ -42,7 +42,29 @@
       "day": "fr",
       "time": "20:15",
       "category": "tv",
-      "currentSeason": true
+      "currentSeason": false
+    },
+    {
+      "id": "7be6",
+      "nick": "",
+      "title": "Good Luck Guys",
+      "station": "joyn",
+      "day": "do",
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/good-luck-guys",
+      "category": "tv",
+      "currentSeason": "true"
+    },
+    {
+      "id": "219a",
+      "nick": "",
+      "title": "Zdf Magazin Royale",
+      "station": "zdf",
+      "day": "fr",
+      "time": "20:00",
+      "link": "https://www.zdf.de/comedy/zdf-magazin-royale",
+      "category": "tv",
+      "currentSeason": "true"
     }
   ]
 }

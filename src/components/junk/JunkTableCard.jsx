@@ -1,8 +1,11 @@
 import {useState} from "react";
 import JunkDay from "./JunkDay";
 import AddJunkCardForm from "./cards/forms/AddJunkCardForm";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
-function JunkTable({programs, setPrograms}) {
+function JunkTableCard({programs, setPrograms}) {
     const [addProgram, setAddProgram] = useState(false);
     const toggleAddForm = () => setAddProgram(!addProgram);
 
@@ -23,8 +26,6 @@ function JunkTable({programs, setPrograms}) {
         <JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram}/>
     </td>);
 
-    const addProgramButton = <button onClick={toggleAddForm}>ADD</button>;
-
     function changeProgram(program) {
         setPrograms(programs.map((p) => p.id === program.id ? program : p));
     }
@@ -33,29 +34,29 @@ function JunkTable({programs, setPrograms}) {
         setPrograms([...programs, program]);
     }
 
-    return (<table>
-        <caption>Reality Stundenplan</caption>
-        <thead>
-        <tr>
-            {displayTableHeaders}
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            {displayTableBodyJunkDays}
-        </tr>
-        </tbody>
-        <tfoot>
-        <tr>
-            <td colSpan="7">{addProgramButton}</td>
-        </tr>
-        {addProgram && <tr>
-            <td colSpan="7">
-                {<AddJunkCardForm addNewProgram={addNewProgram} toggleAddProgram={toggleAddForm}/>}
-            </td>
-        </tr>}
-        </tfoot>
-    </table>);
+    return (
+        <Card>
+            <Card.Body>
+                <Card.Title>Reality Stundenplan</Card.Title>
+            </Card.Body>
+            <Card.Body>
+                <Table striped="columns" borderless>
+                    <thead>
+                    <tr>
+                        {displayTableHeaders}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        {displayTableBodyJunkDays}
+                    </tr>
+                    </tbody>
+                </Table>
+                <Button type="button" variant="secondary" onClick={toggleAddForm}>ADD</Button>
+                <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddProgram={toggleAddForm}/>
+            </Card.Body>
+        </Card>
+    );
 }
 
-export default JunkTable;
+export default JunkTableCard;
