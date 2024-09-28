@@ -71,6 +71,18 @@
       "category": "tv",
       "currentSeason": "true",
       "season": null
+    },
+    {
+      "id": "7924",
+      "nick": "Testy",
+      "title": "Testershire McTesterson",
+      "station": "ard",
+      "day": "mo",
+      "time": "14:15",
+      "link": "https://www.irgendeine.url/zumtesten",
+      "season": 2,
+      "category": "tv",
+      "currentSeason": true
     }
   ]
 }

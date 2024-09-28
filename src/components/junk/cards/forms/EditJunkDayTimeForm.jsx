@@ -16,7 +16,8 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
             ...program,
             day: event.currentTarget.day.value,
             time: event.currentTarget.time.value,
-            currentSeason: setOnAir
+            currentSeason: setOnAir,
+            season: program.season ? parseInt(program.season)+1 : null
         };
         const prog = await changeProgram(newProgram);
         setProgram(prog);
