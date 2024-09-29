@@ -2,7 +2,6 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {useState} from "react";
-import {Image} from "react-bootstrap";
 
 function JunkNavbar() {
     const [theme, setTheme] = useState('darkMode');
@@ -27,7 +26,7 @@ function JunkNavbar() {
     }
 
     const junk = <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 192.756 192.756">
-        <g fill-rule="evenodd" clip-rule="evenodd">
+        <g fillRule="evenodd" clipRule="evenodd">
             <path fill="#ef9af5" d="M7.062 166.932h177.311V25.56H7.062v141.372z"/>
             <path d="M180.145 19.747H12.876A10.037 10.037 0 0 0 2.834 29.789v133.444c0 5.549 4.492 9.777 10.042 9.777h167.268c5.285 0 9.777-4.229 9.777-9.777V29.788c.001-5.549-4.491-10.041-9.776-10.041zM13.668 30.052h165.683v132.387H13.668V30.052z" fill="#272727"/>
             <path fill="#540759"
