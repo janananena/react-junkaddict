@@ -17,7 +17,7 @@ function JunkTablePage() {
 
     return (
         <>
-            <JunkNavbar/>
+            <JunkNavbar programs={programs} setPrograms={setPrograms}/>
             <JunkTableCard programs={programs} setPrograms={setPrograms}/>
         </>
     );

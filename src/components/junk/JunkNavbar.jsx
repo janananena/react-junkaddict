@@ -2,8 +2,9 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import {useState} from "react";
+import {ExportCSV, ImportCSV} from "../../services/CSVHandlers";
 
-function JunkNavbar() {
+function JunkNavbar({programs, setPrograms}) {
     const [theme, setTheme] = useState('darkMode');
 
     const darkMode = <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-moon-stars-fill" viewBox="0 0 16 16">
@@ -34,21 +35,20 @@ function JunkNavbar() {
         </g>
     </svg>;
 
-    return (<Navbar expand="md">
-        <Container fluid>
-            <Nav>
+    return (
+        <Navbar expand="md">
+            <Container fluid className="align-items-center justify-content-start gap-2">
                 <Navbar.Brand href="#home">
                     {junk}{' '}
                     Reality Stundenplan</Navbar.Brand>
-            </Nav>
-            <Nav className="justify-content-end">
-                <Nav.Link onClick={handleTheme}>
-                    {theme === 'darkMode' && darkMode}
-                    {theme === 'lightMode' && lightMode}
-                </Nav.Link>
-            </Nav>
-        </Container>
-    </Navbar>);
+                <ExportCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
+                <ImportCSV setJunks={setPrograms}/>
+            </Container>
+            <Nav.Link className="justify-content-end" onClick={handleTheme}>
+                {theme === 'darkMode' && darkMode}
+                {theme === 'lightMode' && lightMode}
+            </Nav.Link>
+        </Navbar>);
 }
 
 export default JunkNavbar;

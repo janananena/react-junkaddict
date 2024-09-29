@@ -50,51 +50,51 @@
     },
     {
       "id": "7be6",
-      "nick": "",
       "title": "Good Luck Guys",
+      "nick": null,
       "station": "joyn",
+      "link": "https://www.joyn.de/serien/good-luck-guys",
       "day": "do",
       "time": "20:15",
-      "link": "https://www.joyn.de/serien/good-luck-guys",
       "category": "tv",
-      "currentSeason": "true",
+      "currentSeason": true,
       "season": 2
     },
     {
       "id": "219a",
-      "nick": "",
       "title": "Zdf Magazin Royale",
+      "nick": null,
       "station": "zdf",
+      "link": "https://www.zdf.de/comedy/zdf-magazin-royale",
       "day": "fr",
       "time": "20:00",
-      "link": "https://www.zdf.de/comedy/zdf-magazin-royale",
       "category": "tv",
-      "currentSeason": "true",
+      "currentSeason": true,
       "season": null
     },
     {
       "id": "7924",
-      "nick": "Testy",
       "title": "Testershire McTesterson",
+      "nick": "Testy",
       "station": "ard",
+      "link": "https://www.irgendeine.url/zumtesten",
       "day": "mo",
       "time": "14:15",
-      "link": "https://www.irgendeine.url/zumtesten",
-      "season": 3,
       "category": "tv",
-      "currentSeason": true
+      "currentSeason": true,
+      "season": 3
     },
     {
       "id": "8270",
-      "nick": "Roseng",
       "title": "Dario Frank Rosin",
+      "nick": "Roseng",
       "station": "twitch",
+      "link": "https://www.twitch.tv/numadario",
       "day": "fr",
       "time": "22:00",
-      "link": "https://www.twitch.tv/numadario",
-      "season": "",
       "category": "tv",
-      "currentSeason": "true"
+      "currentSeason": true,
+      "season": null
     }
   ]
 }
