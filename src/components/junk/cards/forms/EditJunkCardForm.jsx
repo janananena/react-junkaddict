@@ -54,10 +54,15 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                                 <option key="ard" value="ard">ARD</option>
                                 <option key="spotify" value="spotify">Spotify</option>
                                 <option key="twitch" value="twitch">Twitch</option>
+                                <option key="arte" value="arte">Arte</option>
+                                <option key="disney" value="disney">Disney</option>
+                                <option key="netflix" value="netflix">Netflix</option>
+                                <option key="sky" value="sky">Sky</option>
+                                <option key="youtube" value="youtube">Youtube</option>
                             </Form.Select>
                         </Col>
                         <Col>
-                        <Form.Select id="day" name="day" defaultValue={program.day} required>
+                            <Form.Select id="day" name="day" defaultValue={program.day} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
