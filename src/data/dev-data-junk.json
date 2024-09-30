@@ -95,6 +95,18 @@
       "category": "tv",
       "currentSeason": true,
       "season": null
+    },
+    {
+      "id": "d9ac",
+      "nick": "",
+      "title": "Wer stiehlt mir die Show",
+      "station": "joyn",
+      "day": "so",
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/wer-stiehlt-mir-die-show",
+      "season": "8",
+      "category": "tv",
+      "currentSeason": "true"
     }
   ]
 }

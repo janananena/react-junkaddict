@@ -25,7 +25,7 @@ export async function setPrograms(programs){
 
 export async function addProgram(program) {
     let headers = {headers: {'Content-Type': 'application/json'}};
-    let response = await axios.post(`${BaseUrl}/programs/`, JSON.stringify(program), headers);
+    let response = await axios.post(`${BaseUrl}/programs/`, program, headers);
     console.log(`added junk w/ id ${program.id}: `, program);
     return response.data;
 }
