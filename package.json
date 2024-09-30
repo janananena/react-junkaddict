@@ -1,6 +1,9 @@
 {
   "name": "junkaddict",
   "version": "0.1.0",
+  "description": "a timetable for all the junk on streaming",
+  "homepage": ".",
+  "license": "UNLICENSED",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
@@ -11,6 +14,7 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "electron-squirrel-startup": "^1.0.1",
     "json-server": "^1.0.0-beta.3",
     "lodash": "^4.17.21",
     "react": "^18.3.1",
@@ -20,18 +24,38 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "main": "main.js",
   "scripts": {
-    "start": "react-scripts start",
-    "start-data": "json-server --watch src/data/dev-data-junk.json --port 3004",
+    "start": "electron-forge start",
+    "react:start": "concurrently --kill-others \"react-scripts start\" \"json-server --watch src/data/dev-data-junk.json --port 3004\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "electron:start": "wait-on tcp:3000 && electron .",
+    "electron:serve": "concurrently -k \"cross-env BROWSER=none npm run react:start\" \"npm run electron:start\"",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^7.5.0",
+    "@electron-forge/maker-deb": "^7.5.0",
+    "@electron-forge/maker-dmg": "^7.5.0",
+    "@electron-forge/maker-rpm": "^7.5.0",
+    "@electron-forge/maker-squirrel": "^7.5.0",
+    "@electron-forge/maker-zip": "^7.5.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.5.0",
+    "@electron-forge/plugin-fuses": "^7.5.0",
+    "@electron/fuses": "^1.8.0",
+    "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "electron": "^32.1.2",
+    "wait-on": "^8.0.1"
   },
   "browserslist": {
     "production": [
