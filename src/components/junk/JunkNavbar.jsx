@@ -38,7 +38,7 @@ function JunkNavbar({programs, setPrograms}) {
     return (
         <Navbar expand="md">
             <Container fluid className="align-items-center justify-content-start gap-2">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="https://github.com/janananena/react-junkaddict" target="_blank" >
                     {junk}{' '}
                     Reality Stundenplan</Navbar.Brand>
                 <ExportCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
