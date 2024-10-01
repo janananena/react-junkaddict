@@ -20,10 +20,10 @@ function JunkTableCard({programs, setPrograms}) {
 
     const displayTableBodyJunkDays = (Object.entries(dayGroups))
         .map(([k, v]) => <td key={k + 'Col'}>
-            <JunkDay programs={v} onAir={true} setProgram={changeProgram}/>
+            <JunkDay programs={v} onAir={true} setProgram={changeProgram} removeProgram={removeProgram}/>
         </td>);
     displayTableBodyJunkDays.push(<td key="offAirCol">
-        <JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram}/>
+        <JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram} removeProgram={removeProgram}/>
     </td>);
 
     function changeProgram(program) {
@@ -32,6 +32,10 @@ function JunkTableCard({programs, setPrograms}) {
 
     function addNewProgram(program) {
         setPrograms([...programs, program]);
+    }
+
+    function removeProgram(program) {
+        setPrograms(programs.filter((p) => p.id !== program.id));
     }
 
     return (

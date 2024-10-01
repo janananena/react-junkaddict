@@ -7,11 +7,11 @@ function sortTimes(program1, program2) {
     return t1[0] === t2[0] ? t1[1] - t2[1] : t1[0] - t2[0];
 }
 
-function JunkDay({programs, setProgram}) {
+function JunkDay({programs, setProgram, removeProgram}) {
     return (
         programs.sort(sortTimes)
             .map((p) =>
-                <ProgramContext.Provider key={p.id} value={[p, setProgram]}>
+                <ProgramContext.Provider key={p.id} value={[p, setProgram, removeProgram]}>
                     <JunkCard key={p.id}/>
                 </ProgramContext.Provider>
             )

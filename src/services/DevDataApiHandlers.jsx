@@ -12,7 +12,7 @@ export async function getPrograms() {
 export async function setPrograms(programs){
     let oldPrograms = await axios.get(`${BaseUrl}/programs`);
     for (const program of oldPrograms.data) {
-            await axios.delete(`${BaseUrl}/programs/${program.id}`);
+            await deleteProgram(program);
         }
     console.log('deleted all junks.');
     const res = [];
@@ -21,6 +21,10 @@ export async function setPrograms(programs){
         res.push(p);
     }
     return res;
+}
+
+export async function deleteProgram(program){
+    await axios.delete(`${BaseUrl}/programs/${program.id}`);
 }
 
 export async function addProgram(program) {

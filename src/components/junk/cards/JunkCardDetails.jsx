@@ -3,6 +3,7 @@ import OffAirJunkCardBody from "./OffAirJunkCardBody";
 import {useContext} from "react";
 import {ProgramContext} from "../../../contexts/ProgramContext";
 import Card from "react-bootstrap/Card";
+import DeleteJunkCardForm from "./forms/DeleteJunkCardForm";
 
 function JunkCardDetails({toggleEditProgram}) {
     const [program] = useContext(ProgramContext);
@@ -24,6 +25,7 @@ function JunkCardDetails({toggleEditProgram}) {
                 {!program.nick && <Card.Title>{program.title}</Card.Title>}
                 {isOnAir && <OnAirJunkCardBody toggleEditProgram={toggleEditProgram}/>}
                 {!isOnAir && <OffAirJunkCardBody/>}
+                <DeleteJunkCardForm program={program}/>
             </Card.Body>
         </Card>
     );
