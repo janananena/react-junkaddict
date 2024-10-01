@@ -5,8 +5,15 @@ import {useState} from "react";
 import {ExportCSV, ImportCSV} from "../../services/CSVHandlers";
 import {darkMode, junk, lightMode} from "../../data/JunkIcons";
 
-function JunkNavbar({programs, setPrograms}) {
+import Form from "react-bootstrap/Form";
+
+function JunkNavbar({programs, setPrograms, searchString, setSearchString}) {
     const [theme, setTheme] = useState('darkMode');
+
+    function handleInputChanges(event) {
+        event.preventDefault();
+        setSearchString(event.currentTarget.value);
+    }
 
     function handleTheme() {
         if (theme === 'lightMode') {
@@ -27,10 +34,15 @@ function JunkNavbar({programs, setPrograms}) {
                 <ExportCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
                 <ImportCSV setJunks={setPrograms}/>
             </Container>
-            <Nav.Link className="justify-content-end" onClick={handleTheme}>
-                {theme === 'darkMode' && darkMode}
-                {theme === 'lightMode' && lightMode}
-            </Nav.Link>
+            <Container className="justify-content-end gap-2">
+                <Form>
+                    <Form.Control type="input" placeholder="filter" defaultValue={searchString} onChange={handleInputChanges}/>
+                </Form>
+                <Nav.Link onClick={handleTheme}>
+                    {theme === 'darkMode' && darkMode}
+                    {theme === 'lightMode' && lightMode}
+                </Nav.Link>
+            </Container>
         </Navbar>);
 }
 

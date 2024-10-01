@@ -6,13 +6,13 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {addIcon} from "../../data/JunkIcons";
 
-function JunkTableCard({programs, setPrograms}) {
+function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removeProgram}) {
     const [addProgram, setAddProgram] = useState(false);
     const toggleAddForm = () => setAddProgram(!addProgram);
 
     const dayGroups = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
-    const onAirPrograms = programs.filter((p) => p.currentSeason);
-    const offAirPrograms = programs.filter((p) => !p.currentSeason);
+    const onAirPrograms = displayPrograms.filter((p) => p.currentSeason);
+    const offAirPrograms = displayPrograms.filter((p) => !p.currentSeason);
     onAirPrograms.map((p) => dayGroups[p.day].push(p));
 
     const displayTableHeaders = (Object.keys(dayGroups))
@@ -26,18 +26,6 @@ function JunkTableCard({programs, setPrograms}) {
     displayTableBodyJunkDays.push(<td key="offAirCol">
         <JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram} removeProgram={removeProgram}/>
     </td>);
-
-    function changeProgram(program) {
-        setPrograms(programs.map((p) => p.id === program.id ? program : p));
-    }
-
-    function addNewProgram(program) {
-        setPrograms([...programs, program]);
-    }
-
-    function removeProgram(program) {
-        setPrograms(programs.filter((p) => p.id !== program.id));
-    }
 
     return (
         <Card>
