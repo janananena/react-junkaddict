@@ -4,7 +4,7 @@ A timetable to manage all the junk you watch.
 
 ![Screenshot of Application](./src/assets/JunkAddictScreenshot.png)
 
-Find an example for a CSV file to upload in the application here [junkDataExport.csv](./src/data/junkDataExport_2024-09-29.csv) or download it from the application.
+Find an example for a CSV file to upload in the application here [junkDataExport.csv](./src/data/junkDataExport_2024-10-03.csv) or download it from the application.
 
 ## Available Scripts
 

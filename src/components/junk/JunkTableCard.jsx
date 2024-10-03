@@ -16,7 +16,7 @@ function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removePro
     onAirPrograms.map((p) => dayGroups[p.day].push(p));
 
     const displayTableHeaders = (Object.keys(dayGroups))
-        .map((k) => <td key={k}>{k}</td>);
+        .map((k) => <td key={k}><h5>{k.toUpperCase()}</h5></td>);
     displayTableHeaders.push(<td key="currentlyOff">Off Air</td>);
 
     const displayTableBodyJunkDays = (Object.entries(dayGroups))
