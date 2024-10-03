@@ -55,6 +55,13 @@
             "description": "current season number",
             "type": "string",
             "pattern": "^[0-9]*$"
+          },
+          "seen": {
+            "description": "have you seen that season",
+            "type": "array",
+            "items": {
+              "type": "boolean"
+            }
           }
         },
         "required": [
@@ -66,7 +73,8 @@
           "time",
           "category",
           "currentSeason",
-          "season"
+          "season",
+          "seen"
         ]
       }
     }

@@ -10,16 +10,20 @@ import Col from "react-bootstrap/Col";
 function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
     const [program, setProgram] = useContext(ProgramContext);
 
-    async function handleSubmit(event) {
-        event.preventDefault();
-        const newProgram = {
+    function getNewProgram(event) {
+        return {
             ...program,
             day: event.currentTarget.day.value,
             time: event.currentTarget.time.value,
             currentSeason: setOnAir,
-            season: program.season ? parseInt(program.season)+1 : null
+            season: program.season === '' ? (parseInt(program.season) + 1).toString() : '',
+            seen: program.season === '' ? program.seen.push(false) : []
         };
-        const prog = await changeProgram(newProgram);
+    }
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const prog = await changeProgram(getNewProgram(event));
         setProgram(prog);
         handleCancel();
     }

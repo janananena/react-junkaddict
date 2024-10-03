@@ -11,9 +11,7 @@ import Col from "react-bootstrap/Col";
 function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
     const [program, setProgram] = useContext(ProgramContext);
 
-    async function handleEditProgram(event) {
-        event.preventDefault();
-        const input = event.currentTarget;
+    function getNewProgram(input){
         const newProg = {...program};
         if (input.nick.value !== "") {
             newProg.nick = input.nick.value;
@@ -23,6 +21,12 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
         newProg.day = input.day.value;
         newProg.time = input.time.value;
         newProg.category = input.category.value;
+        return newProg;
+    }
+
+    async function handleEditProgram(event) {
+        event.preventDefault();
+        const newProg = getNewProgram(event.currentTarget);
         if (!_.isEqual(newProg, program)) {
             const prog = await changeProgram(newProg);
             setProgram(prog);

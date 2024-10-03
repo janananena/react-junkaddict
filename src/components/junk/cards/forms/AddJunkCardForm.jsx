@@ -7,9 +7,26 @@ import Modal from "react-bootstrap/Modal";
 
 function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
 
+    function copyWithDefaults(program) {
+        const s = program.season.value !== '' ? Number(program.season.value) : '';
+        const a = s === '' ? [] : Array(s).fill(false);
+        return {
+            nick: program.nick.value,
+            name: program.name.value,
+            station: program.station.value,
+            day: program.day.value,
+            time: program.time.value,
+            link: program.link.value,
+            category: program.category.value,
+            currentSeason: true,
+            season: s.toString(),
+            seen: a
+        };
+    }
+
     async function handleAdd(event) {
         event.preventDefault();
-        const program = await addProgram(event.currentTarget);
+        const program = await addProgram(copyWithDefaults(event.currentTarget));
         addNewProgram(program);
         toggleAddProgram();
     }
@@ -71,7 +88,7 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"/>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" defaultValue=""/>
                         </Col>
                         <Col>
                             <Form.Select id="category" name="category" required>
@@ -80,7 +97,6 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                             </Form.Select>
                         </Col>
                     </Row>
-                    <Form.Control id="currentSeason" type="hidden" name="currentSeason" value="true"/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-secondary" id="cancelbutton" type="button" onClick={toggleAddProgram}>cancel</Button>

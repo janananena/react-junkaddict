@@ -4,14 +4,21 @@ import {useContext} from "react";
 import {ProgramContext} from "../../../contexts/ProgramContext";
 import Card from "react-bootstrap/Card";
 import {editIcon, offAirIcon} from "../../../data/JunkIcons";
+import SeasonsForm from "./forms/SeasonsForm";
 
 function OnAirJunkCardBody({toggleEditProgram}) {
     const [program, setProgram] = useContext(ProgramContext);
 
+    function getNewProgram() {
+        return {
+            ...program,
+            currentSeason: false
+        };
+    }
+
     async function handleSetOffAir(event) {
         event.preventDefault();
-        const newProgram = {...program, currentSeason: false};
-        const prog = await changeProgram(newProgram);
+        const prog = await changeProgram(getNewProgram());
         setProgram(prog);
     }
 
@@ -20,7 +27,7 @@ function OnAirJunkCardBody({toggleEditProgram}) {
             <Card.Text>
                 {capitalizeFirstLetter(program.day)} {program.time} {capitalizeFirstLetter(program.category)}
             </Card.Text>
-            {program.season && <Card.Text>Season {program.season}</Card.Text>}
+            <SeasonsForm/>
             <Card.Link onClick={toggleEditProgram}>
                 {editIcon}
                 {' '}
