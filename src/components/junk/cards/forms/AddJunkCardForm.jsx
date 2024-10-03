@@ -26,7 +26,7 @@ function AddJunkCardForm({showAddForm, addNewProgram, toggleAddProgram}) {
                             <Form.Control id="nick" type="text" name="nick" placeholder="Kurzname"/>
                         </Col>
                         <Col xs={8}>
-                            <Form.Control id="title" type="text" name="title" required placeholder="Name*"/>
+                            <Form.Control id="name" type="text" name="name" required placeholder="Name*"/>
                         </Col>
                     </Row>
                     <br/>

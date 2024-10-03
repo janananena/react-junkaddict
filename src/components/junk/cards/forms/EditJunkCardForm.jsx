@@ -18,7 +18,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
         if (input.nick.value !== "") {
             newProg.nick = input.nick.value;
         }
-        newProg.title = input.title.value;
+        newProg.name = input.name.value;
         newProg.station = input.station.value;
         newProg.day = input.day.value;
         newProg.time = input.time.value;
@@ -40,7 +40,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                             <Form.Control id="nick" type="text" name="nick" placeholder="Nick" defaultValue={program.nick}/>
                         </Col>
                         <Col xs={8}>
-                            <Form.Control id="title" type="text" name="title" defaultValue={program.title} required/>
+                            <Form.Control id="name" type="text" name="name" defaultValue={program.name} required/>
                         </Col>
                     </Row>
                     <br/>

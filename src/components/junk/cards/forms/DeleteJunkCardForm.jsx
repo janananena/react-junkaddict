@@ -30,7 +30,7 @@ function DeleteJunkCardForm() {
                         <Modal.Title>Delete Junk?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {program.nick && program.nick + ' - '} {program.title}
+                        {program.nick && program.nick + ' - '} {program.name}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" id="cancelDelete" type="button" onClick={toggleDeleteProgram}>cancel</Button>

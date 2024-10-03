@@ -20,9 +20,9 @@ function JunkCardDetails({toggleEditProgram}) {
             <Card.Body>
                 {program.nick && <>
                     <Card.Title>{program.nick}</Card.Title>
-                    <Card.Subtitle>{program.title}</Card.Subtitle>
+                    <Card.Subtitle>{program.name}</Card.Subtitle>
                 </>}
-                {!program.nick && <Card.Title>{program.title}</Card.Title>}
+                {!program.nick && <Card.Title>{program.name}</Card.Title>}
                 {isOnAir && <OnAirJunkCardBody toggleEditProgram={toggleEditProgram}/>}
                 {!isOnAir && <OffAirJunkCardBody/>}
                 <DeleteJunkCardForm program={program}/>

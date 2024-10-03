@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/JunkStore.schema.json",
+  "title": "JunkStore",
+  "description": "A list of Junks",
+  "type": "object",
+  "properties": {
+    "programs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "unique id",
+            "type": "string"
+          },
+          "name": {
+            "description": "junk name",
+            "type": "string"
+          },
+          "nick": {
+            "description": "junk nick name",
+            "type": ["string", "null"]
+          },
+          "station": {
+            "description": "streaming station",
+            "type": "string",
+            "enum": ["rtl","joyn","zdf","amazon","ard","spotify","twitch","arte","disney","netflix","sky","youtube"]
+          },
+          "link": {
+            "description": "link to streaming",
+            "type": "string",
+            "format": "uri"
+          },
+          "day": {
+            "description": "new episodes on day",
+            "type": "string",
+            "enum": ["mo","di","mi","do","fr","sa","so"]
+          },
+          "time": {
+            "description": "new episodes at time",
+            "type": "string",
+            "format": "time"
+          },
+          "category": {
+            "description": "junk category",
+            "type": "string",
+            "enum": ["tv","podcast"]
+          },
+          "currentSeason": {
+            "description": "currently a season on air",
+            "type": "boolean"
+          },
+          "season": {
+            "description": "current season number",
+            "type": "string",
+            "pattern": "^[0-9]*$"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "station",
+          "link",
+          "day",
+          "time",
+          "category",
+          "currentSeason",
+          "season"
+        ]
+      }
+    }
+  }
+}
