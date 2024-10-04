@@ -1,6 +1,6 @@
-import {useContext, useState} from "react";
+import * as React from "react";
 import {InputGroup, ListGroup} from "react-bootstrap";
-import {ProgramContext} from "../../../../contexts/ProgramContext";
+import {useJunkContext} from "../../../../contexts/ProgramContext";
 import {addIcon, deleteIcon, editIcon, openIcon, saveIcon} from "../../../../data/JunkIcons";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -8,34 +8,35 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
+import {useState} from "react";
 
 function JunkLinksForm() {
-    const [program, setProgram] = useContext(ProgramContext);
-    const [edit, setEdit] = useState(false);
+    const {junk, setJunk} = useJunkContext();
+    const [edit, setEdit] = useState<boolean>(false);
 
-    const [linksState, setLinksState] = useState(program.links);
+    const [linksState, setLinksState] = useState<string[]>(junk.links);
 
-    function handleAddLink() {
+    function handleAddLink(): void {
         const links = [...linksState];
         links.push("");
         setLinksState(links);
     }
 
-    function handleChangeLink(event, i) {
+    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, i: number): void {
         const links = [...linksState];
         links[i] = event.currentTarget.value;
         setLinksState(links);
     }
 
-    function handleDeleteLink(i) {
-        const links = linksState.filter((value, index) => i !== index);
+    function handleDeleteLink(i: number): void {
+        const links = linksState.filter((_value, index) => i !== index);
         setLinksState(links);
     }
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
         event.preventDefault();
-        const newLinks = await changeProgram({...program, links: linksState});
-        setProgram(newLinks);
+        const newLinks = await changeProgram({...junk, links: linksState});
+        setJunk(newLinks);
         setEdit(false);
     }
 

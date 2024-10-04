@@ -3,9 +3,9 @@ import JunkCardDetails from "./JunkCardDetails";
 import EditJunkCardForm from "./forms/EditJunkCardForm";
 
 function JunkCard() {
-    const [editProgram, setEditProgram] = useState(false);
+    const [editProgram, setEditProgram] = useState<boolean>(false);
 
-    function toggleEditProgram() {
+    function toggleEditProgram(): void {
         setEditProgram(!editProgram);
     }
 

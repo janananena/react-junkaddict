@@ -10,15 +10,7 @@ Find an example for a CSV file to upload in the application here [junkDataExport
 
 In the project directory, you can run:
 
-### `npm run react:start`
+### `npm run vite:start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm run electron:start`
-
-Runs the app in an electron window in development mode.
-
-### `npm run make`
-
-Builds an executable for your platform.

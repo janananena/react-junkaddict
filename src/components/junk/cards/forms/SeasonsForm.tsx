@@ -1,68 +1,74 @@
-import {useContext, useState} from "react";
-import {ProgramContext} from "../../../../contexts/ProgramContext";
+import * as React from "react";
+import {random, chunk} from "lodash-es";
+import {useJunkContext} from "../../../../contexts/ProgramContext";
 import Form from "react-bootstrap/Form";
 import {saveIcon, editIcon} from "../../../../data/JunkIcons";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
-import _, {random} from "lodash";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
+import {useState} from "react";
+
+interface SeasonState {
+    season: string,
+    seasonSeen: boolean[]
+}
 
 function SeasonsForm() {
-    const [program, setProgram] = useContext(ProgramContext);
-    const [edit, setEdit] = useState(false);
+    const {junk, setJunk} = useJunkContext();
+    const [edit, setEdit] = useState<boolean>(false);
 
-    const [seasonState, setSeasonState] = useState({"season" : program.season, "seasonSeen": program.seen});
+    const [seasonState, setSeasonState] = useState<SeasonState>({season: junk.season, seasonSeen: junk.seen});
 
-    function updateSeason(season){
-        if(season === ''){
+    function updateSeason(season: string): void {
+        if (season === '') {
             setSeasonState({season: "", seasonSeen: []});
             return;
         }
         const numSeason = Number(season);
         const numOldSeason = Number(seasonState.season);
-        if(numSeason < numOldSeason){
+        if (numSeason < numOldSeason) {
             setSeasonState({season: season, seasonSeen: seasonState.seasonSeen.slice(0, numSeason)});
             return;
         }
-        if(numSeason > numOldSeason){
+        if (numSeason > numOldSeason) {
             const newChecks = numOldSeason > 0 ? [...seasonState.seasonSeen] : [];
-            for(let i =0;i<numSeason-numOldSeason;i++){
+            for (let i = 0; i < numSeason - numOldSeason; i++) {
                 newChecks.push(false);
             }
             setSeasonState({season: season, seasonSeen: newChecks});
         }
     }
 
-    function updateCheck(value, index){
+    function updateCheck(value: boolean, index: number): void {
         const newChecks = seasonState.seasonSeen.length > 0 ? [...seasonState.seasonSeen] : [];
         newChecks[index] = value;
         setSeasonState({season: seasonState.season, seasonSeen: newChecks});
     }
 
-    function handleSeason(event) {
+    function handleSeason(event: React.ChangeEvent<HTMLInputElement>): void {
         event.preventDefault();
         updateSeason(event.currentTarget.value);
     }
 
-    function handleCheck(event, index){
+    function handleCheck(event: React.ChangeEvent<HTMLInputElement>, index: number): void {
         event.preventDefault();
         updateCheck(event.currentTarget.checked, index);
     }
 
-    function handleSubmit(event) {
+    async function handleSubmit(event: React.FormEvent<HTMLButtonElement>): Promise<void> {
         event.preventDefault();
-        const newProgram = {...program, season: seasonState.season, seen: seasonState.seasonSeen};
-        const prog = changeProgram(newProgram);
-        setProgram(prog);
+        const newProgram = {...junk, season: seasonState.season, seen: seasonState.seasonSeen};
+        const prog = await changeProgram(newProgram);
+        setJunk(prog);
         setEdit(false);
     }
 
-    const emptyCols = (len) => Array(len).fill(<Col key={`emptyCol-${random(99)}`}/>);
+    const emptyCols = (len: number) => Array(len).fill(<Col key={`emptyCol-${random(99)}`}/>);
 
     const chunkSize = 3;
-    const chunks = _.chunk(seasonState.seasonSeen, chunkSize);
+    const chunks: boolean[][] = chunk(seasonState.seasonSeen, chunkSize);
     let numEmpty = -1;
     const checks = chunks.map((chunk, i) =>
         <Row key={`row-${i}`} className="justify-content-start">
@@ -77,7 +83,7 @@ function SeasonsForm() {
                                     onChange={(event) => handleCheck(event, num - 1)}/>
                     </Col>);
             })}
-            {numEmpty > 0 && emptyCols()}
+            {numEmpty > 0 && emptyCols(numEmpty)}
         </Row>);
 
     return (

@@ -5,9 +5,9 @@ import {onAirIcon} from "../../../data/JunkIcons";
 import JunkNotesForm from "./forms/JunkNotesForm";
 
 function OffAirJunkCardBody() {
-    const [editJunkDayTime, setEditJunkDayTime] = useState(false);
+    const [editJunkDayTime, setEditJunkDayTime] = useState<boolean>(false);
 
-    function toggleEditJunkDayTime() {
+    function toggleEditJunkDayTime(): void {
         setEditJunkDayTime(!editJunkDayTime);
     }
 

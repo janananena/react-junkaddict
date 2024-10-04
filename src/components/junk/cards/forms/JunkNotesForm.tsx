@@ -1,6 +1,6 @@
-import {useContext, useState} from "react";
+import * as React from "react";
 import {InputGroup, ListGroup} from "react-bootstrap";
-import {ProgramContext} from "../../../../contexts/ProgramContext";
+import {useJunkContext} from "../../../../contexts/ProgramContext";
 import {addIcon, deleteIcon, editIcon, saveIcon} from "../../../../data/JunkIcons";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
@@ -8,40 +8,41 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
+import {useState} from "react";
 
 function JunkNotesForm() {
-    const [program, setProgram] = useContext(ProgramContext);
-    const [edit, setEdit] = useState(false);
+    const {junk, setJunk} = useJunkContext();
+    const [edit, setEdit] = useState<boolean>(false);
 
-    const [notesState, setNotesState] = useState(program.notes);
+    const [notesState, setNotesState] = useState<string[]>(junk.notes);
 
-    function handleAddNote() {
+    function handleAddNote(): void {
         const notes = [...notesState];
         notes.push("");
         setNotesState(notes);
     }
 
-    function handleChangeNote(event, i) {
+    function handleChangeNote(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, i: number): void {
         const notes = [...notesState];
         notes[i] = event.currentTarget.value;
         setNotesState(notes);
     }
 
-    function handleDeleteNote(i) {
-        const notes = notesState.filter((value, index) => i !== index);
+    function handleDeleteNote(i: number): void {
+        const notes = notesState.filter((_value, index) => i !== index);
         setNotesState(notes);
     }
 
-    async function handleSubmit(event) {
+    async function handleSubmit(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
         event.preventDefault();
-        const newNotes = await changeProgram({...program, notes: notesState});
-        setProgram(newNotes);
+        const newNotes = await changeProgram({...junk, notes: notesState});
+        setJunk(newNotes);
         setEdit(false);
     }
 
     const editJunkNotes =
         <Form>
-            {notesState.map((note, i) =>
+            {notesState.map((_note, i) =>
                 <Row key={`${i}`}>
                     <Col key={`${i}`}>
                         <InputGroup key={`${i}`}>

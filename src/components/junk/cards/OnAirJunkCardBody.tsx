@@ -1,39 +1,46 @@
 import {changeProgram} from "../../../services/DevDataApiHandlers";
 import {capitalizeFirstLetter} from "../../../utils/StringUtils";
-import {useContext, useState} from "react";
-import {ProgramContext} from "../../../contexts/ProgramContext";
+import {useState} from "react";
+import {Junk, useJunkContext} from "../../../contexts/ProgramContext";
 import Card from "react-bootstrap/Card";
 import {editIcon, lessIcon, moreIcon, offAirIcon} from "../../../data/JunkIcons";
 import SeasonsForm from "./forms/SeasonsForm";
 import JunkLinksForm from "./forms/JunkLinksForm";
 import Button from "react-bootstrap/Button";
 import JunkNotesForm from "./forms/JunkNotesForm";
+import * as React from "react";
 
-function OnAirJunkCardBody({toggleEditProgram}) {
-    const [program, setProgram] = useContext(ProgramContext);
+interface OnAirJunkCardProps {
+    toggleEditProgram: () => void
+}
 
-    const [expanded, setExpanded] = useState(false);
+function OnAirJunkCardBody({toggleEditProgram}: OnAirJunkCardProps) {
+    const {junk, setJunk} = useJunkContext();
 
-    function getNewProgram() {
+    const [expanded, setExpanded] = useState<boolean>(false);
+
+    function getNewProgram(): Junk {
         return {
-            ...program,
+            ...junk,
             currentSeason: false
         };
     }
 
-    async function handleSetOffAir(event) {
+    async function handleSetOffAir(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
         event.preventDefault();
         const prog = await changeProgram(getNewProgram());
-        setProgram(prog);
+        setJunk(prog);
     }
 
     return (
         <>
             <Card.Text>
-                {capitalizeFirstLetter(program.day)} {program.time} {capitalizeFirstLetter(program.category)}
+                {capitalizeFirstLetter(junk.day)} {junk.time} {capitalizeFirstLetter(junk.category)}
             </Card.Text>
-            {!expanded && <Button type="button" variant="link" onClick={() => setExpanded(true)}>{moreIcon}{' '}more</Button>}
-            {expanded && <Button type="button" variant="link" onClick={() => setExpanded(false)}>{lessIcon}{' '}less</Button>}
+            {!expanded &&
+                <Button type="button" variant="link" onClick={() => setExpanded(true)}>{moreIcon}{' '}more</Button>}
+            {expanded &&
+                <Button type="button" variant="link" onClick={() => setExpanded(false)}>{lessIcon}{' '}less</Button>}
             {expanded && <SeasonsForm/>}
             {expanded && <JunkLinksForm/>}
             <br/>

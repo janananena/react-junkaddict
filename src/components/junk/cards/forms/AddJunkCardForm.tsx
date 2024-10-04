@@ -1,56 +1,65 @@
-import _ from "lodash";
-import {changeProgram} from "../../../../services/DevDataApiHandlers";
-import {useContext} from "react";
-import {ProgramContext} from "../../../../contexts/ProgramContext";
-import Form from "react-bootstrap/Form";
+import {addProgram} from "../../../../services/DevDataApiHandlers";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
-import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
+import Modal from "react-bootstrap/Modal";
+import {Junk, NewJunk} from "../../../../contexts/ProgramContext";
+import * as React from "react";
 
-function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
-    const [program, setProgram] = useContext(ProgramContext);
+interface AddJunkCardFormProps {
+    showAddForm: boolean,
+    toggleAddForm: () => void,
+    addNewProgram: (junk: Junk) => void
+}
 
-    function getNewProgram(input){
-        const newProg = {...program};
-        if (input.nick.value !== "") {
-            newProg.nick = input.nick.value;
-        }
-        newProg.name = input.name.value;
-        newProg.station = input.station.value;
-        newProg.day = input.day.value;
-        newProg.time = input.time.value;
-        newProg.category = input.category.value;
-        return newProg;
+function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCardFormProps) {
+
+    function copyWithDefaults(program: HTMLFormElement): NewJunk {
+        const s = program.season.value !== '' ? Number(program.season.value) : '';
+        const a = s === '' ? [] : Array(s).fill(false);
+        return {
+            nick: program.nick.value,
+            junkname: program.junkname.value,
+            station: program.station.value,
+            day: program.day.value,
+            time: program.time.value,
+            link: program.link.value,
+            category: program.category.value,
+            currentSeason: true,
+            season: s.toString(),
+            seen: a,
+            links: [],
+            notes: []
+        };
     }
 
-    async function handleEditProgram(event) {
+    async function handleAdd(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
-        const newProg = getNewProgram(event.currentTarget);
-        if (!_.isEqual(newProg, program)) {
-            const prog = await changeProgram(newProg);
-            setProgram(prog);
-        }
-        toggleEditProgram();
+        const program = await addProgram(copyWithDefaults(event.currentTarget));
+        addNewProgram(program);
+        toggleAddForm();
     }
 
     return (
-        <Modal show={showEditProgram} onHide={toggleEditProgram}>
-            <Form onSubmit={handleEditProgram}>
-                <Modal.Title>Edit Junk</Modal.Title>
+        <Modal show={showAddForm} onHide={toggleAddForm}>
+            <Form onSubmit={handleAdd}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add New Junk</Modal.Title>
+                </Modal.Header>
                 <Modal.Body>
                     <Row>
                         <Col>
-                            <Form.Control id="nick" type="text" name="nick" placeholder="Nick" defaultValue={program.nick}/>
+                            <Form.Control id="nick" type="text" name="nick" placeholder="Kurzname"/>
                         </Col>
                         <Col xs={8}>
-                            <Form.Control id="name" type="text" name="name" defaultValue={program.name} required/>
+                            <Form.Control id="junkname" type="text" name="junkname" required placeholder="Name*"/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Select id="station" name="station" defaultValue={program.station} required>
+                            <Form.Select id="station" name="station" required>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
                                 <option key="zdf" value="zdf">ZDF</option>
@@ -66,7 +75,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day" defaultValue={program.day} required>
+                            <Form.Select id="day" name="day" required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
@@ -77,22 +86,23 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Control id="time" type="time" name="time" step="any" defaultValue={program.time} required/>
+                            <Form.Control id="time" type="time" name="time" step="any" defaultValue="20:15" required/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="link" type="url" name="link" required defaultValue={program.link}/>
+                            <Form.Control id="link" type="url" name="link" required placeholder="Link*"/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" defaultValue={program.season}/>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"
+                                          defaultValue=""/>
                         </Col>
                         <Col>
-                            <Form.Select id="category" name="category" defaultValue={program.category} required>
+                            <Form.Select id="category" name="category" required>
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
@@ -100,12 +110,12 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}) {
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-secondary" id="cancelChange" type="button" onClick={toggleEditProgram}>cancel</Button>
-                    <Button variant="outline-primary" id="submitChange" type="submit">save</Button>
+                    <Button variant="outline-secondary" id="cancelbutton" type="button" onClick={toggleAddForm}>cancel</Button>
+                    <Button variant="outline-primary" id="addbutton" type="submit">add</Button>
                 </Modal.Footer>
             </Form>
         </Modal>
     );
 }
 
-export default EditJunkCardForm;
+export default AddJunkCardForm;

@@ -5,27 +5,51 @@ import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {addIcon} from "../../data/JunkIcons";
+import {Junk} from "../../contexts/ProgramContext";
 
-function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removeProgram}) {
-    const [addProgram, setAddProgram] = useState(false);
+interface JunkTableCardProps {
+    displayPrograms: Junk[],
+    addNewProgram: (junk: Junk) => void,
+    changeProgram: (junk: Junk) => void,
+    removeProgram: (junk: Junk) => void
+}
+
+function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removeProgram}: JunkTableCardProps) {
+    const [addProgram, setAddProgram] = useState<boolean>(false);
     const toggleAddForm = () => setAddProgram(!addProgram);
 
-    const dayGroups = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
+    interface DayData {
+        [key: string]: Junk[];
+    }
+
+    const dayGroups: DayData = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
     const onAirPrograms = displayPrograms.filter((p) => p.currentSeason);
     const offAirPrograms = displayPrograms.filter((p) => !p.currentSeason);
     onAirPrograms.map((p) => dayGroups[p.day].push(p));
 
     const displayTableHeaders = (Object.keys(dayGroups))
-        .map((k) => <td key={k}><h5>{k.toUpperCase()}</h5></td>);
-    displayTableHeaders.push(<td key="currentlyOff">Off Air</td>);
+        .map((k) =>
+            <td key={k}>
+                <h5>{k.toUpperCase()}</h5>
+            </td>
+        );
+    displayTableHeaders.push(
+        <td key="currentlyOff">
+            <h5>Off Air</h5>
+        </td>
+    );
 
     const displayTableBodyJunkDays = (Object.entries(dayGroups))
-        .map(([k, v]) => <td key={k + 'Col'}>
-            <JunkDay programs={v} onAir={true} setProgram={changeProgram} removeProgram={removeProgram}/>
-        </td>);
-    displayTableBodyJunkDays.push(<td key="offAirCol">
-        <JunkDay programs={offAirPrograms} onAir={false} setProgram={changeProgram} removeProgram={removeProgram}/>
-    </td>);
+        .map(([k, v]) =>
+            <td key={k + 'Col'}>
+                <JunkDay programs={v} setProgram={changeProgram} removeProgram={removeProgram}/>
+            </td>
+        );
+    displayTableBodyJunkDays.push(
+        <td key="offAirCol">
+            <JunkDay programs={offAirPrograms} setProgram={changeProgram} removeProgram={removeProgram}/>
+        </td>
+    );
 
     return (
         <Card>
@@ -49,7 +73,7 @@ function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removePro
                     {' '}
                     Add
                 </Button>
-                <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddProgram={toggleAddForm}/>{' '}
+                <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddForm={toggleAddForm}/>{' '}
             </Card.Body>
         </Card>
     );

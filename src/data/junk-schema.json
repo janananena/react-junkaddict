@@ -14,7 +14,7 @@
             "description": "unique id",
             "type": "string"
           },
-          "name": {
+          "junkname": {
             "description": "junk name",
             "type": "string"
           },
@@ -81,7 +81,7 @@
         },
         "required": [
           "id",
-          "name",
+          "junkname",
           "station",
           "link",
           "day",

@@ -1,24 +1,25 @@
 import {deleteProgram} from "../../../../services/DevDataApiHandlers";
-import {useContext, useState} from "react";
-import {ProgramContext} from "../../../../contexts/ProgramContext";
+import {useState} from "react";
+import {useJunkContext} from "../../../../contexts/ProgramContext";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Card from "react-bootstrap/Card";
 import {deleteIcon} from "../../../../data/JunkIcons";
+import * as React from "react";
 
 function DeleteJunkCardForm() {
-    const [program, _, removeProgram] = useContext(ProgramContext);
-    const [confirmDeleteProgram, setConfirmDeleteProgram] = useState(false);
+    const {junk, removeJunk} = useJunkContext();
+    const [confirmDeleteProgram, setConfirmDeleteProgram] = useState<boolean>(false);
 
-    function toggleDeleteProgram() {
+    function toggleDeleteProgram(): void {
         setConfirmDeleteProgram(!confirmDeleteProgram);
     }
 
-    async function handleDeleteProgram(event) {
+    async function handleDeleteProgram(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
-        await deleteProgram(program);
-        removeProgram(program);
+        await deleteProgram(junk);
+        removeJunk(junk);
         toggleDeleteProgram();
     }
 
@@ -30,7 +31,7 @@ function DeleteJunkCardForm() {
                         <Modal.Title>Delete Junk?</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        {program.nick && program.nick + ' - '} {program.name}
+                        {junk.nick && junk.nick + ' - '} {junk.junkname}
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="outline-secondary" id="cancelDelete" type="button" onClick={toggleDeleteProgram}>cancel</Button>
