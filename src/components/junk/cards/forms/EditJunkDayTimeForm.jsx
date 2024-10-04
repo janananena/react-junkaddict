@@ -16,8 +16,8 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}) {
             day: event.currentTarget.day.value,
             time: event.currentTarget.time.value,
             currentSeason: setOnAir,
-            season: program.season === '' ? (parseInt(program.season) + 1).toString() : '',
-            seen: program.season === '' ? program.seen.push(false) : []
+            season: program.season !== '' ? (parseInt(program.season) + 1).toString() : '',
+            seen: program.season !== '' ? program.seen.push(false) : []
         };
     }
 

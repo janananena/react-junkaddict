@@ -21,7 +21,9 @@
         true,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "2",
@@ -34,7 +36,9 @@
       "category": "podcast",
       "currentSeason": true,
       "season": "",
-      "seen": []
+      "seen": [],
+      "links": [],
+      "notes": []
     },
     {
       "id": "3",
@@ -53,7 +57,9 @@
         true,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "6729",
@@ -71,7 +77,9 @@
         true,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "7be6",
@@ -87,7 +95,9 @@
       "seen": [
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "219a",
@@ -100,7 +110,9 @@
       "category": "tv",
       "currentSeason": true,
       "season": "",
-      "seen": []
+      "seen": [],
+      "links": [],
+      "notes": []
     },
     {
       "id": "7924",
@@ -108,7 +120,7 @@
       "nick": "Testy",
       "station": "ard",
       "link": "https://www.irgendeine.url/zumtesten",
-      "day": "mo",
+      "day": "mi",
       "time": "14:15",
       "category": "tv",
       "currentSeason": true,
@@ -117,7 +129,9 @@
         false,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "8270",
@@ -130,7 +144,9 @@
       "category": "tv",
       "currentSeason": true,
       "season": "",
-      "seen": []
+      "seen": [],
+      "links": [],
+      "notes": []
     },
     {
       "id": "d9ac",
@@ -152,7 +168,9 @@
         true,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "8d88",
@@ -177,7 +195,9 @@
         true,
         true,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     },
     {
       "id": "516d",
@@ -196,7 +216,9 @@
         true,
         false
       ],
-      "season": "5"
+      "season": "5",
+      "links": [],
+      "notes": []
     },
     {
       "id": "0623",
@@ -214,6 +236,10 @@
         true,
         true,
         true
+      ],
+      "links": [],
+      "notes": [
+        "noch 2 offene Folgen"
       ]
     },
     {
@@ -226,8 +252,14 @@
       "link": "https://open.spotify.com/show/5mUoxiityJLco71kEhTArI",
       "season": "",
       "category": "podcast",
-      "currentSeason": false,
-      "seen": []
+      "currentSeason": true,
+      "seen": [],
+      "links": [
+        "https://www.instagram.com/weirdcrimes_podcast"
+      ],
+      "notes": [
+        "bla"
+      ]
     },
     {
       "id": "59c6",
@@ -245,7 +277,9 @@
         false,
         false,
         false
-      ]
+      ],
+      "links": [],
+      "notes": []
     }
   ]
 }

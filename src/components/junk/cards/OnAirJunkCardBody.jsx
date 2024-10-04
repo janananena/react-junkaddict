@@ -5,6 +5,7 @@ import {ProgramContext} from "../../../contexts/ProgramContext";
 import Card from "react-bootstrap/Card";
 import {editIcon, offAirIcon} from "../../../data/JunkIcons";
 import SeasonsForm from "./forms/SeasonsForm";
+import JunkLinksForm from "./forms/JunkLinksForm";
 
 function OnAirJunkCardBody({toggleEditProgram}) {
     const [program, setProgram] = useContext(ProgramContext);
@@ -28,6 +29,8 @@ function OnAirJunkCardBody({toggleEditProgram}) {
                 {capitalizeFirstLetter(program.day)} {program.time} {capitalizeFirstLetter(program.category)}
             </Card.Text>
             <SeasonsForm/>
+            <JunkLinksForm/>
+            <br/>
             <Card.Link onClick={toggleEditProgram}>
                 {editIcon}
                 {' '}
