@@ -1,7 +1,7 @@
 import {useContext, useState} from "react";
 import {InputGroup, ListGroup} from "react-bootstrap";
 import {ProgramContext} from "../../../../contexts/ProgramContext";
-import {addIcon, deleteIcon, editIcon, openIcon, saveIcon} from "../../../../data/JunkIcons";
+import {addIcon, deleteIcon, editIcon, saveIcon} from "../../../../data/JunkIcons";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -46,14 +46,12 @@ function JunkNotesForm() {
                     <Col key={`${i}`}>
                         <InputGroup key={`${i}`}>
                             <Form.Control type="input" key={`form-input-${i}`} defaultValue={notesState[i]} onChange={(event) => handleChangeNote(event, i)} required/>
-                            <Button type="button" variant="outline-secondary" name={`form-button-${i}`} key={`form-button-${i}`} onClick={() => window.open(note, "_blank")}>{openIcon}</Button>
                             <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteNote(i)}>{deleteIcon}</Button>
                         </InputGroup>
                     </Col>
                 </Row>
             )}
-            <br/>
-            <Container className="justify-content-start">
+            <Container className="justify-content-start m-1">
                 <Row key="button-row" xs="auto">
                     <Col key="button-col-add">
                         <Button variant="outline-secondary" type="button" key="addNoteButton" onClick={handleAddNote}>
@@ -72,7 +70,7 @@ function JunkNotesForm() {
     const showJunkNotes =
         <ListGroup>
             {notesState.map((note, i) =>
-                <ListGroup.Item action as='button' key={`notes-${i}`} onClick={() => window.open(note, "_blank")}>
+                <ListGroup.Item key={`notes-${i}`}>
                     {note}
                 </ListGroup.Item>
             )}

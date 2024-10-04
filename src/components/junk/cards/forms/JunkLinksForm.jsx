@@ -52,8 +52,7 @@ function JunkLinksForm() {
                     </Col>
                 </Row>
             )}
-            <br/>
-            <Container className="justify-content-start">
+            <Container className="justify-content-start m-1">
                 <Row key="button-row" xs="auto">
                     <Col key="button-col-add">
                         <Button variant="outline-secondary" type="button" key="addLinkButton" onClick={handleAddLink}>
