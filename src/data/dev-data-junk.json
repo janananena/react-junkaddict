@@ -37,7 +37,9 @@
       "currentSeason": true,
       "season": "",
       "seen": [],
-      "links": [],
+      "links": [
+        "https://www.instagram.com/radioisland.podcast/"
+      ],
       "notes": []
     },
     {
@@ -145,7 +147,10 @@
       "currentSeason": true,
       "season": "",
       "seen": [],
-      "links": [],
+      "links": [
+        "https://www.youtube.com/@numadario",
+        "https://www.instagram.com/numadario"
+      ],
       "notes": []
     },
     {
@@ -202,7 +207,7 @@
     {
       "id": "516d",
       "nick": "",
-      "junkname": "Temptation Island",
+      "junkname": "Temptation Island VIP",
       "station": "rtl",
       "day": "mi",
       "time": "20:15",
@@ -238,9 +243,7 @@
         true
       ],
       "links": [],
-      "notes": [
-        "noch 2 offene Folgen"
-      ]
+      "notes": []
     },
     {
       "id": "c39b",
@@ -252,13 +255,13 @@
       "link": "https://open.spotify.com/show/5mUoxiityJLco71kEhTArI",
       "season": "",
       "category": "podcast",
-      "currentSeason": true,
+      "currentSeason": false,
       "seen": [],
       "links": [
         "https://www.instagram.com/weirdcrimes_podcast"
       ],
       "notes": [
-        "this is a useful note!"
+        "noch folgen offen"
       ]
     },
     {
@@ -273,12 +276,31 @@
       "currentSeason": true,
       "season": "4",
       "seen": [
-        false,
-        false,
-        false,
+        true,
+        true,
+        true,
         false
       ],
-      "links": [],
+      "links": [
+        "https://www.youtube.com/@7_vs._wild"
+      ],
+      "notes": []
+    },
+    {
+      "id": "79c8",
+      "nick": "",
+      "junkname": "MaiThink X",
+      "station": "zdf",
+      "day": "so",
+      "time": "06:00",
+      "link": "https://www.zdf.de/show/mai-think-x-die-show",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [
+        "https://www.youtube.com/@maithinkx"
+      ],
       "notes": []
     }
   ]
