@@ -55,12 +55,12 @@ function JunkNotesForm() {
             <Container className="justify-content-start m-1">
                 <Row key="button-row" xs="auto">
                     <Col key="button-col-add">
-                        <Button variant="outline-secondary" type="button" key="addNoteButton" onClick={handleAddNote}>
+                        <Button variant="outline-secondary" type="button" key="addNoteButton" name="addNoteButton" onClick={handleAddNote}>
                             {addIcon}
                         </Button>
                     </Col>
                     <Col key="button-col-save">
-                        <Button variant="outline-secondary" type="submit" key="submitNotesButton" onClick={handleSubmit}>
+                        <Button variant="outline-secondary" type="submit" key="submitNotesButton" name="submitNotesButton" onClick={handleSubmit}>
                             {saveIcon}
                         </Button>
                     </Col>
