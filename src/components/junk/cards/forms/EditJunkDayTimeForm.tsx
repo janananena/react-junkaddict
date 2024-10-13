@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {useState} from "react";
 
 interface EditJunkDayTimeProps {
     setOnAir: boolean,
@@ -15,25 +16,35 @@ interface EditJunkDayTimeProps {
 
 function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}: EditJunkDayTimeProps) {
     const {junk, setJunk} = useJunkContext();
+    const [currentDay, setCurrentDay] = useState(junk.day);
+    const [currentTime, setCurrentTime] = useState(junk.time);
 
-    function getNewProgram(input: HTMLFormElement): Junk {
+    function getNewProgram(): Junk {
         const s: string = junk.season !== '' ? (parseInt(junk.season) + 1).toString() : '';
         const arr: boolean[] = [...junk.seen];
         arr.push(false);
         const a: boolean[] = s !== '' ? arr : [];
         return {
             ...junk,
-            day: input.day.value,
-            time: input.time.value,
+            day: currentDay,
+            time: currentTime,
             currentSeason: setOnAir,
             season: s,
             seen: a
         };
     }
 
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>): void {
+        setCurrentDay(event.currentTarget.value);
+    }
+
+    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
+        setCurrentTime(event.currentTarget.value);
+    }
+
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
-        const prog = await changeProgram(getNewProgram(event.currentTarget));
+        const prog = await changeProgram(getNewProgram());
         setJunk(prog);
         handleCancel();
     }
@@ -44,7 +55,7 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}: EditJunkDa
                 <Modal.Body>
                     <Row>
                         <Col>
-                            <Form.Select id="day" name="day" defaultValue={junk.day} required>
+                            <Form.Select id="day" name="day" value={currentDay} onChange={(event) => handleChangeDay(event)} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
@@ -55,14 +66,14 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}: EditJunkDa
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Control id="time" type="time" name="time" step="any" defaultValue={junk.time} required/>
+                            <Form.Control id="junktime" type="time" name="junktime" step="any" value={currentTime} onChange={(event) => handleChangeTime(event)} required as="input"/>
                         </Col>
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-secondary" id="cancelChange" type="button"
+                    <Button variant="outline-secondary" id="cancelChange" key="cancelChange" name="cancelChange" type="button"
                             onClick={handleCancel}>cancel</Button>
-                    <Button variant="outline-primary" id="submitChange" type="submit">save</Button>
+                    <Button variant="outline-primary" id="submitChange" key="submitChange" name="submitChange" type="submit">save</Button>
                 </Modal.Footer>
             </Form>
         </Modal>

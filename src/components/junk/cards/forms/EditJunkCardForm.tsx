@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
+import {useState} from "react";
 
 interface EditJunkCardProps {
     showEditProgram: boolean,
@@ -15,23 +16,58 @@ interface EditJunkCardProps {
 
 function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProps) {
     const {junk, setJunk} = useJunkContext();
+    const [currentNick, setCurrentNick] = useState(junk.nick?? '');
+    const [currentName, setCurrentName] = useState(junk.junkname);
+    const [currentStation, setCurrentStation] = useState(junk.station);
+    const [currentDay, setCurrentDay] = useState(junk.day);
+    const [currentTime, setCurrentTime] = useState(junk.time);
+    const [currentLink, setCurrentLink] = useState(junk.link);
+    const [currentSeason, setCurrentSeason] = useState(junk.season);
+    const [currentCategory, setCurrentCategory] = useState(junk.category);
 
-    function getNewProgram(input: HTMLFormElement): Junk {
+    function getNewProgram(): Junk {
         const newProg = {...junk};
-        if (input.nick.value !== "") {
-            newProg.nick = input.nick.value;
+        if (currentNick !== "") {
+            newProg.nick = currentNick;
         }
-        newProg.junkname = input.junkname.value;
-        newProg.station = input.station.value;
-        newProg.day = input.day.value;
-        newProg.time = input.time.value;
-        newProg.category = input.category.value;
+        newProg.junkname = currentName;
+        newProg.station = currentStation;
+        newProg.day = currentDay;
+        newProg.time = currentTime;
+        newProg.link = currentLink;
+        newProg.season = currentSeason;
+        newProg.category = currentCategory;
         return newProg;
+    }
+
+    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentNick(event.currentTarget.value);
+    }
+    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentName(event.currentTarget.value);
+    }
+    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentStation(event.currentTarget.value);
+    }
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentDay(event.currentTarget.value);
+    }
+    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentTime(event.currentTarget.value);
+    }
+    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentLink(event.currentTarget.value);
+    }
+    function handleChangeSeason(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentSeason(event.currentTarget.value);
+    }
+    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentCategory(event.currentTarget.value);
     }
 
     async function handleEditProgram(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
-        const newProg = getNewProgram(event.currentTarget);
+        const newProg = getNewProgram();
         if (!isEqual(newProg, junk)) {
             const prog = await changeProgram(newProg);
             setJunk(prog);
@@ -46,16 +82,16 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                 <Modal.Body>
                     <Row>
                         <Col>
-                            <Form.Control id="nick" type="text" name="nick" placeholder="Nick" defaultValue={junk.nick ?? ''}/>
+                            <Form.Control id="nick" type="text" name="nick" placeholder="Nick" value={currentNick} onChange={(event) => handleChangeNick(event)}/>
                         </Col>
                         <Col xs={8}>
-                            <Form.Control id="junkname" type="text" name="junkname" defaultValue={junk.junkname} required/>
+                            <Form.Control id="junkname" type="text" name="junkname" value={currentName} onChange={(event) => handleChangeName(event)} required/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Select id="station" name="station" defaultValue={junk.station} required>
+                            <Form.Select id="station" name="station"  value={currentStation} onChange={(event) => handleChangeStation(event)} required>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
                                 <option key="zdf" value="zdf">ZDF</option>
@@ -71,7 +107,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day" defaultValue={junk.day} required>
+                            <Form.Select id="day" name="day"  value={currentDay} onChange={(event) => handleChangeDay(event)} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
@@ -82,22 +118,22 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Control id="time" type="time" name="time" step="any" defaultValue={junk.time} required/>
+                            <Form.Control id="time" type="time" name="time" step="any"  value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="link" type="url" name="link" required defaultValue={junk.link}/>
+                            <Form.Control id="link" type="url" name="link" required  value={currentLink} onChange={(event) => handleChangeLink(event)}/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" defaultValue={junk.season}/>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"  value={currentSeason} onChange={(event) => handleChangeSeason(event)}/>
                         </Col>
                         <Col>
-                            <Form.Select id="category" name="category" defaultValue={junk.category} required>
+                            <Form.Select id="category" name="category"  value={currentCategory} onChange={(event) => handleChangeCategory(event)} required>
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
@@ -105,8 +141,8 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-secondary" id="cancelChange" type="button" onClick={toggleEditProgram}>cancel</Button>
-                    <Button variant="outline-primary" id="submitChange" type="submit">save</Button>
+                    <Button variant="outline-secondary" id="cancelChange" key="cancelChange" name="cancelChange" type="button" onClick={toggleEditProgram}>cancel</Button>
+                    <Button variant="outline-primary" id="submitChange" key="submitChange" name="submitChange" type="submit">save</Button>
                 </Modal.Footer>
             </Form>
         </Modal>

@@ -23,9 +23,9 @@
     "vite:start": "concurrently --kill-others \"vite --port 3000\" \"json-server --watch src/data/dev-data-junk.json --port 3004\"",
     "dev": "concurrently --kill-others \"vite\" \"json-server --watch src/data/dev-data-junk.json --port 3004\"",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . ",
     "test": "vitest",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage --coverage.include=src"
   },
   "eslintConfig": {
     "extends": [

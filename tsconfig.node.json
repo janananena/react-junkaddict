@@ -19,12 +19,7 @@
     "noFallthroughCasesInSwitch": true,
     "types": [
       "vite/client"
-    ],
-    "compilerOptions": {
-      "types": [
-        "vitest/globals"
-      ]
-    }
+    ]
   },
   "include": [
     "vite.config.ts"

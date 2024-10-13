@@ -39,7 +39,8 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString}: Junk
     return (
         <Navbar expand="md">
             <Container fluid className="align-items-center justify-content-start gap-2">
-                <Navbar.Brand href="https://github.com/janananena/react-junkaddict" target="_blank">
+                {/* @ts-expect-error name is needed */}
+                <Navbar.Brand key="brand" name="brand" href="https://github.com/janananena/react-junkaddict" target="_blank">
                     {junk}{' '}
                     Reality Stundenplan</Navbar.Brand>
                 <ExportCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
@@ -47,9 +48,10 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString}: Junk
             </Container>
             <Container className="justify-content-end gap-2">
                 <Form>
-                    <Form.Control type="input" placeholder="filter" defaultValue={searchString} onChange={handleInputChanges}/>
+                    <Form.Control type="input" placeholder="filter" key="searchFilter" name="searchFilter" defaultValue={searchString} onChange={handleInputChanges}/>
                 </Form>
-                <Nav.Link onClick={handleTheme}>
+                {/* @ts-expect-error name is needed */}
+                <Nav.Link onClick={handleTheme} key="modeswitch" name={`modeswitch-${theme}`}>
                     {theme === 'darkMode' && darkMode}
                     {theme === 'lightMode' && lightMode}
                 </Nav.Link>

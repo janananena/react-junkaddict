@@ -34,12 +34,13 @@ function DeleteJunkCardForm() {
                         {junk.nick && junk.nick + ' - '} {junk.junkname}
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="outline-secondary" id="cancelDelete" type="button" onClick={toggleDeleteProgram}>cancel</Button>
-                        <Button variant="outline-primary" id="submitDelete" type="submit">delete</Button>
+                        <Button variant="outline-secondary" id="cancelDelete" key="cancelDelete" name="cancelDelete" type="button" onClick={toggleDeleteProgram}>cancel</Button>
+                        <Button variant="outline-primary" id="submitDelete" key="submitDelete" name="submitDelete" type="submit">delete</Button>
                     </Modal.Footer>
                 </Form>
             </Modal>
-            <Card.Link onClick={toggleDeleteProgram}>{deleteIcon}</Card.Link>
+            {/* @ts-expect-error name is needed */}
+            <Card.Link id="toggleDeleteJunk" data-testid="toggleDeleteJunk" name="toggleDeleteJunk" onClick={toggleDeleteProgram}>{deleteIcon}</Card.Link>
         </>
     );
 }

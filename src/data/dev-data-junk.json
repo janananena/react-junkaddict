@@ -51,13 +51,14 @@
       "day": "di",
       "time": "00:00",
       "category": "tv",
-      "currentSeason": false,
-      "season": "5",
+      "currentSeason": true,
+      "season": "6",
       "seen": [
         true,
         true,
         true,
         true,
+        false,
         false
       ],
       "links": [],
@@ -132,8 +133,12 @@
         false,
         false
       ],
-      "links": [],
-      "notes": []
+      "links": [
+        "https://test.link"
+      ],
+      "notes": [
+        "useful note"
+      ]
     },
     {
       "id": "8270",
@@ -302,6 +307,26 @@
         "https://www.youtube.com/@maithinkx"
       ],
       "notes": []
+    },
+    {
+      "id": "9dae",
+      "nick": "",
+      "junkname": "Love Island VIP",
+      "station": "rtl",
+      "day": "do",
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "2",
+      "seen": [
+        false,
+        false
+      ],
+      "links": [],
+      "notes": [
+        "ab 24.10."
+      ]
     }
   ]
 }

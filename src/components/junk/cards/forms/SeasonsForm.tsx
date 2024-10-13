@@ -42,9 +42,11 @@ function SeasonsForm() {
     }
 
     function updateCheck(value: boolean, index: number): void {
-        const newChecks = seasonState.seasonSeen.length > 0 ? [...seasonState.seasonSeen] : [];
-        newChecks[index] = value;
-        setSeasonState({season: seasonState.season, seasonSeen: newChecks});
+        if (seasonState.seasonSeen.length > 0) {
+            const newChecks = [...seasonState.seasonSeen];
+            newChecks[index] = value;
+            setSeasonState({season: seasonState.season, seasonSeen: newChecks});
+        }
     }
 
     function handleSeason(event: React.ChangeEvent<HTMLInputElement>): void {
@@ -53,7 +55,6 @@ function SeasonsForm() {
     }
 
     function handleCheck(event: React.ChangeEvent<HTMLInputElement>, index: number): void {
-        event.preventDefault();
         updateCheck(event.currentTarget.checked, index);
     }
 
@@ -65,7 +66,7 @@ function SeasonsForm() {
         setEdit(false);
     }
 
-    const emptyCols = (len: number) => Array(len).fill(<Col key={`emptyCol-${random(99)}`}/>);
+    const emptyCols = (len: number) => Array(len).map(() => <Col key={`emptyCol-${random(99)}`}/>);
 
     const chunkSize = 3;
     const chunks: boolean[][] = chunk(seasonState.seasonSeen, chunkSize);
@@ -97,10 +98,10 @@ function SeasonsForm() {
                         <Form.Control type="number" value={seasonState.season} name="seasons" key="currSeason" onChange={handleSeason} disabled={!edit}/>
                     </Col>
                     <Col xs={1} key="editButtonSeasons">
-                        {edit && <Button variant="link" type="submit" key="submitSeasonsButton" onClick={handleSubmit}>
+                        {edit && <Button variant="link" type="submit" key="submitSeasonsButton" name="submitSeasonsButton" onClick={handleSubmit}>
                             {saveIcon}
                         </Button>}
-                        {!edit && <Button variant="link" key="editSeasonsButton" onClick={() => setEdit(true)}>
+                        {!edit && <Button variant="link" key="editSeasonsButton" name="editSeasonsButton" onClick={() => setEdit(true)}>
                             {editIcon}
                         </Button>}
                     </Col>

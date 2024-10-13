@@ -25,6 +25,10 @@ const testJunk = {
 
 describe('JunkNotesForm', () => {
 
+    afterEach(() => {
+        vi.restoreAllMocks()
+    })
+
     it('renders !edit, edit works', async () => {
         render(
             <JunkContextProvider value={{

@@ -47,7 +47,7 @@ function JunkLinksForm() {
                     <Col key={`${i}`}>
                         <InputGroup key={`${i}`}>
                             <Form.Control type="url" key={`form-link-${i}`} defaultValue={linksState[i]} onChange={(event) => handleChangeLink(event, i)} required/>
-                            <Button type="button" variant="outline-secondary" name={`form-button-${i}`} key={`form-button-${i}`} onClick={() => window.open(link, "_blank")}>{openIcon}</Button>
+                            <Button type="button" variant="outline-secondary" name={`form-button-${i}`} key={`form-button-${i}`} href={link} onClick={() => window.open(link, "_blank")}>{openIcon}</Button>
                             <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteLink(i)}>{deleteIcon}</Button>
                         </InputGroup>
                     </Col>
@@ -56,12 +56,12 @@ function JunkLinksForm() {
             <Container className="justify-content-start m-1">
                 <Row key="button-row" xs="auto">
                     <Col key="button-col-add">
-                        <Button variant="outline-secondary" type="button" key="addLinkButton" onClick={handleAddLink}>
+                        <Button variant="outline-secondary" type="button" key="addLinkButton" name="addLinkButton" onClick={handleAddLink}>
                             {addIcon}
                         </Button>
                     </Col>
                     <Col key="button-col-save">
-                        <Button variant="outline-secondary" type="submit" key="submitLinksButton" onClick={handleSubmit}>
+                        <Button variant="outline-secondary" type="submit" key="submitLinksButton" name="submitLinksButton" onClick={handleSubmit}>
                             {saveIcon}
                         </Button>
                     </Col>

@@ -6,6 +6,7 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import {Junk, NewJunk} from "../../../../contexts/ProgramContext";
 import * as React from "react";
+import {useState} from "react";
 
 interface AddJunkCardFormProps {
     showAddForm: boolean,
@@ -14,18 +15,26 @@ interface AddJunkCardFormProps {
 }
 
 function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCardFormProps) {
+    const [currentNick, setCurrentNick] = useState('');
+    const [currentName, setCurrentName] = useState('');
+    const [currentStation, setCurrentStation] = useState('rtl');
+    const [currentDay, setCurrentDay] = useState('mo');
+    const [currentTime, setCurrentTime] = useState('20:15');
+    const [currentLink, setCurrentLink] = useState('');
+    const [currentSeason, setCurrentSeason] = useState('');
+    const [currentCategory, setCurrentCategory] = useState('tv');
 
-    function copyWithDefaults(program: HTMLFormElement): NewJunk {
-        const s = program.season.value !== '' ? Number(program.season.value) : '';
+    function copyWithDefaults(): NewJunk {
+        const s = currentSeason !== '' ? Number(currentSeason) : '';
         const a = s === '' ? [] : Array(s).fill(false);
         return {
-            nick: program.nick.value,
-            junkname: program.junkname.value,
-            station: program.station.value,
-            day: program.day.value,
-            time: program.time.value,
-            link: program.link.value,
-            category: program.category.value,
+            nick: currentNick,
+            junkname: currentName,
+            station: currentStation,
+            day: currentDay,
+            time: currentTime,
+            link: currentLink,
+            category: currentCategory,
             currentSeason: true,
             season: s.toString(),
             seen: a,
@@ -34,9 +43,34 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
         };
     }
 
+    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentNick(event.currentTarget.value);
+    }
+    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentName(event.currentTarget.value);
+    }
+    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentStation(event.currentTarget.value);
+    }
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentDay(event.currentTarget.value);
+    }
+    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentTime(event.currentTarget.value);
+    }
+    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentLink(event.currentTarget.value);
+    }
+    function handleChangeSeason(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+        setCurrentSeason(event.currentTarget.value);
+    }
+    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>){
+        setCurrentCategory(event.currentTarget.value);
+    }
+
     async function handleAdd(event: React.FormEvent<HTMLFormElement>): Promise<void> {
         event.preventDefault();
-        const program = await addProgram(copyWithDefaults(event.currentTarget));
+        const program = await addProgram(copyWithDefaults());
         addNewProgram(program);
         toggleAddForm();
     }
@@ -50,16 +84,16 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                 <Modal.Body>
                     <Row>
                         <Col>
-                            <Form.Control id="nick" type="text" name="nick" placeholder="Kurzname"/>
+                            <Form.Control id="nick" type="text" name="nick" placeholder="Kurzname" value={currentNick} onChange={(event) => handleChangeNick(event)}/>
                         </Col>
                         <Col xs={8}>
-                            <Form.Control id="junkname" type="text" name="junkname" required placeholder="Name*"/>
+                            <Form.Control id="junkname" type="text" name="junkname" required placeholder="Name*" value={currentName} onChange={(event) => handleChangeName(event)}/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Select id="station" name="station" required>
+                            <Form.Select id="station" name="station" required value={currentStation} onChange={(event) => handleChangeStation(event)}>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
                                 <option key="zdf" value="zdf">ZDF</option>
@@ -75,7 +109,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day" required>
+                            <Form.Select id="day" name="day" required value={currentDay} onChange={(event) => handleChangeDay(event)}>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
@@ -86,23 +120,22 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Control id="time" type="time" name="time" step="any" defaultValue="20:15" required/>
+                            <Form.Control id="time" type="time" name="time" step="any" value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="link" type="url" name="link" required placeholder="Link*"/>
+                            <Form.Control id="link" type="url" name="link" required placeholder="Link*" value={currentLink} onChange={(event) => handleChangeLink(event)}/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"
-                                          defaultValue=""/>
+                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" value={currentSeason} onChange={(event) => handleChangeSeason(event)}/>
                         </Col>
                         <Col>
-                            <Form.Select id="category" name="category" required>
+                            <Form.Select id="category" name="category" required value={currentCategory} onChange={(event) => handleChangeCategory(event)}>
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
@@ -110,8 +143,8 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                     </Row>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="outline-secondary" id="cancelbutton" type="button" onClick={toggleAddForm}>cancel</Button>
-                    <Button variant="outline-primary" id="addbutton" type="submit">add</Button>
+                    <Button variant="outline-secondary" id="cancelbutton" key="cancelbutton" name="cancelbutton" type="button" onClick={toggleAddForm}>cancel</Button>
+                    <Button variant="outline-primary" id="addbutton" key="addbutton" name="addbutton" type="submit">add</Button>
                 </Modal.Footer>
             </Form>
         </Modal>
