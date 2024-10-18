@@ -1,5 +1,10 @@
 import {createContext, useContext} from "react";
 
+export interface Note {
+    alwaysShow: boolean,
+    note: string
+}
+
 export interface NewJunk {
     junkname: string,
     nick: string | null,
@@ -12,7 +17,7 @@ export interface NewJunk {
     season: string,
     seen: boolean[],
     links: string[],
-    notes: string[]
+    notes: Note[]
 }
 
 export interface Junk extends NewJunk {

@@ -104,6 +104,9 @@ describe('JunkCardDetails', () => {
         // show delete button
         expect(screen.getByTestId('toggleDeleteJunk')).toBeInTheDocument();
 
+        //toggle details
+        expect(screen.getByText('more')).toBeInTheDocument();
+
         // set offline
         const offAirButton = screen.getByText('Staffel Ende');
         await userEvent.click(offAirButton);
@@ -139,8 +142,8 @@ describe('JunkCardDetails', () => {
         expect(screen.getByText('Testy')).toBeInTheDocument();
         expect(screen.getByText('Testershire McTesterson')).toBeInTheDocument();
 
-        // show off air details
-        expect(screen.getByText('test note 1')).toBeInTheDocument();
+        // toggle details
+        expect(screen.getByText('more')).toBeInTheDocument();
 
         // show delete button
         expect(screen.getByTestId('toggleDeleteJunk')).toBeInTheDocument();

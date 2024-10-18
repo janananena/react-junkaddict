@@ -21,7 +21,12 @@ const testJunk = {
         false
     ],
     "links": ["test link 1", "test link 2"],
-    "notes": ["test note 1", "test note 2"]
+    "notes": [
+        {
+            "alwaysShow": true,
+            "note": "test note 1"
+        }
+    ]
 }
 
 describe('CollapseJunkCardBody', () => {
@@ -68,7 +73,8 @@ describe('CollapseJunkCardBody', () => {
 
         //content
         expect(screen.getByText('Season')).toBeInTheDocument();
-        expect(screen.getByText('test note 1')).toBeInTheDocument();
+        const texts = screen.getByRole('textbox');
+        expect(texts).toHaveValue('test note 1');
         expect(screen.getByText('test link 1')).toBeInTheDocument();
         expect(screen.getByText('Edit links')).toBeInTheDocument();
         expect(screen.getByText('Edit notes')).toBeInTheDocument();

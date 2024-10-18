@@ -70,8 +70,6 @@ describe('JunkTableCard', ()=> {
         //online
         expect(screen.getByText('Fr 12:15 Tv')).toBeInTheDocument();
         const card3 = screen.getByText('Testy offline');
-        //offline
-        expect(screen.getByText('an offline note')).toBeInTheDocument();
 
         //ordered
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);

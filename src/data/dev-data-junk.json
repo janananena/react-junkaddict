@@ -137,7 +137,10 @@
         "https://test.link"
       ],
       "notes": [
-        "useful note"
+        {
+          "alwaysShow": false,
+          "note": "useful note"
+        }
       ]
     },
     {
@@ -266,7 +269,10 @@
         "https://www.instagram.com/weirdcrimes_podcast"
       ],
       "notes": [
-        "noch folgen offen"
+        {
+          "alwaysShow": true,
+          "note": "noch folgen offen"
+        }
       ]
     },
     {
@@ -325,7 +331,10 @@
       ],
       "links": [],
       "notes": [
-        "ab 24.10."
+        {
+          "alwaysShow": true,
+          "note": "ab 24.10."
+        }
       ]
     }
   ]

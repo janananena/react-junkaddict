@@ -20,7 +20,16 @@ const testJunk = {
         false
     ],
     "links": [],
-    "notes": ["test note 1", "test note 2"]
+    "notes": [
+        {
+            "alwaysShow": true,
+            "note": "test note 1"
+        },
+        {
+            "alwaysShow": false,
+            "note": "test note 2"
+        }
+    ]
 }
 
 describe('JunkNotesForm', () => {
@@ -40,45 +49,53 @@ describe('JunkNotesForm', () => {
                 <JunkNotesForm/>
             </JunkContextProvider>
         );
-        expect(screen.getByText("test note 1")).toBeInTheDocument();
-        expect(screen.getByText("test note 2")).toBeInTheDocument();
-        expect(screen.getByRole("button")).toHaveTextContent(/Edit notes/);
+        const checkboxes = screen.getAllByRole('checkbox');
+        expect(checkboxes).toHaveLength(2);
+        expect(checkboxes[0]).toBeChecked();
+        expect(checkboxes[1]).not.toBeChecked();
+        const listItems = screen.getAllByRole('textbox');
+        expect(listItems).toHaveLength(2);
+        expect(listItems[0]).toHaveValue("test note 1");
+        expect(listItems[1]).toHaveValue("test note 2");
+        const editNotesButton = screen.getByRole("button");
+        expect(editNotesButton).toHaveTextContent("Edit notes");
 
         // click edit notes
-        await userEvent.click(screen.getByRole("button"));
+        await userEvent.click(editNotesButton);
 
         // notes displayed
-        let text1 = (screen.getAllByRole("textbox"))[0];
-        let text2 = (screen.getAllByRole("textbox"))[1];
-        expect(text1).toHaveValue("test note 1");
-        expect(text2).toHaveValue("test note 2");
-        expect(text1).toHaveClass("form-control");
-        expect(text2).toHaveClass("form-control");
+        const editCheckboxes = screen.getAllByRole('checkbox');
+        expect(editCheckboxes[0]).toBeInTheDocument();
+        expect(editCheckboxes[1]).toBeInTheDocument();
+        const editListItems = screen.getAllByRole('textbox');
+        expect(editListItems[0]).toBeInTheDocument();
+        expect(editListItems[1]).toBeInTheDocument();
+        expect(editCheckboxes[0]).toBeChecked();
+        expect(editCheckboxes[1]).not.toBeChecked();
+        expect(listItems[0]).toHaveValue("test note 1");
+        expect(listItems[1]).toHaveValue("test note 2");
 
-        //buttons
-        let buttons = screen.getAllByRole("button");
-        expect(buttons).toHaveLength(4);
-        // delete buttons
-        expect(buttons[0]).toHaveProperty("name", "form-delete-0");
-        expect(buttons[1]).toHaveProperty("name", "form-delete-1");
-        expect(buttons[2]).toHaveProperty("name", "addNoteButton");
-        expect(buttons[3]).toHaveProperty("name", "submitNotesButton");
+        // buttons
+        const editButtons = screen.getAllByRole("button");
+        expect(editButtons).toHaveLength(4);
+        expect(editButtons[0]).toHaveProperty("name", "form-delete-0");
+        expect(editButtons[1]).toHaveProperty("name", "form-delete-1");
+        expect(editButtons[2]).toHaveProperty("name", "addNoteButton");
+        expect(editButtons[3]).toHaveProperty("name", "submitNotesButton");
 
         //notes editable
-        await userEvent.type(text2, " - edited");
-        expect(text2).toHaveValue("test note 2 - edited");
+        await userEvent.type(editListItems[1], " - edited");
+        expect(editListItems[1]).toHaveValue("test note 2 - edited");
 
         //notes deletable
-        expect(screen.getAllByRole("textbox")).toHaveLength(2);
-        await userEvent.click(buttons[1]);
-        let texts = screen.getAllByRole("textbox");
-        expect(texts).toHaveLength(1);
-        expect(texts[0]).toHaveValue("test note 1");
+        expect(editListItems).toHaveLength(2);
+        await userEvent.click(editButtons[1]);
+        const newEditListItems = screen.getAllByRole('textbox');
+        expect(newEditListItems).toHaveLength(1);
+        expect(newEditListItems[0]).toHaveValue("test note 1");
 
         //notes addable
-        expect(screen.getAllByRole("textbox")).toHaveLength(1);
-        // click add
-        await userEvent.click(buttons[2]);
+        await userEvent.click(editButtons[2]);
         let newTexts = screen.getAllByRole("textbox");
         // new empty row
         expect(newTexts).toHaveLength(2);
@@ -97,11 +114,13 @@ describe('JunkNotesForm', () => {
                 changeProgram: changeProgram,
             }
         })
-        await userEvent.click(buttons[3]);
+        await userEvent.click(editButtons[3]);
         // notes correct
-        expect(screen.getByText("test note 1")).toBeInTheDocument();
-        expect(screen.getByText("a new note")).toBeInTheDocument();
+        const finalListItems = screen.getAllByRole('textbox');
+        expect(finalListItems[0]).toHaveValue("test note 1");
+        expect(finalListItems[1]).toHaveValue("a new note");
         // !edit
-        expect(screen.getByRole("button")).toHaveTextContent(/Edit notes/);
+        const finalButton = screen.getByRole('button');
+        expect(finalButton).toHaveTextContent("Edit notes");
     })
 })

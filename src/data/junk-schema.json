@@ -75,7 +75,11 @@
             "description": "anything else",
             "type": "array",
             "items": {
-              "type": "string"
+              "type": "object",
+              "properties": {
+                "alwaysShow": { "type": "boolean"},
+                "note": {"type": "string"}
+              }
             }
           }
         },
