@@ -51,7 +51,7 @@
       "day": "di",
       "time": "00:00",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "6",
       "seen": [
         true,
@@ -168,7 +168,7 @@
       "link": "https://www.joyn.de/serien/wer-stiehlt-mir-die-show",
       "season": "8",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "seen": [
         true,
         true,
@@ -317,7 +317,7 @@
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "2",
       "seen": [
         false,

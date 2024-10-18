@@ -1,11 +1,11 @@
 import {render, screen} from "@testing-library/react";
 import {JunkContextProvider} from "../../../contexts/ProgramContext";
 import {userEvent} from "@testing-library/user-event";
-import OnAirJunkCardBody from "./OnAirJunkCardBody";
+import CollapseJunkCardBody from "./CollapseJunkCardBody";
 import {changeProgram} from "../../../services/DevDataApiHandlers";
 
 const testJunk = {
-    "id": "test-id-onair",
+    "id": "test-id-collapse",
     "junkname": "Testershire McTesterson",
     "nick": "Testy",
     "station": "ard",
@@ -13,7 +13,7 @@ const testJunk = {
     "day": "mi",
     "time": "14:45",
     "category": "tv",
-    "currentSeason": false,
+    "currentSeason": true,
     "season": "3",
     "seen": [
         false,
@@ -24,7 +24,7 @@ const testJunk = {
     "notes": ["test note 1", "test note 2"]
 }
 
-describe('OnAirJunkCardBody', () => {
+describe('CollapseJunkCardBody', () => {
 
     afterEach(() => {
         vi.restoreAllMocks()
@@ -50,40 +50,28 @@ describe('OnAirJunkCardBody', () => {
                 }, removeJunk: () => {
                 }
             }}>
-                <OnAirJunkCardBody toggleEditProgram={toggleEdit}/>
+                <CollapseJunkCardBody toggleEditProgram={toggleEdit}/>
             </JunkContextProvider>
         );
 
-        // show day time category
-        expect(screen.getByText('Mi 14:45 Tv')).toBeInTheDocument();
         // collapsed
-        expect(screen.getByRole('button')).toHaveTextContent('more');
-        expect(screen.queryByText('Season')).not.toBeInTheDocument();
-        expect(screen.queryByText('test note 1')).not.toBeInTheDocument();
-        expect(screen.queryByText('test link 1')).not.toBeInTheDocument();
-        // show buttons
-        const editButton = screen.getByText('Edit');
-        expect(editButton).toBeInTheDocument();
-        const offAirButton = screen.getByText('Staffel Ende');
-        expect(offAirButton).toBeInTheDocument();
+        const buttons = screen.getAllByRole('button');
+        expect(buttons[0]).toHaveTextContent('more');
+        expect(screen.getByTestId('collapse-content')).not.toHaveClass("collapse show");
 
-        // edit button opens modal
-        await userEvent.click(editButton);
-        expect(toggleEdit).toHaveBeenCalledTimes(1);
+        // expand
+        await userEvent.click(buttons[0]);
 
-        //expand shows seasons form, notes, links
-        await userEvent.click(screen.getByRole('button'));
-        expect(screen.getAllByRole('button')[0]).toHaveTextContent('less');
+        // expanded
+        expect(buttons[0]).toHaveTextContent('less');
+        expect(screen.getByTestId('collapse-content')).toHaveClass("collapse show");
+
+        //content
         expect(screen.getByText('Season')).toBeInTheDocument();
         expect(screen.getByText('test note 1')).toBeInTheDocument();
         expect(screen.getByText('test link 1')).toBeInTheDocument();
-        expect(editButton).toBeInTheDocument();
-        expect(offAirButton).toBeInTheDocument();
-
-        // off air button
-        await userEvent.click(offAirButton);
-        expect(changeProgram).toHaveBeenCalledTimes(1);
-        expect(changeProgram).toHaveBeenCalledWith({...testJunk, currentSeason: false});
+        expect(screen.getByText('Edit links')).toBeInTheDocument();
+        expect(screen.getByText('Edit notes')).toBeInTheDocument();
     })
 
 })
