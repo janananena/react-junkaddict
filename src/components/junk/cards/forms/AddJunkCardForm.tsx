@@ -21,12 +21,19 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
     const [currentDay, setCurrentDay] = useState('mo');
     const [currentTime, setCurrentTime] = useState('20:15');
     const [currentLink, setCurrentLink] = useState('');
-    const [currentSeason, setCurrentSeason] = useState('');
     const [currentCategory, setCurrentCategory] = useState('tv');
 
+    function resetFields(): void {
+        setCurrentNick("");
+        setCurrentName("");
+        setCurrentStation("rtl");
+        setCurrentDay("mo");
+        setCurrentTime("20:15");
+        setCurrentLink("");
+        setCurrentCategory("tv");
+    }
+
     function copyWithDefaults(): NewJunk {
-        const s = currentSeason !== '' ? Number(currentSeason) : '';
-        const a = s === '' ? [] : Array(s).fill(false);
         return {
             nick: currentNick,
             junkname: currentName,
@@ -36,8 +43,8 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
             link: currentLink,
             category: currentCategory,
             currentSeason: true,
-            season: s.toString(),
-            seen: a,
+            season: "",
+            seen: [],
             links: [],
             notes: []
         };
@@ -61,9 +68,6 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
     function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
         setCurrentLink(event.currentTarget.value);
     }
-    function handleChangeSeason(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
-        setCurrentSeason(event.currentTarget.value);
-    }
     function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>){
         setCurrentCategory(event.currentTarget.value);
     }
@@ -72,11 +76,12 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
         event.preventDefault();
         const program = await addProgram(copyWithDefaults());
         addNewProgram(program);
+        resetFields();
         toggleAddForm();
     }
 
     return (
-        <Modal show={showAddForm} onHide={toggleAddForm}>
+        <Modal show={showAddForm} onHide={toggleAddForm} backdropClassName="modal-bigger-bagdrop">
             <Form onSubmit={handleAdd}>
                 <Modal.Header closeButton>
                     <Modal.Title>Add New Junk</Modal.Title>
@@ -131,9 +136,6 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                     </Row>
                     <br/>
                     <Row>
-                        <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel" value={currentSeason} onChange={(event) => handleChangeSeason(event)}/>
-                        </Col>
                         <Col>
                             <Form.Select id="category" name="category" required value={currentCategory} onChange={(event) => handleChangeCategory(event)}>
                                 <option value="tv">Video</option>

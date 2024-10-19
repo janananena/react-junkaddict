@@ -97,10 +97,9 @@
       "time": "20:15",
       "category": "tv",
       "currentSeason": true,
-      "season": "2",
+      "season": "1",
       "seen": [
-        true,
-        false
+        true
       ],
       "links": [],
       "notes": []
@@ -357,10 +356,9 @@
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705",
       "category": "tv",
-      "currentSeason": false,
-      "season": "2",
+      "currentSeason": true,
+      "season": "1",
       "seen": [
-        false,
         false
       ],
       "links": [],
@@ -368,6 +366,46 @@
         {
           "alwaysShow": true,
           "note": "ab 24.10."
+        }
+      ]
+    },
+    {
+      "id": "2fd5",
+      "nick": "DCKS",
+      "junkname": "Die Carolin Kebekus Show",
+      "station": "ard",
+      "day": "do",
+      "time": "20:15",
+      "link": "https://www.ardmediathek.de/sendung/die-carolin-kebekus-show/Y3JpZDovL2Rhc2Vyc3RlLmRlL2RpZS1jYXJvbGluLWtlYmVrdXMtc2hvdw",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [
+        {
+          "alwaysShow": true,
+          "note": "ab 24.10."
+        }
+      ]
+    },
+    {
+      "id": "7ebc",
+      "nick": "Promi BB",
+      "junkname": "Promi Big Brother",
+      "station": "joyn",
+      "day": "mo",
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/promi-big-brother",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [
+        {
+          "alwaysShow": true,
+          "note": "Täglich!"
         }
       ]
     }
