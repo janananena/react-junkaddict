@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import {addIcon} from "../../data/JunkIcons";
 import {Junk} from "../../contexts/ProgramContext";
+import OfflineDay from "./OfflineDay.tsx";
 
 interface JunkTableCardProps {
     displayPrograms: Junk[],
@@ -47,7 +48,7 @@ function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removePro
         );
     displayTableBodyJunkDays.push(
         <td key="offAirCol">
-            <JunkDay programs={offAirPrograms} setProgram={changeProgram} removeProgram={removeProgram}/>
+            <OfflineDay programs={offAirPrograms} setProgram={changeProgram} removeProgram={removeProgram}/>
         </td>
     );
 
