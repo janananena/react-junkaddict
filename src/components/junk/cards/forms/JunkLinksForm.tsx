@@ -79,7 +79,7 @@ function JunkLinksForm() {
             {linksState.map((link, i) =>
                 <ListGroup key={`links-${i}`}  horizontal>
                     <InputGroup.Checkbox type="checkbox" key={`form-link-checkbox-${i}`} name={`form-link-checkbox-${i}`} checked={link.alwaysShow} readOnly/>
-                    <ListGroup.Item action as='button' key={`links-${i}`} onClick={() => window.open(link.junklink, "_blank")}>
+                    <ListGroup.Item action key={`links-${i}`} onClick={() => window.open(link.junklink, "_blank")}>
                         {link.junklink}
                     </ListGroup.Item>
                 </ListGroup>

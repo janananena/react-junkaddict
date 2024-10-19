@@ -321,7 +321,12 @@
           "junklink": "https://www.youtube.com/@7_vs._wild"
         }
       ],
-      "notes": []
+      "notes": [
+        {
+          "alwaysShow": true,
+          "note": "Di UND Do!!"
+        }
+      ]
     },
     {
       "id": "79c8",

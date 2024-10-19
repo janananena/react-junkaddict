@@ -65,8 +65,8 @@ describe('JunkLinksForm', () => {
 
         // always show
         const editCheckboxes = screen.getAllByRole('checkbox');
-        expect(checkboxes[0]).toBeChecked();
-        expect(checkboxes[1]).not.toBeChecked();
+        expect(editCheckboxes[0]).toBeChecked();
+        expect(editCheckboxes[1]).not.toBeChecked();
         // links displayed
         const editLinks = screen.getAllByRole("textbox");
         expect(editLinks[0]).toHaveValue("https://www.test.link/1");

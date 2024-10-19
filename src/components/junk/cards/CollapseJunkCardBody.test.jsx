@@ -1,4 +1,4 @@
-import {getAllByRole, getByRole, getByText, render, screen} from "@testing-library/react";
+import {getAllByRole, getByText, render, screen} from "@testing-library/react";
 import {JunkContextProvider} from "../../../contexts/ProgramContext";
 import {userEvent} from "@testing-library/user-event";
 import CollapseJunkCardBody from "./CollapseJunkCardBody";
@@ -19,7 +19,16 @@ const testJunk = {
         false,
         false
     ],
-    "links": ["test link 1", "test link 2"],
+    "links": [
+        {
+            "alwaysShow": true,
+            "junklink": "test link 1"
+        },
+        {
+            "alwaysShow": false,
+            "junklink": "test link 2"
+        }
+    ],
     "notes": [
         {
             "alwaysShow": true,
@@ -57,29 +66,36 @@ describe('CollapseJunkCardBody', () => {
         const texts = getAllByRole(alwaysShowDiv, 'textbox');
         expect(texts).toHaveLength(1);
         expect(texts[0]).toHaveValue("test note 1");
+        const links = getAllByRole(alwaysShowDiv, 'button');
+        expect(links).toHaveLength(1);
+        expect(links[0]).toHaveTextContent("test link 1");
 
         // collapsed
         const buttons = screen.getAllByRole('button');
-        expect(buttons[0]).toHaveTextContent('more');
+        expect(buttons[1]).toHaveTextContent('more');
         const collapseContent = screen.getByTestId('collapse-content');
         expect(collapseContent).not.toHaveClass("collapse show");
 
         // expand
-        await userEvent.click(buttons[0]);
+        await userEvent.click(buttons[1]);
 
         // expanded
-        expect(buttons[0]).toHaveTextContent('less');
+        expect(buttons[1]).toHaveTextContent('less');
         expect(collapseContent).toHaveClass("collapse show");
 
         //content
         expect(getByText(collapseContent, 'Season')).toBeInTheDocument();
-        const opentexts = getAllByRole(collapseContent, 'textbox')
+        const openbuttons = getAllByRole(collapseContent, 'button');
+        expect(openbuttons).toHaveLength(5);
+        expect(openbuttons[0]).toHaveProperty("name", "editSeasonsButton");
+        const opentexts = getAllByRole(collapseContent, 'textbox');
         expect(opentexts).toHaveLength(2);
         expect(opentexts[0]).toHaveValue('test note 1');
         expect(opentexts[1]).toHaveValue('test note 2');
-        expect(getByText(collapseContent, 'test link 1')).toBeInTheDocument();
-        expect(getByText(collapseContent, 'Edit links')).toBeInTheDocument();
-        expect(getByText(collapseContent, 'Edit notes')).toBeInTheDocument();
+        expect(openbuttons[1]).toHaveTextContent('test link 1');
+        expect(openbuttons[2]).toHaveTextContent('test link 2');
+        expect(openbuttons[3]).toHaveTextContent('Edit links');
+        expect(openbuttons[4]).toHaveTextContent('Edit notes');
     })
 
 })

@@ -18,9 +18,18 @@ const testJunk = {
         false,
         false
     ],
-    "links": [],
+    "links": [
+        {
+            "alwaysShow": true,
+            "junklink": "test link 1"
+        },
+        {
+            "alwaysShow": false,
+            "junklink": "test link 2"
+        }
+    ],
     "notes": [
-                {
+        {
             "alwaysShow": true,
             "note": "test note 1"
         },
@@ -43,9 +52,11 @@ describe('AlwaysShowForm', () => {
                 <AlwaysShowForm/>
             </JunkContextProvider>
         );
-
         const notes = screen.getAllByRole('textbox');
         expect(notes).toHaveLength(1);
         expect(notes[0]).toHaveValue("test note 1");
+        const links = screen.getAllByRole('button');
+        expect(links).toHaveLength(1);
+        expect(links[0]).toHaveTextContent("test link 1");
     })
 })
