@@ -16,11 +16,11 @@ function hasAlwaysShow(program: Junk): boolean {
 function sortHasAlwaysShow(program1: Junk, program2: Junk): number {
     return hasAlwaysShow(program1)
         ? hasAlwaysShow(program2)
-            ? 0
+            ? program1.junkname.localeCompare(program2.junkname)
             : -1
         : hasAlwaysShow(program2)
             ? 1
-            : 0;
+            : program1.junkname.localeCompare(program2.junkname);
 }
 
 function OfflineDay({programs, setProgram, removeProgram}: OfflineDayProps) {

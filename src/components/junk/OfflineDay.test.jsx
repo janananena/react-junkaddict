@@ -114,7 +114,7 @@ describe('OfflineDay', () => {
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     })
 
-    it('shows cards in ordner when link or note, note first', async () => {
+    it('shows cards in alphabetical ordner when link or note, note first', async () => {
         render(<OfflineDay programs={[testJunk1, testJunk2]} setProgram={() => {
         }} removeProgram={() => {
         }}/>);
@@ -124,18 +124,28 @@ describe('OfflineDay', () => {
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     })
 
-    it('shows cards in ordner when link or note, link first', async () => {
+    it('shows cards in alphabetical ordner when link or note, link first', async () => {
         render(<OfflineDay programs={[testJunk2, testJunk1]} setProgram={() => {
         }} removeProgram={() => {
         }}/>);
 
         const card1 = screen.getByText('Testy always link');
         const card2 = screen.getByText('Testy always note');
+        expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_PRECEDING);
+    })
+
+    it('shows cards in alphabetical order when no links or notes ordered', async () => {
+        render(<OfflineDay programs={[testJunk3, testJunk4]} setProgram={() => {
+        }} removeProgram={() => {
+        }}/>);
+
+        const card1 = screen.getByText('Testy no always');
+        const card2 = screen.getByText('Testy also no always');
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     })
 
-    it('shows cards in order when no links or notes', async () => {
-        render(<OfflineDay programs={[testJunk3, testJunk4]} setProgram={() => {
+        it('shows cards in alphabetical order when no links or notes', async () => {
+        render(<OfflineDay programs={[testJunk4, testJunk3]} setProgram={() => {
         }} removeProgram={() => {
         }}/>);
 
