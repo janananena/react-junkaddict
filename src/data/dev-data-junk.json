@@ -140,6 +140,10 @@
         {
           "alwaysShow": false,
           "note": "useful note"
+        },
+        {
+          "alwaysShow": true,
+          "note": "always show note"
         }
       ]
     },

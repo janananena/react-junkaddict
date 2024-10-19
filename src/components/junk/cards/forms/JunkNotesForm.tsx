@@ -4,8 +4,6 @@ import {InputGroup, ListGroup} from "react-bootstrap";
 import {Note, useJunkContext} from "../../../../contexts/ProgramContext";
 import {addIcon, deleteIcon, editIcon, saveIcon} from "../../../../data/JunkIcons";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 
@@ -58,15 +56,11 @@ function JunkNotesForm() {
         <Form>
             <ListGroup>
                 {notesState.map((_note, i) =>
-                    <Row key={`${i}`}>
-                        <Col key={`${i}`}>
-                            <InputGroup key={`${i}`}>
-                                <InputGroup.Checkbox type="checkbox" key={`form-checkbox-${i}`} defaultChecked={notesState[i].alwaysShow} onChange={() => handleToggleAlwaysShow(i)}/>
-                                <Form.Control type="input" key={`form-input-${i}`} defaultValue={notesState[i].note} onChange={(event) => handleChangeNote(event, i)} required/>
-                                <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteNote(i)}>{deleteIcon}</Button>
-                            </InputGroup>
-                        </Col>
-                    </Row>
+                    <InputGroup key={`${i}`}>
+                        <InputGroup.Checkbox type="checkbox" key={`form-checkbox-${i}`} defaultChecked={notesState[i].alwaysShow} onChange={() => handleToggleAlwaysShow(i)}/>
+                        <Form.Control type="input" key={`form-input-${i}`} defaultValue={notesState[i].note} onChange={(event) => handleChangeNote(event, i)} required/>
+                        <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteNote(i)}>{deleteIcon}</Button>
+                    </InputGroup>
                 )}
                 <ListGroup horizontal={true}>
                     <ListGroup.Item as='button' action variant="outline-secondary" type="button" key="addNoteButton" name="addNoteButton" onClick={handleAddNote}>

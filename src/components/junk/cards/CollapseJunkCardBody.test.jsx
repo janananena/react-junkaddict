@@ -1,8 +1,7 @@
-import {render, screen} from "@testing-library/react";
+import {getAllByRole, getByRole, getByText, render, screen} from "@testing-library/react";
 import {JunkContextProvider} from "../../../contexts/ProgramContext";
 import {userEvent} from "@testing-library/user-event";
 import CollapseJunkCardBody from "./CollapseJunkCardBody";
-import {changeProgram} from "../../../services/DevDataApiHandlers";
 
 const testJunk = {
     "id": "test-id-collapse",
@@ -25,6 +24,10 @@ const testJunk = {
         {
             "alwaysShow": true,
             "note": "test note 1"
+        },
+        {
+            "alwaysShow": false,
+            "note": "test note 2"
         }
     ]
 }
@@ -36,17 +39,6 @@ describe('CollapseJunkCardBody', () => {
     })
 
     it('shows collapsed content, expands, edit, set off air', async () => {
-        const toggleEdit = vi.fn();
-
-        vi.mock("../../../services/DevDataApiHandlers", () => {
-            const changeProgram = vi.fn();
-            changeProgram.mockImplementation((junk) => {
-                return Promise.resolve(junk);
-            });
-            return {
-                changeProgram: changeProgram
-            };
-        });
 
         render(
             <JunkContextProvider value={{
@@ -55,29 +47,39 @@ describe('CollapseJunkCardBody', () => {
                 }, removeJunk: () => {
                 }
             }}>
-                <CollapseJunkCardBody toggleEditProgram={toggleEdit}/>
+                <CollapseJunkCardBody/>
             </JunkContextProvider>
         );
+
+        // always show
+        const alwaysShowDiv = screen.getByTestId('collapse-content-always');
+        expect(alwaysShowDiv).toHaveClass("collapse show");
+        const texts = getAllByRole(alwaysShowDiv, 'textbox');
+        expect(texts).toHaveLength(1);
+        expect(texts[0]).toHaveValue("test note 1");
 
         // collapsed
         const buttons = screen.getAllByRole('button');
         expect(buttons[0]).toHaveTextContent('more');
-        expect(screen.getByTestId('collapse-content')).not.toHaveClass("collapse show");
+        const collapseContent = screen.getByTestId('collapse-content');
+        expect(collapseContent).not.toHaveClass("collapse show");
 
         // expand
         await userEvent.click(buttons[0]);
 
         // expanded
         expect(buttons[0]).toHaveTextContent('less');
-        expect(screen.getByTestId('collapse-content')).toHaveClass("collapse show");
+        expect(collapseContent).toHaveClass("collapse show");
 
         //content
-        expect(screen.getByText('Season')).toBeInTheDocument();
-        const texts = screen.getByRole('textbox');
-        expect(texts).toHaveValue('test note 1');
-        expect(screen.getByText('test link 1')).toBeInTheDocument();
-        expect(screen.getByText('Edit links')).toBeInTheDocument();
-        expect(screen.getByText('Edit notes')).toBeInTheDocument();
+        expect(getByText(collapseContent, 'Season')).toBeInTheDocument();
+        const opentexts = getAllByRole(collapseContent, 'textbox')
+        expect(opentexts).toHaveLength(2);
+        expect(opentexts[0]).toHaveValue('test note 1');
+        expect(opentexts[1]).toHaveValue('test note 2');
+        expect(getByText(collapseContent, 'test link 1')).toBeInTheDocument();
+        expect(getByText(collapseContent, 'Edit links')).toBeInTheDocument();
+        expect(getByText(collapseContent, 'Edit notes')).toBeInTheDocument();
     })
 
 })
