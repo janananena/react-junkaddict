@@ -1,23 +1,16 @@
-import {useState} from "react";
 import JunkDay from "./JunkDay";
-import AddJunkCardForm from "./cards/forms/AddJunkCardForm";
 import Table from "react-bootstrap/Table";
-import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {addIcon} from "../../data/JunkIcons";
 import {Junk} from "../../contexts/ProgramContext";
 import OfflineDay from "./OfflineDay.tsx";
 
 interface JunkTableCardProps {
     displayPrograms: Junk[],
-    addNewProgram: (junk: Junk) => void,
     changeProgram: (junk: Junk) => void,
     removeProgram: (junk: Junk) => void
 }
 
-function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removeProgram}: JunkTableCardProps) {
-    const [addProgram, setAddProgram] = useState<boolean>(false);
-    const toggleAddForm = () => setAddProgram(!addProgram);
+function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTableCardProps) {
 
     interface DayData {
         [key: string]: Junk[];
@@ -67,14 +60,6 @@ function JunkTableCard({displayPrograms, addNewProgram, changeProgram, removePro
                     </tr>
                     </tbody>
                 </Table>
-            </Card.Body>
-            <Card.Body>
-                <Button type="button" variant="outline-secondary" onClick={toggleAddForm}>
-                    {addIcon}
-                    {' '}
-                    Add
-                </Button>
-                <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddForm={toggleAddForm}/>{' '}
             </Card.Body>
         </Card>
     );

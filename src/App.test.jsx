@@ -20,8 +20,5 @@ describe('App', () => {
         expect(screen.getByRole('navigation')).toBeInTheDocument();
         //Table
         expect(screen.getByText('MO')).toBeInTheDocument();
-        // Addbutton
-        expect(screen.getByText('Add')).toBeInTheDocument();
-
     })
 })

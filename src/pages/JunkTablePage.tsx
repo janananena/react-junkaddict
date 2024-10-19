@@ -37,8 +37,8 @@ function JunkTablePage() {
 
     return (
         <>
-            <JunkNavbar programs={programs} setPrograms={setPrograms} searchString={searchString} setSearchString={setSearchString}/>
-            <JunkTableCard displayPrograms={displayPrograms} addNewProgram={addNewProgram} changeProgram={changeProgram} removeProgram={removeProgram}/>
+            <JunkNavbar programs={programs} setPrograms={setPrograms} searchString={searchString} setSearchString={setSearchString} addNewProgram={addNewProgram}/>
+            <JunkTableCard displayPrograms={displayPrograms} changeProgram={changeProgram} removeProgram={removeProgram}/>
         </>
     );
 }

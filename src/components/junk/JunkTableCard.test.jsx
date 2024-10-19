@@ -42,10 +42,10 @@ const testJunk3 = {
     "time": "12:15",
     "category": "tv",
     "currentSeason": false,
-    "season": "3",
+    "season": "",
     "seen": [],
     "links": [],
-    "notes": ["an offline note"]
+    "notes": []
 }
 
 describe('JunkTableCard', ()=> {
@@ -74,13 +74,6 @@ describe('JunkTableCard', ()=> {
         //ordered
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
         expect(card2.compareDocumentPosition(card3)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
-
-        //addbutton
-        const addbutton = screen.getByText('Add');
-        expect(addbutton).toBeInTheDocument();
-        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
-        await userEvent.click(addbutton);
-        expect(screen.getByRole('dialog')).toBeInTheDocument();
     })
 
 })

@@ -22,7 +22,5 @@ describe('JunkTablePage', () => {
         expect(screen.getByRole('navigation')).toBeInTheDocument();
         //Table
         expect(screen.getByText('MO')).toBeInTheDocument();
-        const addbutton = screen.getByText('Add');
-        expect(addbutton).toBeInTheDocument();
     })
 })
