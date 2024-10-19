@@ -38,7 +38,10 @@
       "season": "",
       "seen": [],
       "links": [
-        "https://www.instagram.com/radioisland.podcast/"
+        {
+          "alwaysShow": false,
+          "junklink": "https://www.instagram.com/radioisland.podcast/"
+        }
       ],
       "notes": []
     },
@@ -134,7 +137,14 @@
         false
       ],
       "links": [
-        "https://test.link"
+        {
+          "alwaysShow": false,
+          "junklink": "https://test.link"
+        },
+        {
+          "alwaysShow": true,
+          "junklink": "https://test.always-show.link"
+        }
       ],
       "notes": [
         {
@@ -160,8 +170,14 @@
       "season": "",
       "seen": [],
       "links": [
-        "https://www.youtube.com/@numadario",
-        "https://www.instagram.com/numadario"
+        {
+          "alwaysShow": true,
+          "junklink": "https://www.youtube.com/@numadario"
+        },
+        {
+          "alwaysShow": false,
+          "junklink": "https://www.instagram.com/numadario"
+        }
       ],
       "notes": []
     },
@@ -270,7 +286,10 @@
       "currentSeason": false,
       "seen": [],
       "links": [
-        "https://www.instagram.com/weirdcrimes_podcast"
+        {
+          "alwaysShow": false,
+          "junklink": "https://www.instagram.com/weirdcrimes_podcast"
+        }
       ],
       "notes": [
         {
@@ -297,7 +316,10 @@
         false
       ],
       "links": [
-        "https://www.youtube.com/@7_vs._wild"
+        {
+          "alwaysShow": false,
+          "junklink": "https://www.youtube.com/@7_vs._wild"
+        }
       ],
       "notes": []
     },
@@ -314,7 +336,10 @@
       "season": "",
       "seen": [],
       "links": [
-        "https://www.youtube.com/@maithinkx"
+        {
+          "alwaysShow": false,
+          "junklink": "https://www.youtube.com/@maithinkx"
+        }
       ],
       "notes": []
     },

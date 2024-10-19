@@ -5,6 +5,11 @@ export interface Note {
     note: string
 }
 
+export interface JunkLink {
+    alwaysShow: boolean,
+    junklink: string
+}
+
 export interface NewJunk {
     junkname: string,
     nick: string | null,
@@ -16,7 +21,7 @@ export interface NewJunk {
     currentSeason: boolean,
     season: string,
     seen: boolean[],
-    links: string[],
+    links: JunkLink[],
     notes: Note[]
 }
 

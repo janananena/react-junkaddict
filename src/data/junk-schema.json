@@ -20,12 +20,28 @@
           },
           "nick": {
             "description": "junk nick name",
-            "type": ["string", "null"]
+            "type": [
+              "string",
+              "null"
+            ]
           },
           "station": {
             "description": "streaming station",
             "type": "string",
-            "enum": ["rtl","joyn","zdf","amazon","ard","spotify","twitch","arte","disney","netflix","sky","youtube"]
+            "enum": [
+              "rtl",
+              "joyn",
+              "zdf",
+              "amazon",
+              "ard",
+              "spotify",
+              "twitch",
+              "arte",
+              "disney",
+              "netflix",
+              "sky",
+              "youtube"
+            ]
           },
           "link": {
             "description": "link to streaming",
@@ -35,7 +51,15 @@
           "day": {
             "description": "new episodes on day",
             "type": "string",
-            "enum": ["mo","di","mi","do","fr","sa","so"]
+            "enum": [
+              "mo",
+              "di",
+              "mi",
+              "do",
+              "fr",
+              "sa",
+              "so"
+            ]
           },
           "time": {
             "description": "new episodes at time",
@@ -45,7 +69,10 @@
           "category": {
             "description": "junk category",
             "type": "string",
-            "enum": ["tv","podcast"]
+            "enum": [
+              "tv",
+              "podcast"
+            ]
           },
           "currentSeason": {
             "description": "currently a season on air",
@@ -67,8 +94,16 @@
             "description": "any other links",
             "type": "array",
             "items": {
-              "type": "string",
-              "format": "uri"
+              "type": "object",
+              "properties": {
+                "alwaysShow": {
+                  "type": "boolean"
+                },
+                "junklink": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
             }
           },
           "notes": {
@@ -77,8 +112,12 @@
             "items": {
               "type": "object",
               "properties": {
-                "alwaysShow": { "type": "boolean"},
-                "note": {"type": "string"}
+                "alwaysShow": {
+                  "type": "boolean"
+                },
+                "note": {
+                  "type": "string"
+                }
               }
             }
           }

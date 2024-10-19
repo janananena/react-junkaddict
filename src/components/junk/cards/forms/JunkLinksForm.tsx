@@ -1,30 +1,42 @@
 import * as React from "react";
+import {useState} from "react";
 import {InputGroup, ListGroup} from "react-bootstrap";
-import {useJunkContext} from "../../../../contexts/ProgramContext";
+import {JunkLink, useJunkContext} from "../../../../contexts/ProgramContext";
 import {addIcon, deleteIcon, editIcon, openIcon, saveIcon} from "../../../../data/JunkIcons";
 import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
-import {useState} from "react";
 
 function JunkLinksForm() {
     const {junk, setJunk} = useJunkContext();
     const [edit, setEdit] = useState<boolean>(false);
 
-    const [linksState, setLinksState] = useState<string[]>(junk.links);
+    const [linksState, setLinksState] = useState<JunkLink[]>(junk.links);
 
     function handleAddLink(): void {
         const links = [...linksState];
-        links.push("");
+        links.push({
+            alwaysShow: false,
+            junklink: ""
+        });
+        setLinksState(links);
+    }
+
+    function handleToggleAlwaysShow(i: number): void {
+        const links = [...linksState];
+        links[i] = {
+            alwaysShow: !links[i].alwaysShow,
+            junklink: links[i].junklink
+        };
         setLinksState(links);
     }
 
     function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>, i: number): void {
         const links = [...linksState];
-        links[i] = event.currentTarget.value;
+        links[i] = {
+            alwaysShow: links[i].alwaysShow,
+            junklink: event.currentTarget.value
+        };
         setLinksState(links);
     }
 
@@ -42,39 +54,35 @@ function JunkLinksForm() {
 
     const editJunkLinks =
         <Form>
-            {linksState.map((link, i) =>
-                <Row key={`${i}`}>
-                    <Col key={`${i}`}>
-                        <InputGroup key={`${i}`}>
-                            <Form.Control type="url" key={`form-link-${i}`} defaultValue={linksState[i]} onChange={(event) => handleChangeLink(event, i)} required/>
-                            <Button type="button" variant="outline-secondary" name={`form-button-${i}`} key={`form-button-${i}`} href={link} onClick={() => window.open(link, "_blank")}>{openIcon}</Button>
-                            <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteLink(i)}>{deleteIcon}</Button>
-                        </InputGroup>
-                    </Col>
-                </Row>
-            )}
-            <Container className="justify-content-start m-1">
-                <Row key="button-row" xs="auto">
-                    <Col key="button-col-add">
-                        <Button variant="outline-secondary" type="button" key="addLinkButton" name="addLinkButton" onClick={handleAddLink}>
-                            {addIcon}
-                        </Button>
-                    </Col>
-                    <Col key="button-col-save">
-                        <Button variant="outline-secondary" type="submit" key="submitLinksButton" name="submitLinksButton" onClick={handleSubmit}>
-                            {saveIcon}
-                        </Button>
-                    </Col>
-                </Row>
-            </Container>
+            <ListGroup>
+                {linksState.map((link, i) =>
+                    <InputGroup key={`${i}`}>
+                        <InputGroup.Checkbox type="checkbox" key={`form-link-checkbox-${i}`} defaultChecked={linksState[i].alwaysShow} onChange={() => handleToggleAlwaysShow(i)}/>
+                        <Form.Control type="url" key={`form-link-${i}`} defaultValue={linksState[i].junklink} onChange={(event) => handleChangeLink(event, i)} required/>
+                        <Button type="button" variant="outline-secondary" name={`form-button-${i}`} key={`form-button-${i}`} href={link.junklink} onClick={() => window.open(link.junklink, "_blank")}>{openIcon}</Button>
+                        <Button type="button" variant="outline-secondary" name={`form-delete-${i}`} key={`form-delete-${i}`} onClick={() => handleDeleteLink(i)}>{deleteIcon}</Button>
+                    </InputGroup>
+                )}
+                <ListGroup horizontal>
+                    <ListGroup.Item action as='button' variant="outline-secondary" type="button" key="addLinkButton" name="addLinkButton" onClick={handleAddLink}>
+                        {addIcon}{' '}Add Link
+                    </ListGroup.Item>
+                    <ListGroup.Item action as='button' variant="outline-secondary" type="submit" key="submitLinksButton" name="submitLinksButton" onClick={handleSubmit}>
+                        {saveIcon}{' '}Save Links
+                    </ListGroup.Item>
+                </ListGroup>
+            </ListGroup>
         </Form>;
 
     const showJunkLinks =
         <ListGroup>
             {linksState.map((link, i) =>
-                <ListGroup.Item action as='button' key={`links-${i}`} onClick={() => window.open(link, "_blank")}>
-                    {link}
-                </ListGroup.Item>
+                <ListGroup key={`links-${i}`}  horizontal>
+                    <InputGroup.Checkbox type="checkbox" key={`form-link-checkbox-${i}`} name={`form-link-checkbox-${i}`} checked={link.alwaysShow} readOnly/>
+                    <ListGroup.Item action as='button' key={`links-${i}`} onClick={() => window.open(link.junklink, "_blank")}>
+                        {link.junklink}
+                    </ListGroup.Item>
+                </ListGroup>
             )}
             <ListGroup.Item action key="editLinksButton" onClick={() => setEdit(true)}>
                 {editIcon}{' '}Edit links

@@ -19,7 +19,16 @@ const testJunk = {
         false,
         false
     ],
-    "links": ["https://www.test.link/1", "https://www.test.link/2"],
+    "links": [
+        {
+            "alwaysShow": true,
+            "junklink": "https://www.test.link/1"
+        },
+        {
+            "alwaysShow": false,
+            "junklink": "https://www.test.link/2"
+        }
+    ],
     "notes": []
 }
 
@@ -40,6 +49,11 @@ describe('JunkLinksForm', () => {
                 <JunkLinksForm/>
             </JunkContextProvider>
         );
+        const checkboxes = screen.getAllByRole('checkbox');
+        expect(checkboxes).toHaveLength(2);
+        expect(checkboxes[0]).toBeChecked();
+        expect(checkboxes[1]).not.toBeChecked();
+
         const linkbuttons = screen.getAllByRole("button");
         expect(linkbuttons).toHaveLength(3);
         expect(linkbuttons[0]).toHaveTextContent("https://www.test.link/1");
@@ -49,13 +63,16 @@ describe('JunkLinksForm', () => {
         // click edit links
         await userEvent.click(linkbuttons[2]);
 
+        // always show
+        const editCheckboxes = screen.getAllByRole('checkbox');
+        expect(checkboxes[0]).toBeChecked();
+        expect(checkboxes[1]).not.toBeChecked();
         // links displayed
-        let text1 = (screen.getAllByRole("textbox"))[0];
-        let text2 = (screen.getAllByRole("textbox"))[1];
-        expect(text1).toHaveValue("https://www.test.link/1");
-        expect(text2).toHaveValue("https://www.test.link/2");
-        expect(text1).toHaveClass("form-control");
-        expect(text2).toHaveClass("form-control");
+        const editLinks = screen.getAllByRole("textbox");
+        expect(editLinks[0]).toHaveValue("https://www.test.link/1");
+        expect(editLinks[1]).toHaveValue("https://www.test.link/2");
+        expect(editLinks[0]).toHaveClass("form-control");
+        expect(editLinks[1]).toHaveClass("form-control");
 
         //buttons
         let buttons = screen.getAllByRole("button");
@@ -69,8 +86,8 @@ describe('JunkLinksForm', () => {
         expect(buttons[5]).toHaveProperty("name", "submitLinksButton");
 
         //links editable
-        await userEvent.type(text2, "/edited");
-        expect(text2).toHaveValue("https://www.test.link/2/edited");
+        await userEvent.type(editLinks[1], "/edited");
+        expect(editLinks[1]).toHaveValue("https://www.test.link/2/edited");
 
         //links openable
         expect(buttons[0]).toHaveProperty("href", "https://www.test.link/1");
@@ -78,23 +95,28 @@ describe('JunkLinksForm', () => {
         // window.open is not implemented in vitest
 
         //links deletable
-        expect(screen.getAllByRole("textbox")).toHaveLength(2);
+        expect(editLinks).toHaveLength(2);
         await userEvent.click(buttons[3]);
-        let texts = screen.getAllByRole("textbox");
+        let texts = screen.getAllByRole('textbox');
         expect(texts).toHaveLength(1);
         expect(texts[0]).toHaveValue("https://www.test.link/1");
 
         //links addable
-        expect(screen.getAllByRole("textbox")).toHaveLength(1);
+        expect(texts).toHaveLength(1);
         // click add
         await userEvent.click(buttons[4]);
-        let newTexts = screen.getAllByRole("textbox");
+        let newTexts = screen.getAllByRole('textbox');
         // new empty row
         expect(newTexts).toHaveLength(2);
-        expect(newTexts[1]).toHaveValue("");
+        expect(newTexts[1]).toHaveValue("")
+        const newTextCheckbox = screen.getAllByRole('checkbox');
+        expect(newTextCheckbox).toHaveLength(2);
+        expect(newTextCheckbox[1]).not.toBeChecked();
         // add new value
         await userEvent.type(newTexts[1], "https://www.test.link/new");
         expect(newTexts[1]).toHaveValue("https://www.test.link/new");
+        await userEvent.click(newTextCheckbox[1]);
+        expect(newTextCheckbox[1]).toBeChecked();
 
         // click submit
         vi.mock("../../../../services/DevDataApiHandlers", () => {
@@ -107,8 +129,11 @@ describe('JunkLinksForm', () => {
             }
         })
         await userEvent.click(buttons[5]);
-        // links correct
         // !edit
+        const newCheckbox = screen.getAllByRole('checkbox');
+        expect(newCheckbox).toHaveLength(2);
+        expect(newCheckbox[0]).toBeChecked();
+        expect(newCheckbox[1]).toBeChecked();
         const newbuttons = screen.getAllByRole("button");
         expect(newbuttons).toHaveLength(3);
         expect(newbuttons[0]).toHaveTextContent("https://www.test.link/1");
