@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import {isEqual} from "lodash-es";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 import {Junk, useJunkContext} from "../../../../contexts/ProgramContext";
@@ -7,7 +8,6 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Modal from "react-bootstrap/Modal";
 import Col from "react-bootstrap/Col";
-import {useState} from "react";
 
 interface EditJunkCardProps {
     showEditProgram: boolean,
@@ -16,13 +16,12 @@ interface EditJunkCardProps {
 
 function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProps) {
     const {junk, setJunk} = useJunkContext();
-    const [currentNick, setCurrentNick] = useState(junk.nick?? '');
+    const [currentNick, setCurrentNick] = useState(junk.nick ?? '');
     const [currentName, setCurrentName] = useState(junk.junkname);
     const [currentStation, setCurrentStation] = useState(junk.station);
     const [currentDay, setCurrentDay] = useState(junk.day);
     const [currentTime, setCurrentTime] = useState(junk.time);
     const [currentLink, setCurrentLink] = useState(junk.link);
-    const [currentSeason, setCurrentSeason] = useState(junk.season);
     const [currentCategory, setCurrentCategory] = useState(junk.category);
 
     function getNewProgram(): Junk {
@@ -35,33 +34,35 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
         newProg.day = currentDay;
         newProg.time = currentTime;
         newProg.link = currentLink;
-        newProg.season = currentSeason;
         newProg.category = currentCategory;
         return newProg;
     }
 
-    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentNick(event.currentTarget.value);
     }
-    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentName(event.currentTarget.value);
     }
-    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>){
+
+    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentStation(event.currentTarget.value);
     }
-    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>){
+
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentDay(event.currentTarget.value);
     }
-    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentTime(event.currentTarget.value);
     }
-    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentLink(event.currentTarget.value);
     }
-    function handleChangeSeason(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
-        setCurrentSeason(event.currentTarget.value);
-    }
-    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>){
+
+    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentCategory(event.currentTarget.value);
     }
 
@@ -76,9 +77,11 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
     }
 
     return (
-        <Modal show={showEditProgram} onHide={toggleEditProgram}>
+        <Modal show={showEditProgram} onHide={toggleEditProgram} backdropClassName="modal-bigger-bagdrop">
             <Form onSubmit={handleEditProgram}>
-                <Modal.Title>Edit Junk</Modal.Title>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit Junk</Modal.Title>
+                </Modal.Header>
                 <Modal.Body>
                     <Row>
                         <Col>
@@ -91,7 +94,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Select id="station" name="station"  value={currentStation} onChange={(event) => handleChangeStation(event)} required>
+                            <Form.Select id="station" name="station" value={currentStation} onChange={(event) => handleChangeStation(event)} required>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
                                 <option key="zdf" value="zdf">ZDF</option>
@@ -107,7 +110,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day"  value={currentDay} onChange={(event) => handleChangeDay(event)} required>
+                            <Form.Select id="day" name="day" value={currentDay} onChange={(event) => handleChangeDay(event)} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>
@@ -118,22 +121,19 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Control id="time" type="time" name="time" step="any"  value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
+                            <Form.Control id="time" type="time" name="time" step="any" value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="link" type="url" name="link" required  value={currentLink} onChange={(event) => handleChangeLink(event)}/>
+                            <Form.Control id="link" type="url" name="link" required value={currentLink} onChange={(event) => handleChangeLink(event)}/>
                         </Col>
                     </Row>
                     <br/>
                     <Row>
                         <Col>
-                            <Form.Control id="season" name="season" type="number" placeholder="Staffel"  value={currentSeason} onChange={(event) => handleChangeSeason(event)}/>
-                        </Col>
-                        <Col>
-                            <Form.Select id="category" name="category"  value={currentCategory} onChange={(event) => handleChangeCategory(event)} required>
+                            <Form.Select id="category" name="category" value={currentCategory} onChange={(event) => handleChangeCategory(event)} required>
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>

@@ -1,5 +1,5 @@
 import {JunkContextProvider} from "../../../../contexts/ProgramContext";
-import {fireEvent, render, screen} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import {userEvent} from "@testing-library/user-event";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 import EditJunkCardForm from "./EditJunkCardForm";
@@ -20,8 +20,8 @@ const testJunk = {
         false,
         false
     ],
-    "links": ["test link 1"],
-    "notes": ["test note 1"]
+    "links": [],
+    "notes": []
 }
 
 const testJunkNoNick = {
@@ -40,8 +40,8 @@ const testJunkNoNick = {
         false,
         false
     ],
-    "links": ["test link 1"],
-    "notes": ["test note 1"]
+    "links": [],
+    "notes": []
 }
 
 describe('EditJunkCardForm', () => {
@@ -106,15 +106,11 @@ describe('EditJunkCardForm', () => {
         const junktime = screen.getByDisplayValue('14:45');
         expect(junktime).toBeInTheDocument();
 
-        const season = screen.getByRole('spinbutton');
-        expect(season).toHaveProperty("name", "season");
-        expect(season).toHaveValue(3);
-
         // buttons
         const buttons = screen.getAllByRole('button');
-        expect(buttons).toHaveLength(2);
-        expect(buttons[0]).toHaveProperty("name", "cancelChange");
-        expect(buttons[1]).toHaveProperty("name", "submitChange");
+        expect(buttons).toHaveLength(3);
+        expect(buttons[1]).toHaveProperty("name", "cancelChange");
+        expect(buttons[2]).toHaveProperty("name", "submitChange");
 
         vi.mock("../../../../services/DevDataApiHandlers", () => {
             const changeProgram = vi.fn();
@@ -137,7 +133,6 @@ describe('EditJunkCardForm', () => {
 
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
-        fireEvent.change(season, {target: {value: '2'}});
 
         expect(inputs[0]).toHaveValue("Testy - edited");
         expect(inputs[1]).toHaveValue("Testershire McTesterson - edited");
@@ -146,10 +141,9 @@ describe('EditJunkCardForm', () => {
         expect(selects[1]).toHaveValue("di");
         expect(selects[2]).toHaveValue("podcast");
         expect(junktime).toHaveValue("08:15");
-        expect(season).toHaveValue(2);
 
         // submit
-        await userEvent.click(buttons[1]);
+        await userEvent.click(buttons[2]);
         // changed values saved, season raised, seen.length+1, onAir
         expect(changeProgram).toHaveBeenCalledTimes(1);
         const testJunk2 = {
@@ -161,7 +155,6 @@ describe('EditJunkCardForm', () => {
             category: "podcast",
             day: "di",
             time: "08:15",
-            season: "2",
         }
         expect(changeProgram).toHaveBeenCalledWith(testJunk2);
         // close modal
@@ -209,15 +202,11 @@ describe('EditJunkCardForm', () => {
         const junktime = screen.getByDisplayValue('14:45');
         expect(junktime).toBeInTheDocument();
 
-        const season = screen.getByRole('spinbutton');
-        expect(season).toHaveProperty("name", "season");
-        expect(season).toHaveValue(3);
-
         // buttons
         const buttons = screen.getAllByRole('button');
-        expect(buttons).toHaveLength(2);
-        expect(buttons[0]).toHaveProperty("name", "cancelChange");
-        expect(buttons[1]).toHaveProperty("name", "submitChange");
+        expect(buttons).toHaveLength(3);
+        expect(buttons[1]).toHaveProperty("name", "cancelChange");
+        expect(buttons[2]).toHaveProperty("name", "submitChange");
 
         vi.mock("../../../../services/DevDataApiHandlers", () => {
             const changeProgram = vi.fn();
@@ -239,7 +228,6 @@ describe('EditJunkCardForm', () => {
 
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
-        fireEvent.change(season, {target: {value: '2'}});
 
         expect(inputs[1]).toHaveValue("Testershire McTesterson - edited");
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten/edited");
@@ -247,10 +235,9 @@ describe('EditJunkCardForm', () => {
         expect(selects[1]).toHaveValue("di");
         expect(selects[2]).toHaveValue("podcast");
         expect(junktime).toHaveValue("08:15");
-        expect(season).toHaveValue(2);
 
         // submit
-        await userEvent.click(buttons[1]);
+        await userEvent.click(buttons[2]);
         // changed values saved, season raised, seen.length+1, onAir
         expect(changeProgram).toHaveBeenCalledTimes(1);
         const testJunk2 = {
@@ -262,7 +249,6 @@ describe('EditJunkCardForm', () => {
             category: "podcast",
             day: "di",
             time: "08:15",
-            season: "2",
         }
         expect(changeProgram).toHaveBeenCalledWith(testJunk2);
         // close modal
