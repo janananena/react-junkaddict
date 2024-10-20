@@ -17,7 +17,7 @@ function CollapseJunkCardBody() {
                     <AlwaysShowForm/>
                 </div>
             </Collapse>
-            <Button type="button" variant="link" area-controls="collapse-content" onClick={() => setExpanded(!expanded)}>
+            <Button type="button" variant="link" area-controls="collapse-content" onClick={() => setExpanded(!expanded)} style={{marginTop:2, marginBottom:2, padding: 0}}>
                 {expanded ? lessIcon : moreIcon}{' '}{expanded ? 'less' : 'more'}
             </Button>
             <Collapse in={expanded}>

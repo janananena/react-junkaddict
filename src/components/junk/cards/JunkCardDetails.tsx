@@ -37,23 +37,26 @@ function JunkCardDetails({toggleEditProgram}: JunkCardDetailProps) {
     }
 
     return (
-        <Card key={junk.id}>
-            <Card.Header>
-                <Card.Link href={junk.link} target="_blank">
-                    <img src={new URL(`/src/assets/logos/${junk.station.toLowerCase()}.jpg`, import.meta.url).href} alt={junk.station} height="50"/>
-                </Card.Link>
-            </Card.Header>
+        <Card key={junk.id} style={{marginBottom:4}}>
             <Card.Body>
+                <Card.Link href={junk.link} target="_blank">
+                    <div style={{width: '100%'}}>
+                        <div style={{width: "fit-content"}}>
+                            <Card.Img variant="top" src={new URL(`/src/assets/logos/${junk.station.toLowerCase()}.jpg`, import.meta.url).href} alt={junk.station} style={{maxHeight: 50, objectFit: "scale-down"}}/>
+                        </div>
+                    </div>
+                </Card.Link>
+                <br style={{display:"block"}}/>
                 {junk.nick && <>
-                    <Card.Title>{junk.nick}</Card.Title>
+                    <Card.Title style={{marginTop:8}}>{junk.nick}</Card.Title>
                     <Card.Subtitle>{junk.junkname}</Card.Subtitle>
                 </>}
-                {!junk.nick && <Card.Title>{junk.junkname}</Card.Title>}
-                {isOnAir && <Card.Text>
-                    {junk.day.map((day)=> capitalizeFirstLetter(day)+' ') } {junk.time} {capitalizeFirstLetter(junk.category)}
+                {!junk.nick && <Card.Title style={{marginTop:8}}>{junk.junkname}</Card.Title>}
+                {isOnAir && <Card.Text style={{marginBottom: 4}}>
+                    {junk.day.map((day) => capitalizeFirstLetter(day) + ' ')} {junk.time} {capitalizeFirstLetter(junk.category)}
                 </Card.Text>}
                 <CollapseJunkCardBody/>
-                <br/>
+                <br style={{lineHeight: '50%'}}/>
                 {isOnAir && <Card.Link onClick={toggleEditProgram}>
                     {editIcon}
                     {' '}

@@ -1,0 +1,19 @@
+id;nick;junkname;station;day;time;link;category;currentSeason;season;seen;links;notes
+7ebc;Promi BB;Promi Big Brother;joyn;mo,di,mi,do,fr,sa,so;20:15;https://www.joyn.de/serien/promi-big-brother;tv;true;;;;
+1;Sommerhaus;Sommerhaus der Stars;rtl;di;20:15;https://plus.rtl.de/video-tv/shows/das-sommerhaus-der-stars-kampf-der-promipaare-761973;tv;true;9;true,true,true,true,true,true,true,true,false;;
+2;;Radio Island;spotify;mo;00:00;https://open.spotify.com/show/1x7rYDZdA8U37afLWU78Hp;podcast;true;;;[object Object];
+3;AYTO;Are you the One;rtl;di;00:00;https://plus.rtl.de/video-tv/shows/are-you-the-one-859291;tv;false;6;true,true,true,true,false,false;;
+6729;AYTO VIP;Are you the One - Realitystars in love;rtl;fr;20:15;https://plus.rtl.de/video-tv/shows/are-you-the-one-reality-stars-in-love-895525;tv;false;4;true,true,true,false;;
+7be6;;Good Luck Guys;joyn;do;20:15;https://www.joyn.de/serien/good-luck-guys;tv;true;1;true;;
+219a;;Zdf Magazin Royale;zdf;fr;20:00;https://www.zdf.de/comedy/zdf-magazin-royale;tv;true;;;;
+7924;Testy;Testershire McTesterson;ard;mi;14:15;https://www.irgendeine.url/zumtesten;tv;true;3;false,false,false;[object Object],[object Object];[object Object],[object Object]
+8270;Roseng;Dario Frank Rosin;twitch;fr;22:00;https://www.twitch.tv/numadario;tv;true;;;[object Object],[object Object];
+d9ac;;Wer stiehlt mir die Show;joyn;so;20:15;https://www.joyn.de/serien/wer-stiehlt-mir-die-show;tv;false;8;true,true,true,true,true,true,true,false;;
+8d88;;Bachelorette;rtl;mo;20:15;https://plus.rtl.de/video-tv/shows/die-bachelorette-135881;tv;true;11;true,true,true,true,true,true,true,true,true,true,false;;
+516d;;Temptation Island VIP;rtl;mi;20:15;https://plus.rtl.de/video-tv/shows/temptation-island-vip-868824;tv;true;5;true,true,true,true,false;;
+0623;;Princess Charming;rtl;di;20:15;https://plus.rtl.de/video-tv/shows/princess-charming-883086;tv;false;4;true,true,true,true;;
+c39b;;Weird Crimes;spotify;do;12:00;https://open.spotify.com/show/5mUoxiityJLco71kEhTArI;podcast;false;;;[object Object];[object Object]
+59c6;;7 vs. wild;amazon;di,do;20:15;https://www.amazon.de/gp/video/detail/B0D1GV1C2M;tv;true;4;true,true,true,false;[object Object];
+79c8;;MaiThink X;zdf;so;06:00;https://www.zdf.de/show/mai-think-x-die-show;tv;true;;;[object Object];
+9dae;;Love Island VIP;rtl;do;20:15;https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705;tv;true;1;false;;[object Object]
+2fd5;DCKS;Die Carolin Kebekus Show;ard;do;20:15;https://www.ardmediathek.de/sendung/die-carolin-kebekus-show/Y3JpZDovL2Rhc2Vyc3RlLmRlL2RpZS1jYXJvbGluLWtlYmVrdXMtc2hvdw;tv;true;;;;[object Object]
