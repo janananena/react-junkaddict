@@ -105,6 +105,19 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                     <br/>
                     <Row>
                         <Col>
+                            <Form.Select id="day" name="day" required multiple value={currentDay} onChange={(event) => handleChangeDay(event)}>
+                                <option key="mo" value="mo">Mo</option>
+                                <option key="di" value="di">Di</option>
+                                <option key="mi" value="mi">Mi</option>
+                                <option key="do" value="do">Do</option>
+                                <option key="fr" value="fr">Fr</option>
+                                <option key="sa" value="sa">Sa</option>
+                                <option key="so" value="so">So</option>
+                            </Form.Select>
+                        </Col>
+                        <Col>
+                            <Form.Control id="time" type="time" name="time" step="any" value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
+                            <br/>
                             <Form.Select id="station" name="station" required value={currentStation} onChange={(event) => handleChangeStation(event)}>
                                 <option key="rtl" value="rtl">RTL</option>
                                 <option key="joyn" value="joyn">Joyn</option>
@@ -119,20 +132,6 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                                 <option key="sky" value="sky">Sky</option>
                                 <option key="youtube" value="youtube">Youtube</option>
                             </Form.Select>
-                        </Col>
-                        <Col>
-                            <Form.Select id="day" name="day" required multiple value={currentDay} onChange={(event) => handleChangeDay(event)}>
-                                <option key="mo" value="mo">Mo</option>
-                                <option key="di" value="di">Di</option>
-                                <option key="mi" value="mi">Mi</option>
-                                <option key="do" value="do">Do</option>
-                                <option key="fr" value="fr">Fr</option>
-                                <option key="sa" value="sa">Sa</option>
-                                <option key="so" value="so">So</option>
-                            </Form.Select>
-                        </Col>
-                        <Col>
-                            <Form.Control id="time" type="time" name="time" step="any" value={currentTime} onChange={(event) => handleChangeTime(event)} required/>
                         </Col>
                     </Row>
                     <br/>
