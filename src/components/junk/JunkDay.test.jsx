@@ -65,7 +65,7 @@ describe('JunkDay', ()=> {
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     })
 
-    it('shows cards in ordner when same time', async () => {
+    it('shows cards in alphabetical ordner when same time', async () => {
         render(<JunkDay programs={[testJunk2,testJunk3]} setProgram={()=>{}} removeProgram={()=>{}}/>);
 
         const card1 = screen.getByText('Testy earlier');
@@ -76,8 +76,8 @@ describe('JunkDay', ()=> {
     it('same time other way around', async () => {
         render(<JunkDay programs={[testJunk3,testJunk2]} setProgram={()=>{}} removeProgram={()=>{}}/>);
 
-        const card1 = screen.getByText('Testy also earlier');
-        const card2 = screen.getByText('Testy earlier');
+        const card1 = screen.getByText('Testy earlier');
+        const card2 = screen.getByText('Testy also earlier');
         expect(card1.compareDocumentPosition(card2)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
     })
 

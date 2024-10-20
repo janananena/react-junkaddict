@@ -1,6 +1,29 @@
 {
   "programs": [
     {
+      "id": "7ebc",
+      "nick": "Promi BB",
+      "junkname": "Promi Big Brother",
+      "station": "joyn",
+      "day": [
+        "mo",
+        "di",
+        "mi",
+        "do",
+        "fr",
+        "sa",
+        "so"
+      ],
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/promi-big-brother",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": []
+    },
+    {
       "id": "1",
       "junkname": "Sommerhaus der Stars",
       "nick": "Sommerhaus",
@@ -418,29 +441,6 @@
           "note": "ab 24.10."
         }
       ]
-    },
-    {
-      "id": "7ebc",
-      "nick": "Promi BB",
-      "junkname": "Promi Big Brother",
-      "station": "joyn",
-      "day": [
-        "mo",
-        "di",
-        "mi",
-        "do",
-        "fr",
-        "sa",
-        "so"
-      ],
-      "time": "20:15",
-      "link": "https://www.joyn.de/serien/promi-big-brother",
-      "category": "tv",
-      "currentSeason": true,
-      "season": "",
-      "seen": [],
-      "links": [],
-      "notes": []
     }
   ]
 }
