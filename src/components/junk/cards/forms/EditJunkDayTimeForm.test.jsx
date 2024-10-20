@@ -10,7 +10,7 @@ const testJunk = {
     "nick": "Testy",
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
-    "day": "mi",
+    "day": ["mi"],
     "time": "14:45",
     "category": "tv",
     "currentSeason": false,
@@ -30,7 +30,7 @@ const testJunkNoSeason = {
     "nick": "Testy",
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
-    "day": "mi",
+    "day": ["mi"],
     "time": "14:45",
     "category": "tv",
     "currentSeason": false,
@@ -79,9 +79,9 @@ describe('EditJunkDayTimeForm', () => {
         // modal shown
         expect(screen.getByRole('dialog')).toBeInTheDocument();
         // fields shown
-        const day = screen.getByRole('combobox');
+        const day = screen.getByRole('listbox');
         expect(day).toHaveProperty("name", "day");
-        expect(day).toHaveValue("mi");
+        expect(day).toHaveValue(["mi"]);
         expect(screen.getAllByRole('option')).toHaveLength(7);
         const junktime = screen.getByDisplayValue('14:45');
         expect(junktime).toBeInTheDocument();
@@ -102,10 +102,10 @@ describe('EditJunkDayTimeForm', () => {
         });
 
         // change values
-        await userEvent.selectOptions(day, "mo");
+        await userEvent.selectOptions(day, ["mo"]);
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
-        expect(day).toHaveValue("mo");
+        expect(day).toHaveValue(["mo", "mi"]);
         expect(junktime).toHaveValue("08:15");
 
         // submit
@@ -114,7 +114,7 @@ describe('EditJunkDayTimeForm', () => {
         expect(changeProgram).toHaveBeenCalledTimes(1);
         const testJunk2 = {
             ...testJunk,
-            day: "mo",
+            day: ["mo", "mi"],
             time: "08:15",
             season: "4",
             seen: [false, false, false, false],
@@ -142,9 +142,9 @@ describe('EditJunkDayTimeForm', () => {
         // modal shown
         expect(screen.getByRole('dialog')).toBeInTheDocument();
         // fields shown
-        const day = screen.getByRole('combobox');
+        const day = screen.getByRole('listbox');
         expect(day).toHaveProperty("name", "day");
-        expect(day).toHaveValue("mi");
+        expect(day).toHaveValue(["mi"]);
         expect(screen.getAllByRole('option')).toHaveLength(7);
         const junktime = screen.getByDisplayValue('14:45');
         expect(junktime).toBeInTheDocument();
@@ -165,10 +165,10 @@ describe('EditJunkDayTimeForm', () => {
         });
 
         // change values
-        await userEvent.selectOptions(day, "so");
+        await userEvent.selectOptions(day, ["so"]);
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "00:00");
-        expect(day).toHaveValue("so");
+        expect(day).toHaveValue(["mi","so"]);
         expect(junktime).toHaveValue("00:00");
 
         // submit
@@ -177,7 +177,7 @@ describe('EditJunkDayTimeForm', () => {
         expect(changeProgram).toHaveBeenCalledTimes(1);
         const testJunk3 = {
             ...testJunkNoSeason,
-            day: "so",
+            day: ["mi","so"],
             time: "00:00",
             currentSeason: true
         }

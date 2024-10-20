@@ -10,12 +10,27 @@ export interface JunkLink {
     junklink: string
 }
 
+export interface DayOption {
+    value: string,
+    label: string
+}
+
+export const junkDayOptions: DayOption[] = [
+    {value: "mo", label: "Mo"},
+    {value: "di", label: "Di"},
+    {value: "mi", label: "Mi"},
+    {value: "do", label: "Do"},
+    {value: "fr", label: "Fr"},
+    {value: "sa", label: "Sa"},
+    {value: "so", label: "So"},
+]
+
 export interface NewJunk {
     junkname: string,
     nick: string | null,
     station: string,
     link: string,
-    day: string,
+    day: string[],
     time: string,
     category: string,
     currentSeason: boolean,
@@ -43,7 +58,7 @@ const ProgramContext = createContext<JunkContext>(
             nick: "",
             station: "",
             link: "",
-            day: "",
+            day: [],
             time: "",
             category: "",
             currentSeason: false,

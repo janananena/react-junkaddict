@@ -18,7 +18,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
     const [currentNick, setCurrentNick] = useState('');
     const [currentName, setCurrentName] = useState('');
     const [currentStation, setCurrentStation] = useState('rtl');
-    const [currentDay, setCurrentDay] = useState('mo');
+    const [currentDay, setCurrentDay] = useState<string[]>(["mo"]);
     const [currentTime, setCurrentTime] = useState('20:15');
     const [currentLink, setCurrentLink] = useState('');
     const [currentCategory, setCurrentCategory] = useState('tv');
@@ -27,7 +27,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
         setCurrentNick("");
         setCurrentName("");
         setCurrentStation("rtl");
-        setCurrentDay("mo");
+        setCurrentDay(["mo"]);
         setCurrentTime("20:15");
         setCurrentLink("");
         setCurrentCategory("tv");
@@ -50,25 +50,32 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
         };
     }
 
-    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+    function handleChangeNick(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentNick(event.currentTarget.value);
     }
-    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeName(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentName(event.currentTarget.value);
     }
-    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>){
+
+    function handleChangeStation(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentStation(event.currentTarget.value);
     }
-    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>){
-        setCurrentDay(event.currentTarget.value);
+
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>) {
+        // @ts-expect-error intellij is wrong, this works
+        setCurrentDay([].slice.call(event.target.selectedOptions).map(item => item.value));
     }
-    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentTime(event.currentTarget.value);
     }
-    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>){
+
+    function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentLink(event.currentTarget.value);
     }
-    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>){
+
+    function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentCategory(event.currentTarget.value);
     }
 
@@ -114,7 +121,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day" required value={currentDay} onChange={(event) => handleChangeDay(event)}>
+                            <Form.Select id="day" name="day" required multiple value={currentDay} onChange={(event) => handleChangeDay(event)}>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>

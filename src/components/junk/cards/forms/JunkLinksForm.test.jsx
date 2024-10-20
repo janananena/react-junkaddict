@@ -9,7 +9,7 @@ const testJunk = {
     "nick": "Testy",
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
-    "day": "mi",
+    "day": ["mi"],
     "time": "14:15",
     "category": "tv",
     "currentSeason": true,

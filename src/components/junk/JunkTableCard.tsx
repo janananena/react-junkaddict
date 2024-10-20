@@ -19,7 +19,9 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
     const dayGroups: DayData = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
     const onAirPrograms = displayPrograms.filter((p) => p.currentSeason);
     const offAirPrograms = displayPrograms.filter((p) => !p.currentSeason);
-    onAirPrograms.map((p) => dayGroups[p.day].push(p));
+    onAirPrograms.map((p) => {
+        p.day.map((day)=> dayGroups[day].push(p))
+    });
 
     const displayTableHeaders = (Object.keys(dayGroups))
         .map((k) =>

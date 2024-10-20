@@ -51,7 +51,8 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
     }
 
     function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>) {
-        setCurrentDay(event.currentTarget.value);
+        // @ts-expect-error intellij is wrong, this works
+        setCurrentDay([].slice.call(event.target.selectedOptions).map(item => item.value));
     }
 
     function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -110,7 +111,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                             </Form.Select>
                         </Col>
                         <Col>
-                            <Form.Select id="day" name="day" value={currentDay} onChange={(event) => handleChangeDay(event)} required>
+                            <Form.Select id="day" name="day" multiple value={currentDay} onChange={(event) => handleChangeDay(event)} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>

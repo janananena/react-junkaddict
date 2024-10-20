@@ -6,7 +6,9 @@
       "nick": "Sommerhaus",
       "station": "rtl",
       "link": "https://plus.rtl.de/video-tv/shows/das-sommerhaus-der-stars-kampf-der-promipaare-761973",
-      "day": "di",
+      "day": [
+        "di"
+      ],
       "time": "20:15",
       "category": "tv",
       "currentSeason": true,
@@ -31,7 +33,9 @@
       "nick": null,
       "station": "spotify",
       "link": "https://open.spotify.com/show/1x7rYDZdA8U37afLWU78Hp",
-      "day": "mo",
+      "day": [
+        "mo"
+      ],
       "time": "00:00",
       "category": "podcast",
       "currentSeason": true,
@@ -51,7 +55,9 @@
       "nick": "AYTO",
       "station": "rtl",
       "link": "https://plus.rtl.de/video-tv/shows/are-you-the-one-859291",
-      "day": "di",
+      "day": [
+        "di"
+      ],
       "time": "00:00",
       "category": "tv",
       "currentSeason": false,
@@ -73,7 +79,9 @@
       "nick": "AYTO VIP",
       "station": "rtl",
       "link": "https://plus.rtl.de/video-tv/shows/are-you-the-one-reality-stars-in-love-895525",
-      "day": "fr",
+      "day": [
+        "fr"
+      ],
       "time": "20:15",
       "category": "tv",
       "currentSeason": false,
@@ -93,7 +101,9 @@
       "nick": null,
       "station": "joyn",
       "link": "https://www.joyn.de/serien/good-luck-guys",
-      "day": "do",
+      "day": [
+        "do"
+      ],
       "time": "20:15",
       "category": "tv",
       "currentSeason": true,
@@ -110,7 +120,9 @@
       "nick": null,
       "station": "zdf",
       "link": "https://www.zdf.de/comedy/zdf-magazin-royale",
-      "day": "fr",
+      "day": [
+        "fr"
+      ],
       "time": "20:00",
       "category": "tv",
       "currentSeason": true,
@@ -125,7 +137,9 @@
       "nick": "Testy",
       "station": "ard",
       "link": "https://www.irgendeine.url/zumtesten",
-      "day": "mi",
+      "day": [
+        "mi"
+      ],
       "time": "14:15",
       "category": "tv",
       "currentSeason": true,
@@ -162,7 +176,9 @@
       "nick": "Roseng",
       "station": "twitch",
       "link": "https://www.twitch.tv/numadario",
-      "day": "fr",
+      "day": [
+        "fr"
+      ],
       "time": "22:00",
       "category": "tv",
       "currentSeason": true,
@@ -185,7 +201,9 @@
       "nick": "",
       "junkname": "Wer stiehlt mir die Show",
       "station": "joyn",
-      "day": "so",
+      "day": [
+        "so"
+      ],
       "time": "20:15",
       "link": "https://www.joyn.de/serien/wer-stiehlt-mir-die-show",
       "season": "8",
@@ -209,7 +227,9 @@
       "nick": "",
       "junkname": "Bachelorette",
       "station": "rtl",
-      "day": "mo",
+      "day": [
+        "mo"
+      ],
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/die-bachelorette-135881",
       "season": "11",
@@ -236,7 +256,9 @@
       "nick": "",
       "junkname": "Temptation Island VIP",
       "station": "rtl",
-      "day": "mi",
+      "day": [
+        "mi"
+      ],
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/temptation-island-vip-868824",
       "category": "tv",
@@ -257,7 +279,9 @@
       "nick": "",
       "junkname": "Princess Charming",
       "station": "rtl",
-      "day": "di",
+      "day": [
+        "di"
+      ],
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/princess-charming-883086",
       "season": "4",
@@ -277,7 +301,9 @@
       "nick": "",
       "junkname": "Weird Crimes",
       "station": "spotify",
-      "day": "do",
+      "day": [
+        "do"
+      ],
       "time": "12:00",
       "link": "https://open.spotify.com/show/5mUoxiityJLco71kEhTArI",
       "season": "",
@@ -302,7 +328,10 @@
       "nick": "",
       "junkname": "7 vs. wild",
       "station": "amazon",
-      "day": "di",
+      "day": [
+        "di",
+        "do"
+      ],
       "time": "20:15",
       "link": "https://www.amazon.de/gp/video/detail/B0D1GV1C2M",
       "category": "tv",
@@ -320,19 +349,16 @@
           "junklink": "https://www.youtube.com/@7_vs._wild"
         }
       ],
-      "notes": [
-        {
-          "alwaysShow": true,
-          "note": "Di UND Do!!"
-        }
-      ]
+      "notes": []
     },
     {
       "id": "79c8",
       "nick": "",
       "junkname": "MaiThink X",
       "station": "zdf",
-      "day": "so",
+      "day": [
+        "so"
+      ],
       "time": "06:00",
       "link": "https://www.zdf.de/show/mai-think-x-die-show",
       "category": "tv",
@@ -352,7 +378,9 @@
       "nick": "",
       "junkname": "Love Island VIP",
       "station": "rtl",
-      "day": "do",
+      "day": [
+        "do"
+      ],
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705",
       "category": "tv",
@@ -374,7 +402,9 @@
       "nick": "DCKS",
       "junkname": "Die Carolin Kebekus Show",
       "station": "ard",
-      "day": "do",
+      "day": [
+        "do"
+      ],
       "time": "20:15",
       "link": "https://www.ardmediathek.de/sendung/die-carolin-kebekus-show/Y3JpZDovL2Rhc2Vyc3RlLmRlL2RpZS1jYXJvbGluLWtlYmVrdXMtc2hvdw",
       "category": "tv",
@@ -394,7 +424,15 @@
       "nick": "Promi BB",
       "junkname": "Promi Big Brother",
       "station": "joyn",
-      "day": "mo",
+      "day": [
+        "mo",
+        "di",
+        "mi",
+        "do",
+        "fr",
+        "sa",
+        "so"
+      ],
       "time": "20:15",
       "link": "https://www.joyn.de/serien/promi-big-brother",
       "category": "tv",
@@ -402,12 +440,7 @@
       "season": "",
       "seen": [],
       "links": [],
-      "notes": [
-        {
-          "alwaysShow": true,
-          "note": "Täglich!"
-        }
-      ]
+      "notes": []
     }
   ]
 }

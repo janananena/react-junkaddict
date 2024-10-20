@@ -50,7 +50,7 @@ function JunkCardDetails({toggleEditProgram}: JunkCardDetailProps) {
                 </>}
                 {!junk.nick && <Card.Title>{junk.junkname}</Card.Title>}
                 {isOnAir && <Card.Text>
-                    {capitalizeFirstLetter(junk.day)} {junk.time} {capitalizeFirstLetter(junk.category)}
+                    {junk.day.map((day)=> capitalizeFirstLetter(day)+' ') } {junk.time} {capitalizeFirstLetter(junk.category)}
                 </Card.Text>}
                 <CollapseJunkCardBody/>
                 <br/>

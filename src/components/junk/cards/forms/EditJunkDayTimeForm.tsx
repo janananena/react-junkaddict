@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import {changeProgram} from "../../../../services/DevDataApiHandlers";
 import {Junk, useJunkContext} from "../../../../contexts/ProgramContext";
 import Form from "react-bootstrap/Form";
@@ -6,7 +7,6 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {useState} from "react";
 
 interface EditJunkDayTimeProps {
     setOnAir: boolean,
@@ -34,8 +34,9 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}: EditJunkDa
         };
     }
 
-    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>): void {
-        setCurrentDay(event.currentTarget.value);
+    function handleChangeDay(event: React.ChangeEvent<HTMLSelectElement>) {
+        // @ts-expect-error intellij is wrong, this works
+        setCurrentDay([].slice.call(event.target.selectedOptions).map(item => item.value));
     }
 
     function handleChangeTime(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void {
@@ -50,12 +51,12 @@ function EditJunkDayTimeForm({setOnAir, showNewSeason, handleCancel}: EditJunkDa
     }
 
     return (
-        <Modal show={showNewSeason} onHide={handleCancel}>
+        <Modal show={showNewSeason} onHide={handleCancel} backdropClassName="modal-bigger-bagdrop">
             <Form onSubmit={handleSubmit}>
                 <Modal.Body>
                     <Row>
                         <Col>
-                            <Form.Select id="day" name="day" value={currentDay} onChange={(event) => handleChangeDay(event)} required>
+                            <Form.Select id="day" name="day" multiple value={currentDay} onChange={(event) => handleChangeDay(event)} required>
                                 <option key="mo" value="mo">Mo</option>
                                 <option key="di" value="di">Di</option>
                                 <option key="mi" value="mi">Mi</option>

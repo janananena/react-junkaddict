@@ -25,7 +25,7 @@ function DeleteJunkCardForm() {
 
     return (
         <>
-            <Modal show={confirmDeleteProgram} onHide={toggleDeleteProgram}>
+            <Modal show={confirmDeleteProgram} onHide={toggleDeleteProgram} backdropClassName="modal-bigger-bagdrop">
                 <Form onSubmit={handleDeleteProgram}>
                     <Modal.Header closeButton>
                         <Modal.Title>Delete Junk?</Modal.Title>

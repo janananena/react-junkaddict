@@ -49,17 +49,20 @@
             "format": "uri"
           },
           "day": {
-            "description": "new episodes on day",
-            "type": "string",
-            "enum": [
-              "mo",
-              "di",
-              "mi",
-              "do",
-              "fr",
-              "sa",
-              "so"
-            ]
+            "description": "new episodes on days",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "mo",
+                "di",
+                "mi",
+                "do",
+                "fr",
+                "sa",
+                "so"
+              ]
+            }
           },
           "time": {
             "description": "new episodes at time",

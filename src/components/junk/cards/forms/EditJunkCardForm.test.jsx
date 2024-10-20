@@ -10,7 +10,7 @@ const testJunk = {
     "nick": "Testy",
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
-    "day": "mi",
+    "day": ["mi"],
     "time": "14:45",
     "category": "tv",
     "currentSeason": true,
@@ -30,7 +30,7 @@ const testJunkNoNick = {
     "junkname": "Testershire McTesterson",
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
-    "day": "mi",
+    "day": ["mi"],
     "time": "14:45",
     "category": "tv",
     "currentSeason": true,
@@ -58,7 +58,8 @@ describe('EditJunkCardForm', () => {
                 }, removeJunk: () => {
                 }
             }}>
-                <EditJunkCardForm showEditProgram={false} toggleEditProgram={() => {}}/>
+                <EditJunkCardForm showEditProgram={false} toggleEditProgram={() => {
+                }}/>
             </JunkContextProvider>
         );
 
@@ -93,13 +94,16 @@ describe('EditJunkCardForm', () => {
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten");
 
         const selects = screen.getAllByRole('combobox');
-        expect(selects).toHaveLength(3);
+        expect(selects).toHaveLength(2);
         expect(selects[0]).toHaveProperty("name", "station");
-        expect(selects[1]).toHaveProperty("name", "day");
-        expect(selects[2]).toHaveProperty("name", "category");
+        expect(selects[1]).toHaveProperty("name", "category");
         expect(selects[0]).toHaveValue("ard");
-        expect(selects[1]).toHaveValue("mi");
-        expect(selects[2]).toHaveValue("tv");
+        expect(selects[1]).toHaveValue("tv");
+
+        const listboxes = screen.getAllByRole('listbox');
+        expect(listboxes).toHaveLength(1);
+        expect(listboxes[0]).toHaveProperty("name", "day");
+        expect(listboxes[0]).toHaveValue(["mi"]);
 
         expect(screen.getAllByRole('option')).toHaveLength(21);
 
@@ -128,8 +132,9 @@ describe('EditJunkCardForm', () => {
         await userEvent.type(inputs[2], "/edited");
 
         await userEvent.selectOptions(selects[0], "zdf");
-        await userEvent.selectOptions(selects[1], "di");
-        await userEvent.selectOptions(selects[2], "podcast");
+        await userEvent.selectOptions(selects[1], "podcast");
+
+        await userEvent.selectOptions(listboxes[0], "di");
 
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
@@ -138,8 +143,8 @@ describe('EditJunkCardForm', () => {
         expect(inputs[1]).toHaveValue("Testershire McTesterson - edited");
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten/edited");
         expect(selects[0]).toHaveValue("zdf");
-        expect(selects[1]).toHaveValue("di");
-        expect(selects[2]).toHaveValue("podcast");
+        expect(selects[1]).toHaveValue("podcast");
+        expect(listboxes[0]).toHaveValue(["di", "mi"]);
         expect(junktime).toHaveValue("08:15");
 
         // submit
@@ -153,7 +158,7 @@ describe('EditJunkCardForm', () => {
             link: "https://www.irgendeine.url/zumtesten/edited",
             station: "zdf",
             category: "podcast",
-            day: "di",
+            day: ["di", "mi"],
             time: "08:15",
         }
         expect(changeProgram).toHaveBeenCalledWith(testJunk2);
@@ -189,13 +194,16 @@ describe('EditJunkCardForm', () => {
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten");
 
         const selects = screen.getAllByRole('combobox');
-        expect(selects).toHaveLength(3);
+        expect(selects).toHaveLength(2);
         expect(selects[0]).toHaveProperty("name", "station");
-        expect(selects[1]).toHaveProperty("name", "day");
-        expect(selects[2]).toHaveProperty("name", "category");
+        expect(selects[1]).toHaveProperty("name", "category");
         expect(selects[0]).toHaveValue("ard");
-        expect(selects[1]).toHaveValue("mi");
-        expect(selects[2]).toHaveValue("tv");
+        expect(selects[1]).toHaveValue("tv");
+
+        const listboxes = screen.getAllByRole('listbox');
+        expect(listboxes).toHaveLength(1);
+        expect(listboxes[0]).toHaveProperty("name", "day");
+        expect(listboxes[0]).toHaveValue(["mi"]);
 
         expect(screen.getAllByRole('option')).toHaveLength(21);
 
@@ -223,8 +231,9 @@ describe('EditJunkCardForm', () => {
         await userEvent.type(inputs[2], "/edited");
 
         await userEvent.selectOptions(selects[0], "zdf");
-        await userEvent.selectOptions(selects[1], "di");
-        await userEvent.selectOptions(selects[2], "podcast");
+        await userEvent.selectOptions(selects[1], "podcast");
+
+        await userEvent.selectOptions(listboxes[0], "di");
 
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
@@ -232,8 +241,8 @@ describe('EditJunkCardForm', () => {
         expect(inputs[1]).toHaveValue("Testershire McTesterson - edited");
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten/edited");
         expect(selects[0]).toHaveValue("zdf");
-        expect(selects[1]).toHaveValue("di");
-        expect(selects[2]).toHaveValue("podcast");
+        expect(selects[1]).toHaveValue("podcast");
+        expect(listboxes[0]).toHaveValue(["di", "mi"]);
         expect(junktime).toHaveValue("08:15");
 
         // submit
@@ -247,7 +256,7 @@ describe('EditJunkCardForm', () => {
             link: "https://www.irgendeine.url/zumtesten/edited",
             station: "zdf",
             category: "podcast",
-            day: "di",
+            day: ["di", "mi"],
             time: "08:15",
         }
         expect(changeProgram).toHaveBeenCalledWith(testJunk2);

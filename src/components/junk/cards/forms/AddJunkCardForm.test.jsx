@@ -59,13 +59,16 @@ describe('AddJunkCardForm', () => {
         expect(inputs[2]).toHaveValue("");
 
         const selects = screen.getAllByRole('combobox');
-        expect(selects).toHaveLength(3);
+        expect(selects).toHaveLength(2);
         expect(selects[0]).toHaveProperty("name", "station");
-        expect(selects[1]).toHaveProperty("name", "day");
-        expect(selects[2]).toHaveProperty("name", "category");
+        expect(selects[1]).toHaveProperty("name", "category");
         expect(selects[0]).toHaveValue("rtl");
-        expect(selects[1]).toHaveValue("mo");
-        expect(selects[2]).toHaveValue("tv");
+        expect(selects[1]).toHaveValue("tv");
+
+        const listboxes = screen.getAllByRole('listbox');
+        expect(listboxes).toHaveLength(1);
+        expect(listboxes[0]).toHaveProperty("name", "day");
+        expect(listboxes[0]).toHaveValue(["mo"]);
 
         const junktime = screen.getByDisplayValue('20:15');
         expect(junktime).toBeInTheDocument();
@@ -78,8 +81,9 @@ describe('AddJunkCardForm', () => {
         await userEvent.type(inputs[2], "https://test.link");
 
         await userEvent.selectOptions(selects[0], "zdf");
-        await userEvent.selectOptions(selects[1], "di");
-        await userEvent.selectOptions(selects[2], "podcast");
+        await userEvent.selectOptions(selects[1], "podcast");
+
+        await userEvent.selectOptions(listboxes[0], ["di"]);
 
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "14:45");
@@ -92,7 +96,7 @@ describe('AddJunkCardForm', () => {
             link: "https://test.link",
             station: "zdf",
             category: "podcast",
-            day: "di",
+            day: ["mo","di"],
             time: "14:45",
             season: "",
             currentSeason: true,
