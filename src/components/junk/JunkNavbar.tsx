@@ -48,18 +48,18 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString, addNe
                 <Navbar.Brand key="brand" name="brand" href="https://github.com/janananena/react-junkaddict" target="_blank">
                     {junk}{' '}Reality Stundenplan
                 </Navbar.Brand>
-                <Button type="button" variant="secondary" onClick={toggleAddForm}>
-                    {addIcon}{' '}Add new Show
+                <Button type="button" variant="secondary" onClick={toggleAddForm} style={{ display: "inline-flex", alignItems: "center" , whiteSpace: "pre-wrap"}}>
+                    {addIcon} Add new Show
                 </Button>
                 <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddForm={toggleAddForm}/>
                 <ExportCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
                 <ImportCSV setJunks={setPrograms}/>
             </Container>
             <Container className="justify-content-end gap-2">
-                <Button type="button" variant="secondary" onClick={() => searchString === 'tv'? setSearchString('') : setSearchString('tv')}>
+                <Button type="button" variant="secondary" onClick={() => searchString === 'tv' ? setSearchString('') : setSearchString('tv')}>
                     Videos
                 </Button>
-                <Button type="button" variant="secondary" onClick={() => searchString === 'podcast'? setSearchString('') : setSearchString('podcast')}>
+                <Button type="button" variant="secondary" onClick={() => searchString === 'podcast' ? setSearchString('') : setSearchString('podcast')}>
                     Podcasts
                 </Button>
                 <Form>
