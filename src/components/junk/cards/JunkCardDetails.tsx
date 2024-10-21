@@ -36,6 +36,7 @@ function JunkCardDetails({toggleEditProgram}: JunkCardDetailProps) {
     const soonOnAir = isOnAir && soon;
     const startDate = new Date(Date.parse(junk.startDate!));
     const passed = new Date() > startDate;
+    const displayDays = junk.day.length === 7 ? 'Daily' : junk.day.map((day) => capitalizeFirstLetter(day) + ' ');
 
     async function handleSetOffAir(event: React.MouseEvent<HTMLButtonElement>): Promise<void> {
         event.preventDefault();
@@ -66,7 +67,7 @@ function JunkCardDetails({toggleEditProgram}: JunkCardDetailProps) {
                 </>}
                 {!junk.nick && <Card.Title style={{marginTop: 8}}>{junk.junkname}</Card.Title>}
                 {onOnAir && <Card.Text style={{marginBottom: 4}}>
-                    {junk.day.map((day) => capitalizeFirstLetter(day) + ' ')} {junk.time} {capitalizeFirstLetter(junk.category)}
+                    {displayDays} {junk.time} {capitalizeFirstLetter(junk.category)}
                 </Card.Text>}
                 {soonOnAir &&
                     <Stack direction="horizontal" gap={2} style={{marginBottom: 4}}>
