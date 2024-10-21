@@ -17,6 +17,7 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
     }
 
     const dayGroups: DayData = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
+    const today = new Date().toLocaleString('de-de', {  weekday: 'short' }).toLowerCase();
     const onAirPrograms = displayPrograms.filter((p) => p.currentSeason);
     const offAirPrograms = displayPrograms.filter((p) => !p.currentSeason);
     onAirPrograms.map((p) => {
@@ -25,8 +26,8 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
 
     const displayTableHeaders = (Object.keys(dayGroups))
         .map((k) =>
-            <td key={k}>
-                <h5>{k.toUpperCase()}</h5>
+            <td key={k} className={(k === today)? 'table-active': ''} style={{borderRight: "1px solid var(--bs-card-border-color)"}}>
+                <h5 style={(k === today)?{textDecoration:'underline'}: {}}>{k.toUpperCase()}</h5>
             </td>
         );
     displayTableHeaders.push(
@@ -37,7 +38,7 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
 
     const displayTableBodyJunkDays = (Object.entries(dayGroups))
         .map(([k, v]) =>
-            <td key={k + 'Col'}>
+            <td key={k + 'Col'} className={(k === today)? 'table-active': ''} style={{borderRight: '1px solid var(--bs-card-border-color)'}}>
                 <JunkDay programs={v} setProgram={changeProgram} removeProgram={removeProgram}/>
             </td>
         );
@@ -50,7 +51,7 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
     return (
         <Card>
             <Card.Body>
-                <Table striped="columns" borderless>
+                <Table borderless>
                     <thead>
                     <tr>
                         {displayTableHeaders}
