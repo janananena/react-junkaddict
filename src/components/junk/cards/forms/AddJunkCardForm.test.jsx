@@ -102,7 +102,8 @@ describe('AddJunkCardForm', () => {
             currentSeason: true,
             seen: [],
             links: [],
-            notes: []
+            notes: [],
+            startDate: null
         }
 
         expect(addProgram).toHaveBeenCalledTimes(1);

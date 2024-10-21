@@ -15,16 +15,6 @@ export interface DayOption {
     label: string
 }
 
-export const junkDayOptions: DayOption[] = [
-    {value: "mo", label: "Mo"},
-    {value: "di", label: "Di"},
-    {value: "mi", label: "Mi"},
-    {value: "do", label: "Do"},
-    {value: "fr", label: "Fr"},
-    {value: "sa", label: "Sa"},
-    {value: "so", label: "So"},
-]
-
 export interface NewJunk {
     junkname: string,
     nick: string | null,
@@ -37,7 +27,8 @@ export interface NewJunk {
     season: string,
     seen: boolean[],
     links: JunkLink[],
-    notes: Note[]
+    notes: Note[],
+    startDate: string | null
 }
 
 export interface Junk extends NewJunk {
@@ -65,7 +56,8 @@ const ProgramContext = createContext<JunkContext>(
             season: "",
             seen: [],
             links: [],
-            notes: []
+            notes: [],
+            startDate: ""
         },
         setJunk: () => {
         },

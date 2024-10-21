@@ -191,7 +191,8 @@
           "alwaysShow": true,
           "note": "always show note"
         }
-      ]
+      ],
+      "startDate": "2024-06-06"
     },
     {
       "id": "8270",
@@ -413,12 +414,8 @@
         false
       ],
       "links": [],
-      "notes": [
-        {
-          "alwaysShow": true,
-          "note": "ab 24.10."
-        }
-      ]
+      "notes": [],
+      "startDate": "2024-10-24"
     },
     {
       "id": "2fd5",
@@ -435,12 +432,8 @@
       "season": "",
       "seen": [],
       "links": [],
-      "notes": [
-        {
-          "alwaysShow": true,
-          "note": "ab 24.10."
-        }
-      ]
+      "notes": [],
+      "startDate": "2024-10-24"
     }
   ]
 }

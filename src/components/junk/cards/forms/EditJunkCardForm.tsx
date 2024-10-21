@@ -23,6 +23,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
     const [currentTime, setCurrentTime] = useState(junk.time);
     const [currentLink, setCurrentLink] = useState(junk.link);
     const [currentCategory, setCurrentCategory] = useState(junk.category);
+    const [currentStartDate, setCurrentStartDate] = useState(junk.startDate == null? undefined : junk.startDate);
 
     function getNewProgram(): Junk {
         const newProg = {...junk};
@@ -35,6 +36,7 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
         newProg.time = currentTime;
         newProg.link = currentLink;
         newProg.category = currentCategory;
+        newProg.startDate = currentStartDate !== undefined ? currentStartDate : null;
         return newProg;
     }
 
@@ -65,6 +67,10 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
 
     function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentCategory(event.currentTarget.value);
+    }
+
+    function handleChangeStartDate(event: React.ChangeEvent<HTMLInputElement>) {
+        setCurrentStartDate(event.currentTarget.value);
     }
 
     async function handleEditProgram(event: React.FormEvent<HTMLFormElement>): Promise<void> {
@@ -137,6 +143,14 @@ function EditJunkCardForm({showEditProgram, toggleEditProgram}: EditJunkCardProp
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
+                        </Col>
+                        <Col style={{textAlign: "right"}}>
+                            <Form.Label column={true}>
+                                Start Date?
+                            </Form.Label>
+                        </Col>
+                        <Col>
+                            <Form.Control id="startdate" key="startdate" name="startdate" type="date" value={currentStartDate} onChange={handleChangeStartDate}/>
                         </Col>
                     </Row>
                 </Modal.Body>

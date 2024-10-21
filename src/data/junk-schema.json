@@ -123,6 +123,11 @@
                 }
               }
             }
+          },
+          "startDate": {
+            "description": "start date of a new season",
+            "type": "string",
+            "format": "date"
           }
         },
         "required": [

@@ -21,7 +21,8 @@ const testJunk = {
         false
     ],
     "links": [],
-    "notes": []
+    "notes": [],
+    "startDate": "2024-10-21"
 }
 
 const testJunkNoNick = {
@@ -41,7 +42,8 @@ const testJunkNoNick = {
         false
     ],
     "links": [],
-    "notes": []
+    "notes": [],
+    "startDate": null
 }
 
 describe('EditJunkCardForm', () => {
@@ -110,6 +112,9 @@ describe('EditJunkCardForm', () => {
         const junktime = screen.getByDisplayValue('14:45');
         expect(junktime).toBeInTheDocument();
 
+        const startdate = screen.getByDisplayValue('2024-10-21');
+        expect(startdate).toBeInTheDocument();
+
         // buttons
         const buttons = screen.getAllByRole('button');
         expect(buttons).toHaveLength(3);
@@ -139,6 +144,9 @@ describe('EditJunkCardForm', () => {
         await userEvent.clear(junktime);
         await userEvent.type(junktime, "08:15");
 
+        await userEvent.clear(startdate);
+        await userEvent.type(startdate, "2024-11-29");
+
         expect(inputs[0]).toHaveValue("Testy - edited");
         expect(inputs[1]).toHaveValue("Testershire McTesterson - edited");
         expect(inputs[2]).toHaveValue("https://www.irgendeine.url/zumtesten/edited");
@@ -146,6 +154,7 @@ describe('EditJunkCardForm', () => {
         expect(selects[1]).toHaveValue("podcast");
         expect(listboxes[0]).toHaveValue(["di", "mi"]);
         expect(junktime).toHaveValue("08:15");
+        expect(startdate).toHaveValue("2024-11-29");
 
         // submit
         await userEvent.click(buttons[2]);
@@ -160,6 +169,7 @@ describe('EditJunkCardForm', () => {
             category: "podcast",
             day: ["di", "mi"],
             time: "08:15",
+            startDate: "2024-11-29"
         }
         expect(changeProgram).toHaveBeenCalledWith(testJunk2);
         // close modal

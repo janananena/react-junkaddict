@@ -22,6 +22,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
     const [currentTime, setCurrentTime] = useState('20:15');
     const [currentLink, setCurrentLink] = useState('');
     const [currentCategory, setCurrentCategory] = useState('tv');
+    const [currentStartDate, setCurrentStartDate] = useState<string>('');
 
     function resetFields(): void {
         setCurrentNick("");
@@ -31,6 +32,7 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
         setCurrentTime("20:15");
         setCurrentLink("");
         setCurrentCategory("tv");
+        setCurrentStartDate("");
     }
 
     function copyWithDefaults(): NewJunk {
@@ -46,7 +48,8 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
             season: "",
             seen: [],
             links: [],
-            notes: []
+            notes: [],
+            startDate: currentStartDate === '' ? null : currentStartDate
         };
     }
 
@@ -77,6 +80,10 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
 
     function handleChangeCategory(event: React.ChangeEvent<HTMLSelectElement>) {
         setCurrentCategory(event.currentTarget.value);
+    }
+
+    function handleChangeStartDate(event: React.ChangeEvent<HTMLInputElement>) {
+        setCurrentStartDate(event.currentTarget.value);
     }
 
     async function handleAdd(event: React.FormEvent<HTMLFormElement>): Promise<void> {
@@ -147,6 +154,14 @@ function AddJunkCardForm({showAddForm, toggleAddForm, addNewProgram}: AddJunkCar
                                 <option value="tv">Video</option>
                                 <option value="podcast">Podcast</option>
                             </Form.Select>
+                        </Col>
+                        <Col style={{textAlign: "right"}}>
+                            <Form.Label column={true}>
+                                Start Date?
+                            </Form.Label>
+                        </Col>
+                        <Col>
+                            <Form.Control id="startdate" key="startdate" name="startdate" type="date" value={currentStartDate} onChange={handleChangeStartDate}/>
                         </Col>
                     </Row>
                 </Modal.Body>
