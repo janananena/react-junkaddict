@@ -56,6 +56,12 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString, addNe
                 <ImportCSV setJunks={setPrograms}/>
             </Container>
             <Container className="justify-content-end gap-2">
+                <Button type="button" variant="secondary" onClick={() => searchString === 'tv'? setSearchString('') : setSearchString('tv')}>
+                    Videos
+                </Button>
+                <Button type="button" variant="secondary" onClick={() => searchString === 'podcast'? setSearchString('') : setSearchString('podcast')}>
+                    Podcasts
+                </Button>
                 <Form>
                     <Form.Control type="input" placeholder="filter" key="searchFilter" name="searchFilter" defaultValue={searchString} onChange={handleInputChanges}/>
                 </Form>

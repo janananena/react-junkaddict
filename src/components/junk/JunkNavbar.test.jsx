@@ -9,7 +9,7 @@ describe('JunkNavbar', () => {
 
         render(
             <JunkNavbar programs={[]} setPrograms={() => {
-        }} searchString={"test"} setSearchString={setFilter}/>);
+            }} searchString={"test"} setSearchString={setFilter}/>);
 
         //show brand
         expect(screen.getByRole('navigation')).toBeInTheDocument();
@@ -17,16 +17,20 @@ describe('JunkNavbar', () => {
         expect(screen.getByText('Reality Stundenplan')).toBeInTheDocument();
         //show excel buttons
         const buttons = screen.getAllByRole('button');
-        expect(buttons).toHaveLength(4);
+        expect(buttons).toHaveLength(6);
         expect(buttons[0]).toBeInTheDocument();
         expect(buttons[0]).toHaveTextContent('Add new Show');
         expect(buttons[1]).toBeInTheDocument();
         expect(buttons[1]).toHaveTextContent('Download CSV');
         expect(buttons[2]).toBeInTheDocument();
         expect(buttons[2]).toHaveTextContent('Upload CSV');
-        //show light mode switch
         expect(buttons[3]).toBeInTheDocument();
-        expect(buttons[3]).toHaveProperty("name", 'modeswitch-darkMode');
+        expect(buttons[3]).toHaveTextContent('Video');
+        expect(buttons[4]).toBeInTheDocument();
+        expect(buttons[4]).toHaveTextContent('Podcast');
+        //show light mode switch
+        expect(buttons[5]).toBeInTheDocument();
+        expect(buttons[5]).toHaveProperty("name", 'modeswitch-darkMode');
         //show given search filter
         const searchfilter = screen.getByRole('textbox');
         expect(searchfilter).toHaveProperty("name", "searchFilter");
@@ -41,10 +45,10 @@ describe('JunkNavbar', () => {
         expect(setFilter).toBeCalledWith("jeez");
 
         //toggle light mode
-        await userEvent.click(buttons[3]);
-        expect(buttons[3]).toHaveProperty("name", 'modeswitch-lightMode');
-        await userEvent.click(buttons[3]);
-        expect(buttons[3]).toHaveProperty("name", 'modeswitch-darkMode');
+        await userEvent.click(buttons[5]);
+        expect(buttons[5]).toHaveProperty("name", 'modeswitch-lightMode');
+        await userEvent.click(buttons[5]);
+        expect(buttons[5]).toHaveProperty("name", 'modeswitch-darkMode');
 
         //addbutton
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();

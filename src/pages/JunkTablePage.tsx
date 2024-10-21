@@ -32,7 +32,8 @@ function JunkTablePage() {
     const displayPrograms = programs.filter((p) => {
         return p.junkname?.toLowerCase().includes(searchString.toLowerCase())
             || p.nick?.toLowerCase().includes(searchString.toLowerCase())
-            || p.station?.toLowerCase().includes(searchString.toLowerCase());
+            || p.station?.toLowerCase().includes(searchString.toLowerCase())
+            || p.category?.toLowerCase().includes(searchString.toLowerCase());
     });
 
     return (
