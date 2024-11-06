@@ -3,7 +3,7 @@ import {Junk, NewJunk} from "../contexts/ProgramContext";
 
 // json-server
 // eslint-disable-next-line react-refresh/only-export-components
-const BaseUrl = 'http://localhost:3004';
+const BaseUrl = 'http://fatty:3004';
 
 export async function getPrograms(): Promise<Junk[]> {
     const response = await axios.get(`${BaseUrl}/programs`);

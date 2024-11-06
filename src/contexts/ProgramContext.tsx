@@ -10,11 +10,6 @@ export interface JunkLink {
     junklink: string
 }
 
-export interface DayOption {
-    value: string,
-    label: string
-}
-
 export interface NewJunk {
     junkname: string,
     nick: string | null,

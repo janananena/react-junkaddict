@@ -129,7 +129,7 @@
       ],
       "time": "20:15",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "1",
       "seen": [
         true
@@ -386,7 +386,7 @@
       "time": "06:00",
       "link": "https://www.zdf.de/show/mai-think-x-die-show",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "",
       "seen": [],
       "links": [
