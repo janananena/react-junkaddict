@@ -4,7 +4,11 @@ import JunkTableCard from "../components/junk/JunkTableCard";
 import JunkNavbar from "../components/junk/JunkNavbar";
 import {Junk} from "../contexts/ProgramContext";
 
-function JunkTablePage() {
+interface JunkTablePageProps {
+    setView: (view:'junk'|'watches') => void
+}
+
+function JunkTablePage({setView}: JunkTablePageProps) {
     const [programs, setPrograms] = useState<Junk[]>([]);
     const [searchString, setSearchString] = useState<string>('');
 
@@ -38,7 +42,7 @@ function JunkTablePage() {
 
     return (
         <>
-            <JunkNavbar programs={programs} setPrograms={setPrograms} searchString={searchString} setSearchString={setSearchString} addNewProgram={addNewProgram}/>
+            <JunkNavbar setView={setView} programs={programs} setPrograms={setPrograms} searchString={searchString} setSearchString={setSearchString} addNewProgram={addNewProgram}/>
             <JunkTableCard displayPrograms={displayPrograms} changeProgram={changeProgram} removeProgram={removeProgram}/>
         </>
     );

@@ -1,32 +1,32 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import * as React from "react";
 import {useState} from "react";
-import {ExportJunkCSV, ImportJunkCSV} from "../../services/CSVHandlers";
 import {addIcon, darkMode, junk, lightMode} from "../../data/JunkIcons";
 
 import Form from "react-bootstrap/Form";
-import {Junk} from "../../contexts/ProgramContext";
-import * as React from "react";
 import Button from "react-bootstrap/Button";
-import AddJunkCardForm from "./cards/forms/AddJunkCardForm.tsx";
+import AddToWatchCardForm from "./forms/AddToWatchCardForm.tsx";
+import {ToWatch} from "../../contexts/WatchListContext.tsx";
 import {NavDropdown} from "react-bootstrap";
+import {ExportWatchesCSV, ImportWatchesCSV} from "../../services/CSVHandlers.tsx";
 
-interface JunkNavbarProps {
-    programs: Junk[],
-    setPrograms: (programs: Junk[]) => void,
+interface WatchListNavbarProps {
+    watches: ToWatch[],
+    setWatches: (ws: ToWatch[]) => void,
     searchString: string,
     setSearchString: (query: string) => void,
-    addNewProgram: (junk: Junk) => void,
-    setView: (view: 'junk' | 'watches') => void
+    setView: (view: 'junk' | 'watches') => void,
+    addNewWatch: (watch: ToWatch) => void
 }
 
 type LightMode = 'darkMode' | 'lightMode';
 
-function JunkNavbar({programs, setPrograms, searchString, setSearchString, addNewProgram, setView}: JunkNavbarProps) {
+function WatchListNavbar({watches, setWatches, searchString, setSearchString, setView, addNewWatch}: WatchListNavbarProps) {
     const [theme, setTheme] = useState<LightMode>('darkMode');
-    const [addProgram, setAddProgram] = useState<boolean>(false);
-    const toggleAddForm = () => setAddProgram(!addProgram);
+    const [addLink, setAddLink] = useState<boolean>(false);
+    const toggleAddForm = () => setAddLink(!addLink);
 
     function handleInputChanges(event: React.ChangeEvent<HTMLInputElement>): void {
         event.preventDefault();
@@ -48,25 +48,19 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString, addNe
             <Container fluid className="align-items-center justify-content-start gap-2">
                 {/* @ts-expect-error name is needed */}
                 <Navbar.Brand key="brand" name="brand" style={{width: '14rem'}} href="https://github.com/janananena/react-junkaddict" target="_blank">
-                    {junk}{' '}Reality Stundenplan
+                    {junk}{' '}Watch List
                 </Navbar.Brand>
-                <NavDropdown title="Junk Table" key="junk-nav-dropdown" style={{width: '7rem'}}>
-                    <NavDropdown.Item onClick={() => setView('watches')}>to Watch List</NavDropdown.Item>
+                <NavDropdown title="WatchList" key="watchlist-nav-dropdown" style={{width: '7rem'}}>
+                    <NavDropdown.Item onClick={() => setView('junk')}>to Junk Table</NavDropdown.Item>
                 </NavDropdown>
                 <Button type="button" variant="secondary" onClick={toggleAddForm} style={{display: "inline-flex", alignItems: "center", whiteSpace: "pre-wrap"}}>
-                    {addIcon} Add new Show
+                    {addIcon} Add new Link
                 </Button>
-                <AddJunkCardForm showAddForm={addProgram} addNewProgram={addNewProgram} toggleAddForm={toggleAddForm}/>
-                <ExportJunkCSV data={programs} fileName={`junkDataExport_${new Date().toISOString().slice(0, 10)}`}/>
-                <ImportJunkCSV setJunks={setPrograms}/>
+                <AddToWatchCardForm key="addWatchFormNav" prefillCollection={''} showAddForm={addLink} toggleAddForm={toggleAddForm} addNewWatch={addNewWatch}/>
+                <ExportWatchesCSV data={watches} fileName={`watchListDataExport_${new Date().toISOString().slice(0, 10)}`}/>
+                <ImportWatchesCSV setWatches={setWatches}/>
             </Container>
             <Container className="justify-content-end gap-2">
-                <Button type="button" variant="secondary" onClick={() => searchString === 'tv' ? setSearchString('') : setSearchString('tv')}>
-                    Videos
-                </Button>
-                <Button type="button" variant="secondary" onClick={() => searchString === 'podcast' ? setSearchString('') : setSearchString('podcast')}>
-                    Podcasts
-                </Button>
                 <Form>
                     <Form.Control type="input" placeholder="filter" key="searchFilter" name="searchFilter" defaultValue={searchString} onChange={handleInputChanges}/>
                 </Form>
@@ -79,4 +73,4 @@ function JunkNavbar({programs, setPrograms, searchString, setSearchString, addNe
         </Navbar>);
 }
 
-export default JunkNavbar;
+export default WatchListNavbar;

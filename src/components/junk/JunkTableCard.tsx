@@ -18,6 +18,7 @@ function JunkTableCard({displayPrograms, changeProgram, removeProgram}: JunkTabl
 
     const dayGroups: DayData = {"mo": [], "di": [], "mi": [], "do": [], "fr": [], "sa": [], "so": []};
     const today = new Date().toLocaleString('de-de', {  weekday: 'short' }).toLowerCase();
+
     const onAirPrograms = displayPrograms.filter((p) => p.currentSeason);
     const offAirPrograms = displayPrograms.filter((p) => !p.currentSeason);
     onAirPrograms.map((p) => {

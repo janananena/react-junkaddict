@@ -24,6 +24,23 @@ const testJunk = {
     "notes": ["test note 1", "test note 2"]
 }
 
+const testJunkNotStarted = {
+    "id": "test-id-not-started",
+    "junkname": "Testershire McTesterson",
+    "nick": "Testy",
+    "station": "ard",
+    "link": "https://www.irgendeine.url/zumtesten",
+    "day": ["mi"],
+    "time": "14:45",
+    "category": "tv",
+    "currentSeason": true,
+    "season": "",
+    "seen": [],
+    "links": [],
+    "notes": [],
+    "startDate": "2025-01-31"
+}
+
 const testJunkOffline = {
     "id": "test-id-details-offline",
     "junkname": "Testershire McTesterson",
@@ -51,6 +68,26 @@ const testJunkNoNick = {
     "station": "ard",
     "link": "https://www.irgendeine.url/zumtesten",
     "day": ["mi"],
+    "time": "14:45",
+    "category": "tv",
+    "currentSeason": true,
+    "season": "3",
+    "seen": [
+        false,
+        false,
+        false
+    ],
+    "links": ["test link 1", "test link 2"],
+    "notes": ["test note 1", "test note 2"]
+}
+
+const testJunkDaily = {
+    "id": "test-id-details-daily",
+    "junkname": "Testershire McTesterson",
+    "nick": null,
+    "station": "ard",
+    "link": "https://www.irgendeine.url/zumtesten",
+    "day": ["mo", "di", "mi", "do", "fr", "sa", "so"],
     "time": "14:45",
     "category": "tv",
     "currentSeason": true,
@@ -186,4 +223,68 @@ describe('JunkCardDetails', () => {
         expect(screen.getByText('Mi 14:45 Tv')).toBeInTheDocument();
     })
 
+    it('shows details with startdate', async () => {
+        const toggleEdit = vi.fn();
+
+        vi.mock("../../../services/DevDataApiHandlers", () => {
+            const changeProgram = vi.fn();
+            changeProgram.mockImplementation((junk) => {
+                return Promise.resolve(junk);
+            });
+            return {
+                changeProgram: changeProgram
+            };
+        });
+
+        render(
+            <JunkContextProvider value={{
+                junk: testJunkNotStarted,
+                setJunk: () => {
+                }, removeJunk: () => {
+                }
+            }}>
+                <JunkCardDetails toggleEditProgram={toggleEdit}/>
+            </JunkContextProvider>
+        );
+
+        //show start date
+        expect(screen.getByText('starts 31.1.2025')).toBeInTheDocument();
+
+        // show start button
+        const startButton = screen.getAllByRole('button')[0];
+        expect(startButton).toBeInTheDocument();
+        expect(startButton).toHaveTextContent('start');
+
+        await userEvent.click(startButton);
+        expect(changeProgram).toHaveBeenCalledTimes(1);
+        expect(changeProgram).toHaveBeenCalledWith({...testJunkNotStarted, startDate: null});
+    })
+
+        it('shows details with daily', async () => {
+        const toggleEdit = vi.fn();
+
+        vi.mock("../../../services/DevDataApiHandlers", () => {
+            const changeProgram = vi.fn();
+            changeProgram.mockImplementation((junk) => {
+                return Promise.resolve(junk);
+            });
+            return {
+                changeProgram: changeProgram
+            };
+        });
+
+        render(
+            <JunkContextProvider value={{
+                junk: testJunkDaily,
+                setJunk: () => {
+                }, removeJunk: () => {
+                }
+            }}>
+                <JunkCardDetails toggleEditProgram={toggleEdit}/>
+            </JunkContextProvider>
+        );
+
+        // show daily instead of week days
+        expect(screen.getByText('Daily 14:45 Tv')).toBeInTheDocument();
+    })
 })

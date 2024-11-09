@@ -1,11 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/JunkStore.schema.json",
+  "$id": "https://junk.store/schemas",
   "title": "JunkStore",
   "description": "A list of Junks",
   "type": "object",
   "properties": {
     "programs": {
+      "$id": "https://junk.store/schemas/junks",
       "type": "array",
       "items": {
         "type": "object",
@@ -144,6 +145,41 @@
           "links",
           "notes"
         ]
+      }
+    },
+    "watchList": {
+      "$id": "https://junk.store/schemas/watchlist",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "unique id",
+            "type": "string"
+          },
+          "link": {
+            "description": "video link",
+            "type": "string",
+            "format": "uri"
+          },
+          "label": {
+            "description": "text to display instead of link",
+            "type": "string"
+          },
+          "collection": {
+            "description": "put link in this collection",
+            "type": "string"
+          },
+          "seen": {
+            "description": "have we seen this",
+            "type": "boolean"
+          },
+          "required": [
+            "id",
+            "link",
+            "seen"
+          ]
+        }
       }
     }
   }

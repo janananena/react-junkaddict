@@ -17,7 +17,7 @@
       "time": "20:15",
       "link": "https://www.joyn.de/serien/promi-big-brother",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "",
       "seen": [],
       "links": [],
@@ -415,7 +415,7 @@
       ],
       "links": [],
       "notes": [],
-      "startDate": "2024-10-24"
+      "startDate": null
     },
     {
       "id": "2fd5",
@@ -433,7 +433,132 @@
       "seen": [],
       "links": [],
       "notes": [],
-      "startDate": "2024-10-24"
+      "startDate": null
+    },
+    {
+      "id": "10ac",
+      "nick": "",
+      "junkname": "Das große Promi Büßen",
+      "station": "joyn",
+      "day": [
+        "fr"
+      ],
+      "time": "22:15",
+      "link": "https://www.joyn.de/serien/das-grosse-promi-buessen",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    }
+  ],
+  "watchList": [
+    {
+      "id": "dfjkal",
+      "link": "https://youtu.be/IeY4AT_RnNo",
+      "label": "Herbst/Winter 2024",
+      "collection": "Time Is Up",
+      "seen": false
+    },
+    {
+      "id": "lofoid",
+      "link": "https://youtu.be/XFw8dlm7tOA",
+      "label": "Hitzesommer 2024",
+      "collection": "Time Is Up",
+      "seen": false
+    },
+    {
+      "id": "jsdks",
+      "link": "https://youtu.be/IeY4AT_RnNo",
+      "label": "Test Link",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "okoij",
+      "label": null,
+      "link": "https://youtu.be/IeY4AT_RnNo",
+      "collection": null,
+      "seen": true
+    },
+    {
+      "id": "4187",
+      "link": "http://www.test.de",
+      "label": "test2",
+      "collection": null,
+      "seen": true
+    },
+    {
+      "id": "bdf1",
+      "link": "https://youtu.be/U8pLrRkqbb0",
+      "label": "Climate Extremes",
+      "collection": "Klima",
+      "seen": false
+    },
+    {
+      "id": "be20",
+      "link": "https://youtu.be/Cy7UcHLtma0",
+      "label": "Regensommer 2024",
+      "collection": "Time Is Up",
+      "seen": false
+    },
+    {
+      "id": "3d94",
+      "link": "https://youtu.be/66cLQ5lGyuw",
+      "label": "Umweltupdate März 2024",
+      "collection": "Time Is Up",
+      "seen": false
+    },
+    {
+      "id": "b18b",
+      "link": "https://youtu.be/L4XFCuFbiOY",
+      "label": "Nach diesem Video wirst du dich schämen ein Mensch zu sein",
+      "collection": "go vegan",
+      "seen": true
+    },
+    {
+      "id": "3e3d",
+      "link": "https://youtu.be/4i1YbzfYwk0",
+      "label": "Vorzeigebetrieb Undercover infiltriert - Das bedeutet es Ei zu essen",
+      "collection": "go vegan",
+      "seen": true
+    },
+    {
+      "id": "3cb2",
+      "link": "https://youtu.be/V7DrljVAaYk",
+      "label": "Dominion Deutsch",
+      "collection": "go vegan",
+      "seen": true
+    },
+    {
+      "id": "544d",
+      "link": "https://kein.label.de",
+      "label": null,
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "389f",
+      "link": "https://youtu.be/c2gwtROZiRE",
+      "label": "Warum die 2 Staaten Lösung eine schlechte Idee ist",
+      "collection": "rote sonne",
+      "seen": false
+    },
+    {
+      "id": "5615",
+      "link": "https://youtu.be/2AKbCXiCJJM",
+      "label": "Vegane Ernährung für Hunde",
+      "collection": "go vegan",
+      "seen": true
+    },
+    {
+      "id": "b5d6",
+      "link": "https://youtu.be/xZMKTIzsNfk",
+      "label": "TJ Reacts Vita - Barbara was da los",
+      "collection": "Musik",
+      "seen": true
     }
   ]
 }
