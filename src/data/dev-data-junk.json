@@ -34,7 +34,7 @@
       ],
       "time": "20:15",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "9",
       "seen": [
         true,
@@ -258,7 +258,7 @@
       "link": "https://plus.rtl.de/video-tv/shows/die-bachelorette-135881",
       "season": "11",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "seen": [
         true,
         true,
@@ -354,7 +354,7 @@
       "station": "amazon",
       "day": [
         "di",
-        "do"
+        "fr"
       ],
       "time": "20:15",
       "link": "https://www.amazon.de/gp/video/detail/B0D1GV1C2M",
@@ -373,7 +373,8 @@
           "junklink": "https://www.youtube.com/@7_vs._wild"
         }
       ],
-      "notes": []
+      "notes": [],
+      "startDate": null
     },
     {
       "id": "79c8",
@@ -474,13 +475,6 @@
       "link": "https://youtu.be/IeY4AT_RnNo",
       "label": "Test Link",
       "collection": null,
-      "seen": false
-    },
-    {
-      "id": "okoij",
-      "label": null,
-      "link": "https://youtu.be/IeY4AT_RnNo",
-      "collection": null,
       "seen": true
     },
     {
@@ -533,13 +527,6 @@
       "seen": true
     },
     {
-      "id": "544d",
-      "link": "https://kein.label.de",
-      "label": null,
-      "collection": null,
-      "seen": false
-    },
-    {
       "id": "389f",
       "link": "https://youtu.be/c2gwtROZiRE",
       "label": "Warum die 2 Staaten Lösung eine schlechte Idee ist",
@@ -559,6 +546,209 @@
       "label": "TJ Reacts Vita - Barbara was da los",
       "collection": "Musik",
       "seen": true
+    },
+    {
+      "id": "e6ad",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/drogen-land-provinz-im-rausch--pillen-in-der-westpfalz-100.html",
+      "label": "Drogenland Pillen in der Westpfalz",
+      "collection": "Drugs",
+      "seen": true
+    },
+    {
+      "id": "cf91",
+      "link": "https://www.zdf.de/dokumentation/zdf-reportage/drogen-dreck-und-dunkle-ecken-100.html",
+      "label": "Drogen Dreck und dunkle Ecken",
+      "collection": "drugs",
+      "seen": false
+    },
+    {
+      "id": "a10e",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--macht-und-unterdrueckung-100.html",
+      "label": "Geheimnisse der DDR Macht und Unterdrückung",
+      "collection": "DDR",
+      "seen": false
+    },
+    {
+      "id": "0c3c",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-1-102.html",
+      "label": "Holocaust 1 Terror",
+      "collection": "nzs",
+      "seen": false
+    },
+    {
+      "id": "0a9c",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-2-104.html",
+      "label": "Holocaust 2 Ghetto",
+      "collection": "nzs",
+      "seen": false
+    },
+    {
+      "id": "f5ef",
+      "link": "https://www.zdf.de/dokumentation/37-grad/37-drei-frauen-gegen-rechtsextremismus-100.html",
+      "label": "3 Frauen gegen Rechtsextremismus",
+      "collection": "nzs",
+      "seen": false
+    },
+    {
+      "id": "b4e7",
+      "link": "https://www.zdf.de/dokumentation/37-grad-leben/ich-war-prostituierte-100.html",
+      "label": "Ich war Prostituierte",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "3e07",
+      "link": "https://www.zdf.de/dokumentation/planet-e/planet-e-extremwetter-und-klimawandel-102.html",
+      "label": "Extremwetter und Klimawandel",
+      "collection": "klima",
+      "seen": true
+    },
+    {
+      "id": "266c",
+      "link": "https://www.zdf.de/dokumentation/planet-e/planet-e-extremwetter-und-klimawandel-100.html",
+      "label": "Extremwetter und Klimawandel: Hitze",
+      "collection": "klima",
+      "seen": false
+    },
+    {
+      "id": "85f2",
+      "link": "https://www.zdf.de/3sat/3sat-wissenschaftdoku/240919-sendung-afrika-power-kontinent-im-aufbruch-wido-100.html",
+      "label": "Afrika Power Kontinent im Aufbruch",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "380d",
+      "link": "https://www.zdf.de/dokumentation/terra-xplore/xplore-haeusliche-gewalt-102.html",
+      "label": "Häusliche Gewalt Warum schlagen Männer zu",
+      "collection": null,
+      "seen": true
+    },
+    {
+      "id": "dbfc",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/hard-n-heavy-the-story-of-bon-jovi-100.html",
+      "label": "The true story of Bon Jovi",
+      "collection": "musik",
+      "seen": false
+    },
+    {
+      "id": "aab0",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/the-true-story-of-pink-102.html",
+      "label": "The true story of Pink",
+      "collection": "musik",
+      "seen": false
+    },
+    {
+      "id": "2f1a",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/the-true-story-of-eminem--100.html",
+      "label": "The true story of Eminem",
+      "collection": "musik",
+      "seen": false
+    },
+    {
+      "id": "74a4",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-kinder-von-luegde-alle-haben-weggesehen-100.html",
+      "label": "Die Kinder von Lügde - Alle haben weggesehen",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "0e3f",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--mangel-und-erfolg-100.html",
+      "label": "Geheimnisse der DDR Mangel und Erfolg",
+      "collection": "ddr",
+      "seen": false
+    },
+    {
+      "id": "4f2b",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--anspruch-und-wirklichkeit-100.html",
+      "label": "Geheimnisse der DDR Anspruch und Wirklichkeit",
+      "collection": "ddr",
+      "seen": false
+    },
+    {
+      "id": "5ea3",
+      "link": "https://www.ardmediathek.de/video/y-kollektiv/keta-partydroge-oder-geschaeftsmodell/ard/Y3JpZDovL3NyLmRlL1JCWUtPTExFS1RJVl8xNDY2Nzc",
+      "label": "Ketamin Drogen Medizin",
+      "collection": "drugs",
+      "seen": false
+    },
+    {
+      "id": "4dbb",
+      "link": "https://www.ardmediathek.de/video/die-kryptoqueen/kryptoqueen-die-jagd/wdr/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtOWYxOGQyNjEtY2NmOC00NjI4LWFjMzUtZGRhMTM3YzJlNTg2",
+      "label": "Krytoqueen die Jagd",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "f8c4",
+      "link": "https://www.ardmediathek.de/video/7-tage/7-tage-drogenhilfe/ard/NWMxMjhjMWUtMTY4Yi00NzhhLTllOWItMDY1YzQyMWRiM2Fk",
+      "label": "7 Tage Drogenhilfe",
+      "collection": "drugs",
+      "seen": false
+    },
+    {
+      "id": "f1df",
+      "link": "https://www.arte.tv/de/videos/113185-000-A/frau-leben-freiheit-eine-iranische-revolution/",
+      "label": "Frau Leben Freiheit eine iranische Revolution",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "4a5a",
+      "link": "https://www.arte.tv/de/videos/118267-011-A/re-crack-erobert-die-staedte/",
+      "label": "Crack erobert die Städte",
+      "collection": "drugs",
+      "seen": true
+    },
+    {
+      "id": "fff8",
+      "link": "https://www.arte.tv/de/videos/RC-022071/der-algerienkrieg/",
+      "label": "Der Algerienkrieg",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "6d44",
+      "link": "https://www.arte.tv/de/videos/RC-025727/mao-chinas-roter-kaiser/",
+      "label": "Mao Chinas roter Kaiser",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "a1f3",
+      "link": "https://www.arte.tv/de/videos/RC-018413/wachsende-armut-eine-globale-herausforderung/",
+      "label": "Wachsende Armut eine globale Herausforderung",
+      "collection": null,
+      "seen": false
+    },
+    {
+      "id": "162f",
+      "link": "https://www.arte.tv/de/videos/109798-000-A/sea-shepherd/",
+      "label": "Sea Shepherd Jagd auf hoher See",
+      "collection": null,
+      "seen": true
+    },
+    {
+      "id": "6c2d",
+      "link": "https://www.arte.tv/de/videos/119044-006-A/re-portugals-kampf-gegen-megafeuer/",
+      "label": "Portugals Kampf gegen Megafeuer",
+      "collection": null,
+      "seen": true
+    },
+    {
+      "id": "9064",
+      "link": "https://youtu.be/27hi9qldZvs",
+      "label": "Winter 2024",
+      "collection": "time is up",
+      "seen": true
+    },
+    {
+      "id": "3b27",
+      "link": "https://plus.rtl.de/video-tv/shows/liefern-ab-1013305",
+      "label": "Liefern ab!",
+      "collection": "Kochen",
+      "seen": false
     }
   ]
 }

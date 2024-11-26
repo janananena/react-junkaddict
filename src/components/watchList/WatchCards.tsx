@@ -29,7 +29,7 @@ function WatchCards({expanded, watches, addWatch, editWatch, removeWatch}: ToWat
     });
 
     return (
-        <Container fluid key={random(0,9999)}>
+        <Container fluid key={random(0,9999)} >
             <Row key={random(0, 9999)}>
                 {noCollectionCard}
                 {cards}
