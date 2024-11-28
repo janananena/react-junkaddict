@@ -9,8 +9,9 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import AddToWatchCardForm from "./forms/AddToWatchCardForm.tsx";
 import {ToWatch} from "../../contexts/WatchListContext.tsx";
-import {NavDropdown} from "react-bootstrap";
+import {InputGroup, NavDropdown} from "react-bootstrap";
 import {ExportWatchesCSV, ImportWatchesCSV} from "../../services/CSVHandlers.tsx";
+import {toNumber} from "lodash-es";
 
 interface WatchListNavbarProps {
     watches: ToWatch[],
@@ -18,15 +19,29 @@ interface WatchListNavbarProps {
     searchString: string,
     setSearchString: (query: string) => void,
     setView: (view: 'junk' | 'watches') => void,
-    addNewWatch: (watch: ToWatch) => void
+    addNewWatch: (watch: ToWatch) => void,
+    dangerDays: number,
+    setDangerDays: (dd: number) => void,
+    warningDays: number,
+    setWarningDays: (wd: number) => void
 }
 
 type LightMode = 'darkMode' | 'lightMode';
 
-function WatchListNavbar({watches, setWatches, searchString, setSearchString, setView, addNewWatch}: WatchListNavbarProps) {
+function WatchListNavbar({watches, setWatches, searchString, setSearchString, setView, addNewWatch, dangerDays, setDangerDays, warningDays, setWarningDays}: WatchListNavbarProps) {
     const [theme, setTheme] = useState<LightMode>('darkMode');
     const [addLink, setAddLink] = useState<boolean>(false);
     const toggleAddForm = () => setAddLink(!addLink);
+
+    function handleWarningDays(event: React.ChangeEvent<HTMLInputElement>): void {
+        event.preventDefault();
+        setWarningDays(toNumber(event.currentTarget.value));
+    }
+
+    function handleDangerDays(event: React.ChangeEvent<HTMLInputElement>): void {
+        event.preventDefault();
+        setDangerDays(toNumber(event.currentTarget.value));
+    }
 
     function handleInputChanges(event: React.ChangeEvent<HTMLInputElement>): void {
         event.preventDefault();
@@ -61,6 +76,17 @@ function WatchListNavbar({watches, setWatches, searchString, setSearchString, se
                 <ImportWatchesCSV setWatches={setWatches}/>
             </Container>
             <Container className="justify-content-end gap-2">
+                <InputGroup style={{width: "fit-content"}}>
+                    <InputGroup.Text className="border-info-subtle">no end date</InputGroup.Text>
+                </InputGroup>
+                <InputGroup style={{width: "fit-content"}}>
+                    <InputGroup.Text className="bg-danger-subtle">gone in days</InputGroup.Text>
+                    <Form.Control style={{width: 50}} type="input" placeholder="-" key="dangerDays" name="dangerDays" defaultValue={dangerDays} onChange={handleDangerDays}/>
+                </InputGroup>
+                <InputGroup style={{width: "fit-content"}}>
+                    <InputGroup.Text className="bg-warning-subtle">gone in days</InputGroup.Text>
+                    <Form.Control style={{width: 50}} type="input" placeholder="-" key="warningDays" name="warningDays" defaultValue={warningDays} onChange={handleWarningDays}/>
+                </InputGroup>
                 <Form>
                     <Form.Control type="input" placeholder="filter" key="searchFilter" name="searchFilter" defaultValue={searchString} onChange={handleInputChanges}/>
                 </Form>

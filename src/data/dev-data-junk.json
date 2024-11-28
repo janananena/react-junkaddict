@@ -475,14 +475,23 @@
       "link": "https://youtu.be/IeY4AT_RnNo",
       "label": "Test Link",
       "collection": null,
-      "seen": true
+      "seen": false,
+      "availableUntil": "2024-12-07"
+    },
+    {
+      "id": "jfdaj",
+      "link": "https://youtu.be/test-no-label",
+      "label": null,
+      "collection": null,
+      "seen": false
     },
     {
       "id": "4187",
       "link": "http://www.test.de",
-      "label": "test2",
+      "label": "Test No Image",
       "collection": null,
-      "seen": true
+      "seen": false,
+      "availableUntil": "2024-11-30"
     },
     {
       "id": "bdf1",
@@ -559,42 +568,48 @@
       "link": "https://www.zdf.de/dokumentation/zdf-reportage/drogen-dreck-und-dunkle-ecken-100.html",
       "label": "Drogen Dreck und dunkle Ecken",
       "collection": "drugs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2029-11-08"
     },
     {
       "id": "a10e",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--macht-und-unterdrueckung-100.html",
-      "label": "Geheimnisse der DDR Macht und Unterdrückung",
+      "label": "3/3 Geheimnisse der DDR Macht und Unterdrückung",
       "collection": "DDR",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-11-27"
     },
     {
       "id": "0c3c",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-1-102.html",
       "label": "Holocaust 1 Terror",
       "collection": "nzs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2024-12-11"
     },
     {
       "id": "0a9c",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-2-104.html",
       "label": "Holocaust 2 Ghetto",
       "collection": "nzs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2024-12-11"
     },
     {
       "id": "f5ef",
       "link": "https://www.zdf.de/dokumentation/37-grad/37-drei-frauen-gegen-rechtsextremismus-100.html",
       "label": "3 Frauen gegen Rechtsextremismus",
       "collection": "nzs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2029-10-29"
     },
     {
       "id": "b4e7",
       "link": "https://www.zdf.de/dokumentation/37-grad-leben/ich-war-prostituierte-100.html",
       "label": "Ich war Prostituierte",
-      "collection": null,
-      "seen": false
+      "collection": "social",
+      "seen": false,
+      "availableUntil": "2029-10-20"
     },
     {
       "id": "3e07",
@@ -608,14 +623,16 @@
       "link": "https://www.zdf.de/dokumentation/planet-e/planet-e-extremwetter-und-klimawandel-100.html",
       "label": "Extremwetter und Klimawandel: Hitze",
       "collection": "klima",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2028-10-10"
     },
     {
       "id": "85f2",
       "link": "https://www.zdf.de/3sat/3sat-wissenschaftdoku/240919-sendung-afrika-power-kontinent-im-aufbruch-wido-100.html",
       "label": "Afrika Power Kontinent im Aufbruch",
       "collection": null,
-      "seen": false
+      "seen": false,
+      "availableUntil": "2029-09-19"
     },
     {
       "id": "380d",
@@ -629,70 +646,80 @@
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/hard-n-heavy-the-story-of-bon-jovi-100.html",
       "label": "The true story of Bon Jovi",
       "collection": "musik",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2025-07-08"
     },
     {
       "id": "aab0",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/the-true-story-of-pink-102.html",
       "label": "The true story of Pink",
       "collection": "musik",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-07-29"
     },
     {
       "id": "2f1a",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/the-true-story-of-eminem--100.html",
       "label": "The true story of Eminem",
       "collection": "musik",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-09-30"
     },
     {
       "id": "74a4",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-kinder-von-luegde-alle-haben-weggesehen-100.html",
       "label": "Die Kinder von Lügde - Alle haben weggesehen",
-      "collection": null,
-      "seen": false
+      "collection": "social",
+      "seen": false,
+      "availableUntil": "2025-10-29"
     },
     {
       "id": "0e3f",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--mangel-und-erfolg-100.html",
-      "label": "Geheimnisse der DDR Mangel und Erfolg",
+      "label": "2/3 Geheimnisse der DDR Mangel und Erfolg",
       "collection": "ddr",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-11-27"
     },
     {
       "id": "4f2b",
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/geheimnisse-der-ddr--anspruch-und-wirklichkeit-100.html",
-      "label": "Geheimnisse der DDR Anspruch und Wirklichkeit",
+      "label": "1/3 Geheimnisse der DDR Anspruch und Wirklichkeit",
       "collection": "ddr",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-11-27"
     },
     {
       "id": "5ea3",
       "link": "https://www.ardmediathek.de/video/y-kollektiv/keta-partydroge-oder-geschaeftsmodell/ard/Y3JpZDovL3NyLmRlL1JCWUtPTExFS1RJVl8xNDY2Nzc",
-      "label": "Ketamin Drogen Medizin",
+      "label": "Ketamin: Zwischen Partydroge, Medikament und großem Geschäft",
       "collection": "drugs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-11-22"
     },
     {
       "id": "4dbb",
       "link": "https://www.ardmediathek.de/video/die-kryptoqueen/kryptoqueen-die-jagd/wdr/Y3JpZDovL3dkci5kZS9CZWl0cmFnLXNvcGhvcmEtOWYxOGQyNjEtY2NmOC00NjI4LWFjMzUtZGRhMTM3YzJlNTg2",
       "label": "Krytoqueen die Jagd",
       "collection": null,
-      "seen": false
+      "seen": false,
+      "availableUntil": "2025-11-17"
     },
     {
       "id": "f8c4",
       "link": "https://www.ardmediathek.de/video/7-tage/7-tage-drogenhilfe/ard/NWMxMjhjMWUtMTY4Yi00NzhhLTllOWItMDY1YzQyMWRiM2Fk",
       "label": "7 Tage Drogenhilfe",
       "collection": "drugs",
-      "seen": false
+      "seen": false,
+      "availableUntil": "2026-11-17"
     },
     {
       "id": "f1df",
       "link": "https://www.arte.tv/de/videos/113185-000-A/frau-leben-freiheit-eine-iranische-revolution/",
       "label": "Frau Leben Freiheit eine iranische Revolution",
-      "collection": null,
-      "seen": false
+      "collection": "social",
+      "seen": false,
+      "availableUntil": "2025-01-31"
     },
     {
       "id": "4a5a",
@@ -705,36 +732,41 @@
       "id": "fff8",
       "link": "https://www.arte.tv/de/videos/RC-022071/der-algerienkrieg/",
       "label": "Der Algerienkrieg",
-      "collection": null,
-      "seen": false
+      "collection": "geschichte",
+      "seen": false,
+      "availableUntil": "2025-04-23"
     },
     {
       "id": "6d44",
       "link": "https://www.arte.tv/de/videos/RC-025727/mao-chinas-roter-kaiser/",
       "label": "Mao Chinas roter Kaiser",
-      "collection": null,
-      "seen": false
+      "collection": "geschichte",
+      "seen": false,
+      "availableUntil": "2025-02-28"
     },
     {
       "id": "a1f3",
-      "link": "https://www.arte.tv/de/videos/RC-018413/wachsende-armut-eine-globale-herausforderung/",
-      "label": "Wachsende Armut eine globale Herausforderung",
-      "collection": null,
-      "seen": false
+      "link": "https://www.arte.tv/de/videos/115755-000-A/usa-baby-boomer-obdachlos/",
+      "label": "USA: Baby Boomer, obdachlos",
+      "collection": "Wachsende Armut eine globale Herausforderung",
+      "seen": false,
+      "availableUntil": "2053-11-01"
     },
     {
       "id": "162f",
       "link": "https://www.arte.tv/de/videos/109798-000-A/sea-shepherd/",
       "label": "Sea Shepherd Jagd auf hoher See",
       "collection": null,
-      "seen": true
+      "seen": false,
+      "availableUntil": "2025-06-20"
     },
     {
       "id": "6c2d",
       "link": "https://www.arte.tv/de/videos/119044-006-A/re-portugals-kampf-gegen-megafeuer/",
       "label": "Portugals Kampf gegen Megafeuer",
       "collection": null,
-      "seen": true
+      "seen": false,
+      "availableUntil": "2027-07-21"
     },
     {
       "id": "9064",
@@ -749,6 +781,78 @@
       "label": "Liefern ab!",
       "collection": "Kochen",
       "seen": false
+    },
+    {
+      "id": "c471",
+      "link": "https://www.arte.tv/de/videos/110347-000-A/arm-trotz-arbeit-die-krise-der-mittelschicht/",
+      "label": "Arm trotz Arbeit - Die Krise der Mittelschicht",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2025-08-13"
+    },
+    {
+      "id": "3fd8",
+      "link": "https://www.arte.tv/de/videos/111777-003-A/re-not-in-bergdoerfern/",
+      "label": "Re: Not in Bergdörfern Ehrenamtliche unterwegs in Südfrankreich",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2026-07-30"
+    },
+    {
+      "id": "66ba",
+      "link": "https://www.arte.tv/de/videos/111749-011-A/re-die-frauen-von-ceuta/",
+      "label": "Re: Die Frauen von CeutaLeben zwischen Europa und Afrika",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2028-06-20"
+    },
+    {
+      "id": "6caf",
+      "link": "https://www.arte.tv/de/videos/113219-001-A/frauen-auf-der-strasse-schutzlos-und-unsichtbar/",
+      "label": "Frauen auf der Straße: Schutzlos und unsichtbar?!",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2025-01-31"
+    },
+    {
+      "id": "8f07",
+      "link": "https://www.arte.tv/de/videos/106527-027-A/27-das-europaeische-magazin/",
+      "label": "Sind wir morgen alle arm?",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2026-01-13"
+    },
+    {
+      "id": "657c",
+      "link": "https://www.arte.tv/de/videos/108567-002-A/ist-armut-gleichbedeutend-mit-geldmangel/",
+      "label": "Ist Armut gleichbedeutend mit Geldmangel?",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2028-03-01"
+    },
+    {
+      "id": "c7f5",
+      "link": "https://www.arte.tv/de/videos/086419-000-A/usa-student-und-obdachlos-2020/",
+      "label": "USA: Student und obdachlos (2020)",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2026-07-02"
+    },
+    {
+      "id": "8e42",
+      "link": "https://www.arte.tv/de/videos/097253-000-A/madagaskar-neue-wege-aus-der-armut-2020/",
+      "label": "Madagaskar: Neue Wege aus der Armut (2020)",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2025-04-19"
+    },
+    {
+      "id": "bea3",
+      "link": "https://www.arte.tv/de/videos/100108-000-A/argentinien-das-guernica-der-covid-vertriebenen/",
+      "label": "Argentinien: Das Guernica der Covid-Vertriebenen",
+      "collection": "wachsende armut eine globale herausforderung",
+      "seen": false,
+      "availableUntil": "2050-10-22"
     }
   ]
 }

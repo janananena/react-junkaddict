@@ -13,6 +13,8 @@ interface WatchListPageProps {
 function WatchListPage({setView}: WatchListPageProps) {
     const [watches, setWatches] = useState<ToWatch[]>([]);
     const [searchString, setSearchString] = useState<string>('');
+    const [warningDays, setWarningDays] = useState<number>(14);
+    const [dangerDays, setDangerDays] = useState<number>(5);
 
     async function getWatches(): Promise<void> {
         const res = await getWatchList();
@@ -50,7 +52,7 @@ function WatchListPage({setView}: WatchListPageProps) {
 
     return (
         <>
-            <WatchListNavbar watches={watches} setWatches={setWatches} addNewWatch={addNewWatch} setView={setView} searchString={searchString} setSearchString={setSearchString}/>
+            <WatchListNavbar watches={watches} setWatches={setWatches} addNewWatch={addNewWatch} setView={setView} searchString={searchString} setSearchString={setSearchString} dangerDays={dangerDays} setDangerDays={setDangerDays} warningDays={warningDays} setWarningDays={setWarningDays}/>
             <Card>
                 <Card.Body>
                     <Table borderless striped="columns" style={{height: '100vh'}}>
@@ -67,10 +69,10 @@ function WatchListPage({setView}: WatchListPageProps) {
                         <tbody>
                         <tr>
                             <td>
-                                <WatchCards expanded={true} watches={toWatchList} addWatch={addNewWatch} editWatch={editWatch} removeWatch={removeWatch}/>
+                                <WatchCards expanded={true} watches={toWatchList} addWatch={addNewWatch} editWatch={editWatch} removeWatch={removeWatch} dangerDays={dangerDays} warningDays={warningDays} />
                             </td>
                             <td>
-                                <WatchCards expanded={false} watches={watchedList} addWatch={addNewWatch} editWatch={editWatch} removeWatch={removeWatch}/>
+                                <WatchCards expanded={false} watches={watchedList} addWatch={addNewWatch} editWatch={editWatch} removeWatch={removeWatch} dangerDays={dangerDays} warningDays={warningDays} />
                             </td>
                         </tr>
                         </tbody>

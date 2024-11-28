@@ -4,7 +4,8 @@ export interface NewWatch {
     link: string,
     label: string | null,
     collection: string | null,
-    seen: boolean
+    seen: boolean,
+    availableUntil: string | null
 }
 
 export interface ToWatch extends NewWatch{

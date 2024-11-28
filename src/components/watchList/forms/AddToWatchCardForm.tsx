@@ -5,6 +5,7 @@ import * as React from "react";
 import {useState} from "react";
 import {NewWatch, ToWatch} from "../../../contexts/WatchListContext.tsx";
 import {addWatch} from "../../../services/DevDataApiHandlers.tsx";
+import {InputGroup} from "react-bootstrap";
 
 interface AddToWatchCardFormProps {
     showAddForm: boolean,
@@ -17,19 +18,22 @@ function AddToWatchCardForm({showAddForm, toggleAddForm, addNewWatch, prefillCol
     const [currentLink, setCurrentLink] = useState('');
     const [currentLabel, setCurrentLabel] = useState('');
     const [currentCollection, setCurrentCollection] = useState(prefillCollection);
+    const [currentAvailableUntil, setCurrentAvailableUntil] = useState('');
 
     function resetFields(): void {
         setCurrentLink("");
         setCurrentLabel("");
         setCurrentCollection("");
+        setCurrentAvailableUntil("");
     }
 
     function copyWithDefaults(): NewWatch {
         return {
             link: currentLink,
-            label: currentLabel !== ''? currentLabel : null,
-            collection: currentCollection !== ''? currentCollection: null,
-            seen: false
+            label: currentLabel !== '' ? currentLabel : null,
+            collection: currentCollection !== '' ? currentCollection : null,
+            seen: false,
+            availableUntil: currentAvailableUntil !== '' ? currentAvailableUntil : null
         };
     }
 
@@ -43,6 +47,10 @@ function AddToWatchCardForm({showAddForm, toggleAddForm, addNewWatch, prefillCol
 
     function handleChangeCollection(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setCurrentCollection(event.currentTarget.value);
+    }
+
+    function handleChangeAvailableUntil(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        setCurrentAvailableUntil(event.currentTarget.value);
     }
 
     async function handleAdd(event: React.FormEvent<HTMLFormElement>): Promise<void> {
@@ -65,6 +73,11 @@ function AddToWatchCardForm({showAddForm, toggleAddForm, addNewWatch, prefillCol
                     <Form.Control id="label" type="text" name="label" placeholder="Label" value={currentLabel} onChange={(event) => handleChangeLabel(event)}/>
                     <br/>
                     <Form.Control id="collection" type="text" name="collection" placeholder="Collection" value={currentCollection} onChange={(event) => handleChangeCollection(event)}/>
+                    <br/>
+                    <InputGroup>
+                        <InputGroup.Text>Online Until</InputGroup.Text>
+                    <Form.Control id="availableUntil" type="date" name="availableUntil" placeholder="" value={currentAvailableUntil} onChange={(event) => handleChangeAvailableUntil(event)}/>
+                    </InputGroup>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-secondary" id="cancelbutton" key="cancelbutton" name="cancelbutton" type="button" onClick={toggleAddForm}>cancel</Button>

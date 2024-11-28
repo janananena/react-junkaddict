@@ -18,10 +18,12 @@ interface WatchCardProps {
     watches: ToWatch[],
     editWatch: (watch: ToWatch) => void,
     addWatch: (watch: ToWatch) => void,
-    removeWatch: (watch: ToWatch) => void
+    removeWatch: (watch: ToWatch) => void,
+    dangerDays: number,
+    warningDays: number,
 }
 
-function WatchCard({expanded, collection, watches, editWatch, addWatch, removeWatch}: WatchCardProps) {
+function WatchCard({expanded, collection, watches, editWatch, addWatch, removeWatch, dangerDays, warningDays}: WatchCardProps) {
     const [exp, setExp] = useState<boolean>(expanded);
     const [showEdit, setShowEdit] = useState<boolean[]>(watches.map(() => false));
     const [showAdd, setShowAdd] = useState<boolean>(false);
@@ -123,8 +125,8 @@ function WatchCard({expanded, collection, watches, editWatch, addWatch, removeWa
     const key = random(0, 9999)
     return (
         <Col key={`col-${key}`} style={{marginBottom: 10}}>
-            <Card style={{minWidth: expanded ? '25rem' : '18rem', minHeight: expanded ? '15rem' : '10rem'}} key={`card-${key}`}>
-                <Card.Body key={`body-${key}`}>
+            <Card style={{minWidth: expanded ? '25rem' : '18rem', minHeight: expanded ? '15rem' : '8rem'}} key={`card-${key}`}>
+                <Card.Body key={`body-${key}`} style={{padding: 8}}>
                     {collection !== undefined && <Card.Title key={`title-${key}`}>{title}</Card.Title>}
                     {collection === undefined && <Card.Title key={`title-${key}`} style={{opacity: '10%'}}>No Collection</Card.Title>}
                     <ListGroup.Item key={`button-${key}`} action onClick={() => setExp(!exp)}>{exp ? lessIcon : moreIcon}{' '}{exp ? 'less' : 'more'}</ListGroup.Item>
@@ -133,8 +135,8 @@ function WatchCard({expanded, collection, watches, editWatch, addWatch, removeWa
                             {watches.map((watch, index) =>
                                 <div key={index}>
                                     <InputGroup key={`group-${watch.id}-${index}`}>
-                                        <InputGroup.Text key={`start-${watch.id}-${index}`} onClick={() => onClickWatch(watch)} style={{padding: 0}}>{getImageForLink(watch)}</InputGroup.Text>
-                                        <LinkWithTooltip junk={watch}/>
+                                        <InputGroup.Text key={`start-${watch.id}-${index}`} onClick={() => onClickWatch(watch)} style={{padding: 0, minWidth: 70, justifyContent: "center"}}>{getImageForLink(watch)}</InputGroup.Text>
+                                        <LinkWithTooltip junk={watch} dangerDays={dangerDays} warningDays={warningDays}/>
                                         <Button type="button" variant="outline-secondary" name={`form-edit-${watch.id}`} key={`form-edit-${watch.id}-${index}`} onClick={() => toggleEditForm(index)}>{editIcon}</Button>
                                         {expanded && <Button type="button" variant="outline-secondary" name={`form-watched-${watch.id}`} key={`form-watched-${watch.id}-${index}`} onClick={() => handleWatched(watch)}>{watchedIcon}</Button>}
                                         {!expanded && <Button type="button" variant="outline-secondary" name={`form-watch-${watch.id}`} key={`form-watch-${watch.id}-${index}`} onClick={() => handleWatch(watch)}>{onAirIcon}</Button>}
@@ -145,8 +147,7 @@ function WatchCard({expanded, collection, watches, editWatch, addWatch, removeWa
                             )}
                         </ListGroup>
                     </Collapse>
-                    <br/>
-                    <Button type="button" variant="outline-secondary" name={`form-add-${collection}-${key}`} key={`form-add-${collection}-${key}`} onClick={() => setShowAdd(true)}>{addIcon} Add Link</Button>
+                    <Button type="button" variant="outline-secondary" name={`form-add-${collection}-${key}`} key={`form-add-${collection}-${key}`} onClick={() => setShowAdd(true)} style={{marginTop: 10}}>{addIcon} Add Link</Button>
                     <AddToWatchCardForm key={`add-watch-form-collection-${collection}-${key}`} showAddForm={showAdd} toggleAddForm={toggleAddForm} addNewWatch={addWatch} prefillCollection={collection ? collection : ''}/>
                 </Card.Body>
             </Card>

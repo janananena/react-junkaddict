@@ -11,9 +11,9 @@ Find an example for a CSV file to upload in the application here [junkDataExport
 ## Watch List
 Keep track of all the videos you still want to watch. Add categories and labels if you like. Remove watched links as needed.
 
-![Screenshot of Application Watchlist](./src/assets/Screenshot2024-11-26WatchList.png)
+![Screenshot of Application Watchlist](./src/assets/Screenshot2024-11-28WatchList.png)
 
-Find an example for a CSV file to upload in the application here [watchListDataExport.csv](./src/data/watchListDataExport_2024-11-09.csv) or download it from the application.
+Find an example for a CSV file to upload in the application here [watchListDataExport.csv](./src/data/watchListDataExport_2024-11-28.csv) or download it from the application.
 
 ## Available Scripts
 

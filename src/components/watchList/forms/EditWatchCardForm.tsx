@@ -5,6 +5,7 @@ import * as React from "react";
 import {useState} from "react";
 import {ToWatch} from "../../../contexts/WatchListContext.tsx";
 import {changeWatch} from "../../../services/DevDataApiHandlers.tsx";
+import {InputGroup} from "react-bootstrap";
 
 interface EditWatchCardFormProps {
     watch: ToWatch,
@@ -17,6 +18,7 @@ function EditWatchCardForm({watch, showEditForm, toggleEditForm, editWatch}: Edi
     const [currentLink, setCurrentLink] = useState(watch.link);
     const [currentLabel, setCurrentLabel] = useState(watch.label === null ? '' : watch.label);
     const [currentCollection, setCurrentCollection] = useState(watch.collection === null ? '' : watch.collection);
+    const [currentAvailableUntil, setCurrentAvailableUntil] = useState(watch.availableUntil === null ? '' : watch.availableUntil);
 
 
     function handleChangeLink(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
@@ -31,12 +33,17 @@ function EditWatchCardForm({watch, showEditForm, toggleEditForm, editWatch}: Edi
         setCurrentCollection(event.currentTarget.value);
     }
 
+    function handleChangeAvailableUntil(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        setCurrentAvailableUntil(event.currentTarget.value);
+    }
+
     function getEditedWatch(): ToWatch {
         return {
             ...watch,
             link: currentLink,
             label: currentLabel === '' ? null : currentLabel,
-            collection: currentCollection === '' ? null : currentCollection
+            collection: currentCollection === '' ? null : currentCollection,
+            availableUntil: currentAvailableUntil === '' ? null : currentAvailableUntil
         }
     }
 
@@ -59,7 +66,12 @@ function EditWatchCardForm({watch, showEditForm, toggleEditForm, editWatch}: Edi
                     <Form.Control key={`watch-label-${watch.id}`}  id="label" type="text" name="label" placeholder="Label" value={currentLabel} onChange={(event) => handleChangeLabel(event)}/>
                     <br/>
                     <Form.Control key={`watch-collection-${watch.id}`}  id="collection" type="text" name="collection" placeholder="Collection" value={currentCollection} onChange={(event) => handleChangeCollection(event)}/>
-                </Modal.Body>
+                    <br/>
+                    <InputGroup>
+                        <InputGroup.Text>Online Until</InputGroup.Text>
+                    <Form.Control id="availableUntil" key={`watch-available-${watch.id}`} name="availableUntil" type="date" value={currentAvailableUntil} onChange={(event) => handleChangeAvailableUntil(event)}/>
+                    </InputGroup>
+                    </Modal.Body>
                 <Modal.Footer>
                     <Button variant="outline-secondary" id="cancelbutton" key={`cancelbutton-${watch.id}`} name="cancelbutton" type="button" onClick={toggleEditForm}>cancel</Button>
                     <Button variant="outline-primary" id="editbutton" key={`editbutton-${watch.id}`} name="editbutton" type="submit">save</Button>
