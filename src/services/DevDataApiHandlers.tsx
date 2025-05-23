@@ -3,7 +3,6 @@ import {Junk, NewJunk} from "../contexts/ProgramContext";
 import {NewWatch, ToWatch} from "../contexts/WatchListContext.tsx";
 
 // json-server
-// eslint-disable-next-line react-refresh/only-export-components
 const BaseUrl = 'http://fatty:3004';
 
 export async function getPrograms(): Promise<Junk[]> {

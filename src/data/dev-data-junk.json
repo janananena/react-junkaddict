@@ -81,15 +81,16 @@
       "day": [
         "di"
       ],
-      "time": "00:00",
+      "time": "22:15",
       "category": "tv",
       "currentSeason": false,
-      "season": "6",
+      "season": "7",
       "seen": [
         true,
         true,
         true,
         true,
+        false,
         false,
         false
       ],
@@ -286,7 +287,7 @@
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/temptation-island-vip-868824",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "seen": [
         true,
         true,
@@ -359,7 +360,7 @@
       "time": "20:15",
       "link": "https://www.amazon.de/gp/video/detail/B0D1GV1C2M",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "4",
       "seen": [
         true,
@@ -387,7 +388,7 @@
       "time": "06:00",
       "link": "https://www.zdf.de/show/mai-think-x-die-show",
       "category": "tv",
-      "currentSeason": false,
+      "currentSeason": true,
       "season": "",
       "seen": [],
       "links": [
@@ -409,7 +410,7 @@
       "time": "20:15",
       "link": "https://plus.rtl.de/video-tv/shows/love-island-vip-1100003705",
       "category": "tv",
-      "currentSeason": true,
+      "currentSeason": false,
       "season": "1",
       "seen": [
         false
@@ -447,9 +448,239 @@
       "time": "22:15",
       "link": "https://www.joyn.de/serien/das-grosse-promi-buessen",
       "category": "tv",
+      "currentSeason": false,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "2646",
+      "nick": "FHR",
+      "junkname": "Forst Haus Rampensau Germany",
+      "station": "joyn",
+      "day": [
+        "sa"
+      ],
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/forsthaus-rampensau-germany",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "2",
+      "seen": [
+        true,
+        false
+      ],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "8b a1",
+      "nick": "",
+      "junkname": "Make love fake love",
+      "station": "rtl",
+      "day": [
+        "do"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/make-love-fake-love-936477/staffel-2-977432",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "8afe",
+      "nick": "",
+      "junkname": "Plothouse",
+      "station": "spotify",
+      "day": [
+        "mi"
+      ],
+      "time": "20:15",
+      "link": "https://open.spotify.com/show/5izJscGREY3IL483QosH2V?si=45c46064e56e4464",
+      "category": "podcast",
       "currentSeason": true,
       "season": "",
       "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "8e5e",
+      "nick": "",
+      "junkname": "Sommer Haus der Normalos",
+      "station": "rtl",
+      "day": [
+        "mo"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/das-sommerhaus-der-normalos-1005437",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "669d",
+      "nick": "",
+      "junkname": "Promis unter Palmen",
+      "station": "joyn",
+      "day": [
+        "mo"
+      ],
+      "time": "20:15",
+      "link": "https://www.joyn.de/serien/promis-unter-palmen-fuer-geld-mache-ich-alles",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "2",
+      "seen": [
+        true,
+        false
+      ],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "675c",
+      "nick": "",
+      "junkname": "Temptation Island",
+      "station": "rtl",
+      "day": [
+        "do"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/temptation-island-versuchung-im-paradies-121619",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "7",
+      "seen": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "69f6",
+      "nick": "",
+      "junkname": "Couple Challange",
+      "station": "rtl",
+      "day": [
+        "mi"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/couplechallenge-das-staerkste-team-gewinnt-1100003718",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "3",
+      "seen": [
+        true,
+        true,
+        false
+      ],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "102c",
+      "nick": "",
+      "junkname": "Kampf der Realitystars",
+      "station": "rtl",
+      "day": [
+        "mi"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/kampf-der-realitystars-1000003529",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "6",
+      "seen": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "0eee",
+      "nick": "",
+      "junkname": "Last one laughing",
+      "station": "amazon",
+      "day": [
+        "do"
+      ],
+      "time": "20:15",
+      "link": "https://www.amazon.de/gp/video/detail/B0D82VVFFM/ref=atv_hm_hom_c_ixO5Hr_awns_2_1?jic=8%7CEgRzdm9k",
+      "category": "tv",
+      "currentSeason": false,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "7867",
+      "nick": "",
+      "junkname": "Match My Ex",
+      "station": "joyn",
+      "day": [
+        "do"
+      ],
+      "time": "00:00",
+      "link": "https://www.joyn.de/serien/match-my-ex",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "",
+      "seen": [],
+      "links": [],
+      "notes": [],
+      "startDate": null
+    },
+    {
+      "id": "d4c9",
+      "nick": "",
+      "junkname": "Ex on the beach",
+      "station": "rtl",
+      "day": [
+        "mo"
+      ],
+      "time": "20:15",
+      "link": "https://plus.rtl.de/video-tv/shows/ex-on-the-beach-866040/staffel-6-1013351",
+      "category": "tv",
+      "currentSeason": true,
+      "season": "6",
+      "seen": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        false
+      ],
       "links": [],
       "notes": [],
       "startDate": null
@@ -568,7 +799,7 @@
       "link": "https://www.zdf.de/dokumentation/zdf-reportage/drogen-dreck-und-dunkle-ecken-100.html",
       "label": "Drogen Dreck und dunkle Ecken",
       "collection": "drugs",
-      "seen": false,
+      "seen": true,
       "availableUntil": "2029-11-08"
     },
     {
@@ -584,7 +815,7 @@
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-1-102.html",
       "label": "Holocaust 1 Terror",
       "collection": "nzs",
-      "seen": false,
+      "seen": true,
       "availableUntil": "2024-12-11"
     },
     {
@@ -592,7 +823,7 @@
       "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-2-104.html",
       "label": "Holocaust 2 Ghetto",
       "collection": "nzs",
-      "seen": false,
+      "seen": true,
       "availableUntil": "2024-12-11"
     },
     {
@@ -719,7 +950,7 @@
       "label": "Frau Leben Freiheit eine iranische Revolution",
       "collection": "social",
       "seen": false,
-      "availableUntil": "2025-01-31"
+      "availableUntil": "2025-03-30"
     },
     {
       "id": "4a5a",
@@ -749,7 +980,7 @@
       "link": "https://www.arte.tv/de/videos/115755-000-A/usa-baby-boomer-obdachlos/",
       "label": "USA: Baby Boomer, obdachlos",
       "collection": "Wachsende Armut eine globale Herausforderung",
-      "seen": false,
+      "seen": true,
       "availableUntil": "2053-11-01"
     },
     {
@@ -853,6 +1084,110 @@
       "collection": "wachsende armut eine globale herausforderung",
       "seen": false,
       "availableUntil": "2050-10-22"
+    },
+    {
+      "id": "9cbd",
+      "link": "https://youtu.be/eNBVBo57BBI",
+      "label": "Rezo - MiiMii nimmt komplette Karriere von Scammer auseinander",
+      "collection": null,
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "42a6",
+      "link": "https://www.zdf.de/dokumentation/zdfinfo-doku/die-wahrheit-ueber-den-holocaust-3-102.html#autoplay=true",
+      "label": "Die Wahrheit über den Holocaust: Menschenjagd (3)",
+      "collection": "nzs",
+      "seen": false,
+      "availableUntil": "2024-12-12"
+    },
+    {
+      "id": "5e24",
+      "link": "https://youtu.be/VcyaXTCd0e8",
+      "label": "Wir balancieren in unfassbarer Höhe (und kacken uns ein) | Julia vs Joey | Folge 1",
+      "collection": "Julia & Joey",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "a1d7",
+      "link": "https://youtu.be/9PbXmv3_M4k",
+      "label": "Klettern auf den höchsten Turm (oder auch nicht, wir finden es raus) | Julia vs Joey | Folge 2",
+      "collection": "julia & joey",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "f02b",
+      "link": "https://youtu.be/ejg7p4c8xZQ",
+      "label": "Wir brechen in einen zugefrorenen See (kein Witz) | Julia vs Joey | Folge 3",
+      "collection": "julia & joey",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "aa00",
+      "link": "https://youtu.be/7aQdtzzc85E",
+      "label": "Triathlon am Polarkreis (funk übertreibt komplett) | Julia vs Joey | Folge 4",
+      "collection": "julia & joey",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "dc15",
+      "link": "https://youtu.be/nRunKRdFoSI",
+      "label": "Verhaftet in Albanien, wir müssen uns befreien (absolute Krise 💀) | Julia vs Joey | Folge 5",
+      "collection": "julia & joey",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "677c",
+      "link": "https://youtu.be/YAAuOkXb2gw",
+      "label": "1 Nacht in einem Horror-Wald (mit Schiss in der Buchse) | Julia vs Joey | Folge 6",
+      "collection": "julia & joey",
+      "seen": false,
+      "availableUntil": null
+    },
+    {
+      "id": "2037",
+      "link": "https://youtu.be/UlFQgiJ-C1I",
+      "label": "Tauchen in 15 Metern Tiefe (Dreh wird abgebrochen, kein Scherz) | Julia vs Joey | Folge 7",
+      "collection": "julia & joey",
+      "seen": false,
+      "availableUntil": null
+    },
+    {
+      "id": "aaa1",
+      "link": "https://youtu.be/d8al8E2pJ_0",
+      "label": "61 Meter (!!!) freier Fall (wir schaffen das nicht) | Julia vs Joey | Folge 8",
+      "collection": "julia & joey",
+      "seen": false,
+      "availableUntil": null
+    },
+    {
+      "id": "4047",
+      "link": "https://www.zdf.de/comedy/die-anstalt/die-anstalt-vom-12-november-2024-100.html",
+      "label": "Freunde des Patriarchats ",
+      "collection": "Die Anstalt",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "cf81",
+      "link": "https://www.zdf.de/comedy/die-anstalt/die-anstalt-vom-11-maerz-2025-100.html",
+      "label": "Die Bürokratie-Anstalt ",
+      "collection": "die anstalt",
+      "seen": true,
+      "availableUntil": null
+    },
+    {
+      "id": "43a0",
+      "link": "https://youtu.be/5xaC8fVAPhU",
+      "label": "  Time is up: Wasser (Frühling 2025) ",
+      "collection": "time is up",
+      "seen": false,
+      "availableUntil": null
     }
   ]
 }
