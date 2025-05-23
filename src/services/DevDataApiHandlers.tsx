@@ -3,7 +3,7 @@ import {Junk, NewJunk} from "../contexts/ProgramContext";
 import {NewWatch, ToWatch} from "../contexts/WatchListContext.tsx";
 
 // json-server
-const BaseUrl = 'http://fatty:3004';
+const BaseUrl = 'http://localhost:3004';
 
 export async function getPrograms(): Promise<Junk[]> {
     const response = await axios.get(`${BaseUrl}/programs`);

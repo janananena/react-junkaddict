@@ -27,6 +27,10 @@
     "lint-fix": "eslint . --fix",
     "test": "vitest",
     "coverage": "vitest run --coverage --coverage.include=src",
+    "docker-image": "docker build -t 'junkaddict/app:v0.1' -f build.Dockerfile .",
+    "docker-run": "docker run -p 3000:3000 junkaddict/app:v0.1",
+    "docker-server": "docker build -t 'junkaddict/server:v0.1' -f server.Dockerfile .",
+    "docker-run-server": "docker run -p 3004:3004 junkaddict/server:v0.1",
     "check-dependencies": "npm-check-updates",
     "update-dependencies": "npm-check-updates -u"
   },
