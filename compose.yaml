@@ -1,0 +1,29 @@
+name: junkaddict
+
+services:
+  web:
+    env_file:
+      - local-network.env
+    hostname: ${REACT_APP_HOSTNAME:-localhost}
+    depends_on:
+      server:
+        condition: service_started
+    build:
+      context: .
+      dockerfile: build.Dockerfile
+    develop:
+      watch:
+        - path: .
+          action: sync
+          target: app/
+    ports:
+      - "3000:3000"
+  server:
+    env_file:
+      - local-network.env
+    hostname: ${REACT_APP_HOSTNAME:-localhost}
+    build:
+      context: .
+      dockerfile: server.Dockerfile
+    ports:
+      - "3004:3004"

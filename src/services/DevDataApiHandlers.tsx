@@ -3,7 +3,8 @@ import {Junk, NewJunk} from "../contexts/ProgramContext";
 import {NewWatch, ToWatch} from "../contexts/WatchListContext.tsx";
 
 // json-server
-const BaseUrl = 'http://localhost:3004';
+const hostname = process.env.REACT_APP_HOSTNAME != undefined ? process.env.REACT_APP_HOSTNAME : 'localhost';
+const BaseUrl = `http://${hostname}:3004`;
 
 export async function getPrograms(): Promise<Junk[]> {
     const response = await axios.get(`${BaseUrl}/programs`);
