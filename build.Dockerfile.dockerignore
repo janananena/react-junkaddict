@@ -8,7 +8,7 @@ node_modules
 src/assets/Screenshot*
 src/data/junkDataExport*
 src/data/watchListDataExport*
-src/data/dev-data-junk.json
+src/data/junk/dev-data-junk.json
 src/test
 src/App.test.jsx
 Dockerfile

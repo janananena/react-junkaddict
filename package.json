@@ -20,8 +20,8 @@
     "web-vitals": "^5.0.1"
   },
   "scripts": {
-    "vite:start": "concurrently --kill-others \"vite --host --port 3000\" \"json-server --watch src/data/dev-data-junk.json --host fatty --port 3004\"",
-    "dev": "concurrently --kill-others \"vite --port 3000\" \"json-server --watch src/data/dev-data-junk.json --port 3004\"",
+    "vite:start": "concurrently --kill-others \"vite --host --port 3000\" \"json-server --watch src/data/junk/dev-data-junk.json --host fatty --port 3004\"",
+    "dev": "concurrently --kill-others \"vite --port 3000\" \"json-server --watch src/data/junk/dev-data-junk.json --port 3004\"",
     "build": "tsc -b && vite build",
     "lint": "eslint . ",
     "lint-fix": "eslint . --fix",

@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN npm i -g json-server
 
-COPY src/data/dev-data-junk.json .
+COPY src/data/junk/dev-data-junk.json .
 
 EXPOSE 3004
 
