@@ -46,6 +46,6 @@ In the project directory, you can run the development build
 Open [http://localhost:3000](http://localhost:3000) to view junkaddict in your browser.
 
 ### LAN Usage
-To expose the application in the local network go to [local-network.env](local-network.env) and change the value of `REACT_APP_HOSTNAME` to your actual local hostname, e.g. `REACT_APP_HOSTNAME=mylaptop`
+To expose the application in the local network go to [.env](.env) and change the value of `VITE_HOSTNAME` to your actual local hostname, e.g. `VITE_HOSTNAME=mylaptop`
 
-Open [http://REACT_APP_HOSTNAME:3000](http://REACT_APP_HOSTNAME:3000), e.g. [http://mylaptop:3000](http://mylaptop:3000) to view junkaddict in any browser in your network.
+Open [http://VITE_HOSTNAME:3000](http://VITE_HOSTNAME:3000), e.g. [http://mylaptop:3000](http://mylaptop:3000) to view junkaddict in any browser in your network.
